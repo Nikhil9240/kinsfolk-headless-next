@@ -1,0 +1,513 @@
+/* ============================================================
+   TRUSTED BY SECTION
+============================================================ */
+
+.trusted-section {
+  position: relative;
+  width: 100%;
+
+  padding: 85px 0 70px;
+
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #062a4f 0%,
+    #063b5e 48%,
+    #07506d 100%
+  );
+
+  color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   CONTAINER
+============================================================ */
+
+.trusted-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 0 60px;
+
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   EYEBROW
+============================================================ */
+
+.trusted-eyebrow {
+  margin: 0 0 14px;
+
+  color: #0dc78a;
+
+  font-family: "Poppins";
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  letter-spacing: 3px;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   TITLE
+============================================================ */
+
+.trusted-title {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  color: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 36px;
+  font-weight: 600;
+
+  line-height: 1.25;
+
+  letter-spacing: -1px;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   DESCRIPTION
+============================================================ */
+
+.trusted-description {
+  max-width: none;
+  white-space: nowrap;
+
+  margin: 20px 0 0;
+
+  color: rgba(255, 255, 255, 0.80);
+
+  font-family: "Poppins";
+
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   SLIDER
+============================================================ */
+
+.trusted-slider {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   LOGO GRID
+============================================================ */
+
+.trusted-logo-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   LOGO CARD
+============================================================ */
+
+.trusted-logo {
+  height: 145px;
+
+  padding: 18px 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border-right: 1px solid rgba(6, 42, 79, 0.12);
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* Remove border from last card */
+
+.trusted-logo:last-child {
+  border-right: none;
+}
+
+
+/* ============================================================
+   LOGO IMAGE
+============================================================ */
+
+.trusted-logo img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 400px;
+  max-height: 250px;
+
+  object-fit: contain;
+
+  opacity: 1;
+
+  visibility: visible;
+
+  /*
+   * No transform
+   * No animation
+   * No transition
+   *
+   * Keeps scrolling smooth
+   */
+}
+
+
+/* ============================================================
+   ARROWS
+============================================================ */
+
+.trusted-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 20;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #0dc78a;
+
+  border-radius: 50%;
+
+  background: #062a4f;
+
+  color: #0dc78a;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* Arrow hover */
+
+.trusted-arrow:hover {
+  background: #0dc78a;
+
+  color: #ffffff;
+}
+
+
+/* Previous */
+
+.trusted-prev {
+  left: -22px;
+}
+
+
+/* Next */
+
+.trusted-next {
+  right: -22px;
+}
+
+
+/* ============================================================
+   DOTS
+============================================================ */
+
+.trusted-dots {
+  margin-top: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+}
+
+
+/* Normal dot */
+
+.trusted-dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  cursor: pointer;
+}
+
+
+/* Active dot */
+
+.trusted-dot.active {
+  width: 24px;
+  height: 8px;
+
+  border-radius: 10px;
+
+  background: #0dc78a;
+}
+
+
+/* ============================================================
+   DISCLAIMER
+============================================================ */
+
+.trusted-disclaimer {
+  margin: 20px 0 0;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   TABLET VIEW (Screens up to 1100px wide)
+   Adapts container padding, scales down typography, and 
+   adjusts logo dimensions to fit medium screens.
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  /* Reduce side margins for the main container */
+  .trusted-container {
+    padding: 0 40px;
+  }
+
+  /* Scale down the section header title font size */
+  .trusted-title {
+    font-size: 40px;
+  }
+
+  /* Keep grid structure at 4 columns for large tablets */
+  .trusted-logo-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Reduce height of individual logo card containers */
+  .trusted-logo {
+    height: 135px;
+  }
+
+  /* Constrain image bounds so they do not overflow cards */
+  .trusted-logo img {
+    max-width: 155px;
+    max-height: 65px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE VIEW (Screens up to 767px wide)
+   Optimizes section padding, shifts logo grid to 2 columns,
+   and resizes buttons and font metrics for touch devices.
+============================================================ */
+
+@media (max-width: 767px) {
+
+  /* Tighten vertical padding for mobile viewports */
+  .trusted-section {
+    padding: 65px 0 55px;
+  }
+
+  /* Narrower container padding to maximize screen usage */
+  .trusted-container {
+    padding: 0 20px;
+  }
+
+  /* Shrink eyebrow text and letter spacing */
+  .trusted-eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  /* Adjust main heading font and line parameters for smaller screens */
+  .trusted-title {
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+
+  /* Scale down description copy for readability and allow normal wrapping on small screens */
+  .trusted-description {
+    white-space: normal;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Adjust spacing and inner padding for the slider component */
+  .trusted-slider {
+    margin-top: 40px;
+    padding: 0 8px;
+  }
+
+  /* Reconfigure logo grid layout into a 2-column format */
+  .trusted-logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 12px;
+  }
+
+  /* Adjust individual logo card dimensions and inner padding */
+  .trusted-logo {
+    height: 115px;
+    padding: 12px;
+  }
+
+  /* Remove right border on alternating columns for the 2-column layout */
+  .trusted-logo:nth-child(2n) {
+    border-right: none;
+  }
+
+  /* Scale down logo asset rendering bounds */
+  .trusted-logo img {
+    max-width: 125px;
+    max-height: 55px;
+  }
+
+  /* Reduce navigation arrow button sizes for mobile touch targets */
+  .trusted-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  /* Reposition previous navigation arrow */
+  .trusted-prev {
+    left: -5px;
+  }
+
+  /* Reposition next navigation arrow */
+  .trusted-next {
+    right: -5px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE VIEW (Screens up to 420px wide)
+   Finely tunes fonts, logo card heights, and asset constraints 
+   for compact smartphone displays.
+============================================================ */
+
+@media (max-width: 420px) {
+
+  /* Compact section padding further for small mobile form factors */
+  .trusted-section {
+    padding: 55px 0 45px;
+  }
+
+  /* Minimal container horizontal padding */
+  .trusted-container {
+    padding: 0 16px;
+  }
+
+  /* Reduce title typography size to prevent wrapping issues */
+  .trusted-title {
+    font-size: 29px;
+  }
+
+  /* Scale text down for smaller viewports */
+  .trusted-description {
+    font-size: 13px;
+  }
+
+  /* Reduce height and padding of logo boxes */
+  .trusted-logo {
+    height: 100px;
+    padding: 10px;
+  }
+
+  /* Scale down logo image maximum dimensions */
+  .trusted-logo img {
+    max-width: 110px;
+    max-height: 48px;
+  }
+
+}

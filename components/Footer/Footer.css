@@ -1,0 +1,789 @@
+/* =========================================================
+   FOOTER RESET
+========================================================= */
+
+.kinsfolk-footer,
+.kinsfolk-footer * {
+  box-sizing: border-box;
+}
+
+.kinsfolk-footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  font-family:
+    "Poppins",
+    Arial,
+    sans-serif;
+
+  /*
+    DARK BLUE BACKGROUND
+    Inspired by the second reference image
+  */
+
+  background:
+    radial-gradient(
+      circle at 72% 0%,
+      rgba(72, 113, 255, 0.75) 0%,
+      rgba(30, 73, 180, 0.38) 20%,
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 15% 100%,
+      rgba(27, 82, 150, 0.5) 0%,
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #020c25 0%,
+      #041b48 38%,
+      #07398d 62%,
+      #07183c 100%
+    );
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.footer-cta {
+  position: relative;
+  width: 100%;
+
+  padding:
+    95px 30px
+    85px;
+}
+
+.footer-cta-inner {
+  width: min(1120px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   CTA ICON
+========================================================= */
+
+.footer-cta-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 30px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  color: #152b8d;
+
+  font-size: 30px;
+
+  border-radius: 2px;
+}
+
+
+/* =========================================================
+   CTA HEADING
+========================================================= */
+
+.footer-cta h2 {
+  margin: 0;
+
+  max-width: 800px;
+
+  color: #ffffff;
+
+  font-size: clamp(40px, 5vw, 66px);
+
+  font-weight: 400;
+
+  line-height: 1.12;
+
+  letter-spacing: -2px;
+}
+
+
+/* =========================================================
+   CTA TEXT
+========================================================= */
+
+.footer-cta p {
+  max-width: 760px;
+
+  margin:
+    18px 0 32px;
+
+  color: rgba(255, 255, 255, 0.76);
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   SIGNUP
+========================================================= */
+
+.footer-signup {
+  width: min(580px, 100%);
+
+  display: flex;
+
+  align-items: stretch;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.14);
+}
+
+.footer-signup input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 54px;
+
+  padding:
+    0 18px;
+
+  border: 0;
+
+  outline: 0;
+
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+}
+
+.footer-signup input::placeholder {
+  color:
+    rgba(255, 255, 255, 0.75);
+}
+
+
+.footer-signup button {
+  min-width: 155px;
+
+  height: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    0 12px 0 24px;
+
+  border: 0;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.footer-signup button strong {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #17268e;
+
+  color: #ffffff;
+
+  font-size: 17px;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   WHITE PANEL
+========================================================= */
+
+.footer-panel {
+  width: min(1650px, calc(100% - 60px));
+
+  margin:
+    0 auto
+    35px;
+
+  background: #ffffff;
+
+  color: #111111;
+
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   PANEL TOP
+========================================================= */
+
+.footer-panel-top {
+  display: grid;
+
+  grid-template-columns:
+    1.45fr
+    1fr
+    1fr
+    1fr
+    0.9fr;
+
+  gap: 0;
+
+  padding:
+    48px 46px
+    50px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.footer-brand {
+  padding-right: 35px;
+}
+
+.footer-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  margin-bottom: 28px;
+}
+
+.footer-logo img {
+  display: block;
+
+  width: 155px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.footer-brand h3 {
+  margin: 0 0 25px;
+
+  color: #101010;
+
+  font-size: 25px;
+
+  font-weight: 400;
+
+  line-height: 1.18;
+
+  letter-spacing: -0.7px;
+}
+
+
+/* =========================================================
+   GET IN TOUCH
+========================================================= */
+
+.footer-contact-btn {
+  width: fit-content;
+
+  min-height: 40px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding:
+    0 8px 0 18px;
+
+  background:
+    #18218b;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  text-decoration: none;
+}
+
+.footer-contact-btn span {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  color: #18218b;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   COLUMNS
+========================================================= */
+
+.footer-links-column {
+  min-width: 0;
+
+  padding:
+    0 20px;
+
+  border-left:
+    2px solid
+    #e8e8e8;
+}
+
+.footer-links-column h4 {
+  margin:
+    0 0 23px;
+
+  color: #171717;
+
+  font-size: 15px;
+
+  font-weight: 500;
+}
+
+.footer-links-column a {
+  display: block;
+
+  width: fit-content;
+
+  margin-bottom: 17px;
+
+  color: #646464;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-links-column a:hover {
+  color: #17268e;
+
+  transform:
+    translateX(3px);
+}
+
+
+/* =========================================================
+   CONNECT
+========================================================= */
+
+.footer-connect {
+  padding-right: 0;
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.footer-panel-bottom {
+  min-height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding:
+    0 46px;
+
+  border-top:
+    1px solid
+    #eeeeee;
+}
+
+.footer-bottom-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+}
+
+.footer-bottom-left a {
+  color: #666666;
+
+  font-size: 10px;
+
+  text-decoration: none;
+}
+
+.footer-panel-bottom p {
+  margin: 0;
+
+  color: #666666;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .footer-panel {
+    width:
+      calc(100% - 40px);
+  }
+
+  .footer-panel-top {
+    grid-template-columns:
+      1.4fr
+      1fr
+      1fr;
+
+    row-gap: 40px;
+
+    padding:
+      42px 35px;
+  }
+
+  .footer-brand {
+    grid-row: span 2;
+
+    padding-right: 30px;
+  }
+
+  .footer-links-column {
+    min-height: 170px;
+  }
+
+  .footer-panel-bottom {
+    padding:
+      18px 35px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .footer-cta {
+    padding:
+      70px 25px
+      65px;
+  }
+
+  .footer-cta h2 {
+    font-size: 42px;
+
+    letter-spacing: -1px;
+  }
+
+  .footer-cta p {
+    max-width: 600px;
+
+    font-size: 13px;
+  }
+
+  .footer-signup {
+    max-width: 520px;
+  }
+
+  .footer-panel {
+    width:
+      calc(100% - 30px);
+
+    margin-bottom: 20px;
+  }
+
+  .footer-panel-top {
+    grid-template-columns:
+      1fr 1fr;
+
+    padding:
+      38px 28px;
+
+    gap:
+      35px 0;
+  }
+
+  .footer-brand {
+    grid-column: span 2;
+
+    grid-row: auto;
+
+    padding-right: 0;
+
+    padding-bottom: 10px;
+  }
+
+  .footer-links-column {
+    padding:
+      0 20px;
+  }
+
+  .footer-links-column:nth-child(2) {
+    padding-left: 0;
+
+    border-left: 0;
+  }
+
+  .footer-panel-bottom {
+    min-height: auto;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding:
+      18px 28px;
+
+    gap: 12px;
+  }
+
+  .footer-bottom-left {
+    flex-wrap: wrap;
+
+    gap:
+      10px 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .kinsfolk-footer {
+    background:
+      radial-gradient(
+        circle at 80% 0%,
+        rgba(65, 110, 255, 0.65),
+        transparent 40%
+      ),
+      linear-gradient(
+        145deg,
+        #020b22 0%,
+        #04235b 52%,
+        #06183d 100%
+      );
+  }
+
+  .footer-cta {
+    padding:
+      55px 20px
+      50px;
+  }
+
+  .footer-cta-icon {
+    width: 32px;
+    height: 32px;
+
+    margin-bottom: 22px;
+
+    font-size: 17px;
+  }
+
+  .footer-cta h2 {
+    font-size: 31px;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+  }
+
+  .footer-cta p {
+    margin:
+      17px 0 25px;
+
+    font-size: 12px;
+
+    line-height: 1.65;
+  }
+
+  .footer-signup {
+    width: 100%;
+
+    flex-direction: column;
+
+    background: transparent;
+
+    border: 0;
+  }
+
+  .footer-signup input {
+    width: 100%;
+
+    height: 50px;
+
+    margin-bottom: 8px;
+  }
+
+  .footer-signup button {
+    width: 100%;
+
+    height: 50px;
+  }
+
+
+  /* WHITE PANEL */
+
+  .footer-panel {
+    width:
+      calc(100% - 24px);
+
+    margin:
+      0 12px
+      15px;
+  }
+
+  .footer-panel-top {
+    grid-template-columns: 1fr;
+
+    padding:
+      35px 24px
+      30px;
+
+    gap: 30px;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+
+    padding:
+      0 0 10px;
+  }
+
+  .footer-logo img {
+    width: 140px;
+  }
+
+  .footer-brand h3 {
+    font-size: 23px;
+
+    margin-bottom: 20px;
+  }
+
+  .footer-links-column {
+    width: 100%;
+
+    padding:
+      22px 0 0;
+
+    border-left: 0;
+
+    border-top:
+      1px solid
+      #e8e8e8;
+  }
+
+  .footer-links-column h4 {
+    margin-bottom: 16px;
+
+    font-size: 14px;
+  }
+
+  .footer-links-column a {
+    margin-bottom: 11px;
+
+    font-size: 10px;
+  }
+
+  .footer-panel-bottom {
+    padding:
+      18px 24px
+      22px;
+  }
+
+  .footer-bottom-left {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 9px;
+  }
+
+  .footer-bottom-left a,
+  .footer-panel-bottom p {
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .footer-cta h2 {
+    font-size: 27px;
+  }
+
+  .footer-cta p {
+    font-size: 11px;
+  }
+
+  .footer-panel-top {
+    padding:
+      30px 20px;
+  }
+
+  .footer-brand h3 {
+    font-size: 21px;
+  }
+
+  .footer-contact-btn {
+    font-size: 10px;
+  }
+
+  .footer-panel-bottom {
+    padding:
+      16px 20px;
+  }
+}

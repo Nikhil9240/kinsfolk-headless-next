@@ -1,0 +1,476 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #222;
+  background: #fff;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+}
+
+.header-container {
+  width: 100%;
+  min-height: 78px;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.site-logo {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.site-logo a {
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 42px;
+  font-weight: 700;
+  font-style: italic;
+  color: #0b416c;
+  letter-spacing: -2px;
+}
+
+/* =========================
+   MAIN NAV
+========================= */
+
+.main-navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.main-menu {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.menu-item {
+  position: static;
+}
+
+.menu-link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-link {
+  color: #222;
+  text-decoration: none;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.menu-link:hover {
+  color: #168b99;
+}
+
+.menu-arrow {
+  font-size: 12px;
+  color: #222;
+}
+
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.client-support {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+
+  font-size: 14px;
+}
+
+.support-label {
+  background: #f3f3f3;
+  padding: 3px 10px;
+  border-radius: 5px;
+}
+
+.client-support a {
+  color: #333;
+  text-decoration: none;
+}
+
+.contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 143px;
+  height: 50px;
+
+  padding: 0 24px;
+
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  border-radius: 5px;
+
+  background: linear-gradient(
+    90deg,
+    #0dc78a,
+    #339ae0
+  );
+}
+
+/* =========================
+   MEGA MENU
+========================= */
+
+.has-mega-menu {
+  position: static;
+}
+
+.mega-menu {
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+
+  background: #fff;
+
+  display: grid;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(10px);
+
+  transition: all 0.2s ease;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  z-index: 999;
+}
+
+.has-mega-menu:hover > .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* =========================
+   SOLUTIONS
+========================= */
+
+.mega-solutions {
+  grid-template-columns: 31% 37% 32%;
+
+  min-height: 440px;
+
+  padding: 48px 0 55px;
+}
+
+.mega-solutions .mega-column {
+  padding: 0 40px;
+}
+
+.mega-solutions .solution-column {
+  padding-left: 12%;
+}
+
+.mega-solutions .industry-column {
+  background: #f7f7f7;
+  padding-left: 12%;
+}
+
+.mega-menu h3 {
+  margin: 0 0 25px;
+
+  color: #0b123d;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Solution list */
+
+.solution-column ul,
+.industry-column ul,
+.company-links ul {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+.solution-column li {
+  margin-bottom: 16px;
+
+  font-size: 25px;
+}
+
+.solution-column li:hover {
+  color: #168b99;
+}
+
+/* =========================
+   CHALLENGES
+========================= */
+
+.challenge-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 16px;
+}
+
+.challenge-card {
+  min-height: 125px;
+
+  border: 1px solid #ddd;
+  border-radius: 6px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.challenge-card:hover {
+  border-color: #168b99;
+}
+
+.challenge-icon {
+  font-size: 36px;
+  color: #208d9b;
+}
+
+.challenge-card span {
+  font-size: 16px;
+}
+
+/* =========================
+   INDUSTRY
+========================= */
+
+.industry-column li {
+  margin-bottom: 17px;
+
+  font-size: 17px;
+}
+
+.industry-column a {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  color: #168b99;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid #168b99;
+}
+
+/* =========================
+   COMPANY MENU
+========================= */
+
+.mega-company {
+  grid-template-columns: 31% 37% 32%;
+
+  min-height: 440px;
+
+  padding: 48px 0 55px;
+}
+
+.mega-company .mega-column {
+  padding: 0 40px;
+}
+
+.mega-company .company-tagline {
+  padding-left: 12%;
+}
+
+.mega-company .industry-column {
+  background: #f7f7f7;
+  padding-left: 12%;
+}
+
+.company-tagline h2 {
+  margin: 0;
+
+  color: #082c30;
+
+  font-size: 39px;
+  line-height: 1.15;
+}
+
+.company-links li {
+  margin-bottom: 20px;
+}
+
+.company-links a {
+  color: #333;
+
+  font-size: 18px;
+
+  text-decoration: none;
+}
+
+.company-links a:hover {
+  color: #168b99;
+}
+
+/* =========================
+   RESOURCES
+========================= */
+
+.resources-dropdown {
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  width: 145px;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(8px);
+
+  transition: all 0.2s ease;
+
+  z-index: 1000;
+}
+
+.has-mega-menu:hover > .resources-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.resources-dropdown a {
+  padding: 18px 28px;
+
+  color: #333;
+
+  text-decoration: none;
+
+  font-size: 15px;
+}
+
+.resources-dropdown a:hover {
+  background: #f5f5f5;
+  color: #168b99;
+}
+
+/* =========================
+   PAGE CONTENT
+========================= */
+
+main {
+  min-height: 500px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1100px) {
+
+  .header-container {
+    padding: 0 20px;
+  }
+
+  .site-logo {
+    width: 180px;
+  }
+
+  .main-menu {
+    gap: 15px;
+  }
+
+  .menu-link {
+    font-size: 15px;
+  }
+
+  .header-actions {
+    gap: 15px;
+  }
+
+  .client-support {
+    display: none;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .main-navigation {
+    display: none;
+  }
+
+  .header-container {
+    justify-content: space-between;
+  }
+
+}

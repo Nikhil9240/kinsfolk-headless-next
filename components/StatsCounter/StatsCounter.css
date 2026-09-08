@@ -1,0 +1,391 @@
+/* =========================================================
+   STATS COUNTER SECTION
+========================================================= */
+
+.statsSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 85px 0 70px;
+}
+
+.statsContainer {
+  width: min(100% - 80px, 1500px);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING AREA
+========================================================= */
+
+.statsHeading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+
+/* =========================================================
+   SMALL CENTERED LABEL (EYEBROW)
+========================================================= */
+
+.statsEyebrow {
+  margin: 0 0 12px 0;
+  color: #31579c;
+  
+  font-size: 14px;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HEADING CONTENT
+========================================================= */
+
+.statsHeadingContent {
+  margin: 0 auto;
+}
+
+.statsHeadingContent h2 {
+  margin: 0;
+
+  color: #17264d;
+
+  font-size: 44px;
+  font-weight: 700;
+
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+
+/* =========================================================
+   PARAGRAPH
+========================================================= */
+
+.statsHeadingContent p {
+  max-width: none;
+  white-space: nowrap;
+  margin: 12px 0 0;
+
+  color: #5c6880;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   STATS GRID
+========================================================= */
+
+.statsGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  border-top: 1px solid #e0e5ee;
+  border-bottom: 1px solid #e0e5ee;
+}
+
+
+/* =========================================================
+   STAT BOX
+========================================================= */
+
+.statBox {
+  position: relative;
+
+  min-height: 245px;
+
+  padding: 30px 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   VERTICAL SEPARATORS
+========================================================= */
+
+.statBox:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: 55px;
+
+  width: 1px;
+  height: 120px;
+
+  background: #e2e6ee;
+}
+
+
+/* =========================================================
+   ICON CIRCLE
+========================================================= */
+
+.statIcon {
+  width: 50px;
+  height: 50px;
+
+  margin-bottom: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(58, 92, 165, 0.08),
+      rgba(58, 92, 165, 0.15)
+    );
+
+  color: #31599e;
+}
+
+
+/* SMALL ICON */
+
+.statIcon svg {
+  width: 25px;
+  height: 25px;
+
+  stroke-width: 1.8;
+}
+
+
+/* =========================================================
+   STAT NUMBER
+========================================================= */
+
+.statNumber {
+  color: #2e55a0;
+
+  font-size: clamp(48px, 3.4vw, 64px);
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.055em;
+}
+
+
+/* =========================================================
+   STAT LABEL
+========================================================= */
+
+.statLabel {
+  max-width: 250px;
+
+  margin-top: 22px;
+
+  color: #26344d;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   LARGE TABLET (Max width: 1200px)
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  /* Adjust container padding */
+  .statsContainer {
+    width: min(100% - 60px, 1500px);
+  }
+
+  /* Switch grid to 3 columns */
+  .statsGrid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  /* Clean up separators for 3-column layout */
+  .statBox:nth-child(3)::after {
+    display: none;
+  }
+
+  .statBox:nth-child(-n + 3) {
+    border-bottom: 1px solid #e2e6ee;
+  }
+}
+
+
+/* =========================================================
+   TABLET / MOBILE (Max width: 768px)
+========================================================= */
+
+@media (max-width: 768px) {
+
+  /* Section padding adjustment */
+  .statsSection {
+    padding: 65px 0 55px;
+  }
+
+  /* Fluid container width */
+  .statsContainer {
+    width: min(100% - 40px, 1500px);
+  }
+
+  /* Heading adjustments */
+  .statsHeading {
+    margin-bottom: 35px;
+  }
+
+  .statsHeadingContent h2 {
+    font-size: 35px;
+  }
+
+  /* Allow paragraph text to wrap naturally on smaller screens */
+  .statsHeadingContent p {
+    white-space: normal;
+    font-size: 20px;
+    margin-top: 14px;
+  }
+
+  /* Switch grid to 2 columns */
+  .statsGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .statBox {
+    min-height: 225px;
+  }
+
+  .statBox::after {
+    display: none !important;
+  }
+
+  /* Add custom dividers for 2-column view */
+  .statBox:nth-child(odd)::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 1px;
+    height: 120px;
+    background: #e2e6ee;
+  }
+
+  .statBox:nth-child(-n + 4) {
+    border-bottom: 1px solid #e2e6ee;
+  }
+
+  /* Span final element if odd count */
+  .statBox:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .statBox:last-child::before {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE (Max width: 480px)
+========================================================= */
+
+@media (max-width: 480px) {
+
+  /* Compact section padding */
+  .statsSection {
+    padding: 55px 0 45px;
+  }
+
+  .statsContainer {
+    width: min(100% - 28px, 1500px);
+  }
+
+  /* Heading adjustments */
+  .statsHeadingContent h2 {
+    font-size: 35px;
+    line-height: 1.18;
+  }
+
+  .statsHeadingContent p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  /* Switch to single-column layout */
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statBox {
+    min-height: 200px;
+    border-bottom: 1px solid #e2e6ee;
+  }
+
+  .statBox:last-child {
+    grid-column: auto;
+    border-bottom: none;
+  }
+
+  .statBox:nth-child(odd)::before {
+    display: none;
+  }
+
+  /* Scale down icon dimensions */
+  .statIcon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 18px;
+  }
+
+  .statIcon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  /* Metric number typography */
+  .statNumber {
+    font-size: 48px;
+  }
+
+  /* Metric descriptor spacing */
+  .statLabel {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION SUPPORT
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .statBox,
+  .statNumber,
+  .statIcon {
+    animation: none !important;
+    transition: none !important;
+  }
+}

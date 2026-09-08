@@ -1,0 +1,872 @@
+/* =========================================================
+   DAILY CHANGES
+   ---------------------------------------------------------
+   Responsive update:
+   - Mobile-first layout
+   - Tablet optimization
+   - Desktop sticky card layout
+   - Improved card sizing
+   - Prevent horizontal overflow
+   - Preserve existing Services UI/UX
+========================================================= */
+
+
+/* =========================================================
+   SERVICES SECTION
+========================================================= */
+
+.servicesSection {
+  position: relative;
+  width: 100%;
+  padding: 70px 16px 90px;
+  background: #f8fafc;
+  overflow: visible;
+}
+
+
+/* =========================================================
+   MAIN SERVICES CONTAINER
+   ---------------------------------------------------------
+   Mobile:
+   Single-column layout.
+========================================================= */
+
+.servicesContainer {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 45px;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   LEFT SIDE - INTRODUCTION
+========================================================= */
+
+.servicesIntro {
+  position: relative;
+  top: auto;
+  width: 100%;
+}
+
+
+/* Small heading above Services title */
+.servicesEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+
+  color: #f05a28;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+
+/* Main Services heading */
+.servicesIntro h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: clamp(34px, 8vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  font-weight: 600;
+}
+
+
+/* Services introduction paragraph */
+.servicesIntro p {
+  max-width: 650px;
+
+  margin: 18px 0 0;
+
+  color: #0d0d0d;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   SERVICES NAVIGATION
+========================================================= */
+
+.servicesNavigation {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  margin-top: 28px;
+}
+
+
+/* Individual navigation item */
+.servicesNavigation a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 0;
+
+  border-top: 1px solid #e2e8f0;
+
+  color: #475569;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    padding-left 0.25s ease;
+}
+
+
+/* Number inside navigation */
+.servicesNavigation a span {
+  flex-shrink: 0;
+
+  color: #062e53;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* Last navigation item */
+.servicesNavigation a:last-child {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+
+/* Navigation hover */
+.servicesNavigation a:hover {
+  color: #f05a28;
+  padding-left: 5px;
+}
+
+
+/* =========================================================
+   RIGHT SIDE - SERVICES CARDS
+========================================================= */
+
+.servicesCards {
+  position: relative;
+
+  width: 100%;
+  padding-bottom: 30px;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+   ---------------------------------------------------------
+   Mobile:
+   Normal document flow.
+   Sticky behavior is enabled only on desktop.
+========================================================= */
+
+.serviceCard {
+  position: relative;
+
+  width: 100%;
+  margin-bottom: 24px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+
+  overflow: hidden;
+
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* Remove extra bottom margin from last card */
+.serviceCard:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Card hover */
+.serviceCard:hover {
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.1);
+}
+
+
+/* =========================================================
+   CARD STACK ORDER
+   ---------------------------------------------------------
+   Sticky offsets are intentionally NOT applied on mobile.
+   They are added only on desktop.
+========================================================= */
+
+.serviceCard:nth-child(1),
+.serviceCard:nth-child(2),
+.serviceCard:nth-child(3),
+.serviceCard:nth-child(4),
+.serviceCard:nth-child(5),
+.serviceCard:nth-child(6) {
+  top: auto;
+  z-index: auto;
+}
+
+
+/* =========================================================
+   CARD INNER
+   ---------------------------------------------------------
+   Mobile:
+   Content first, image below.
+========================================================= */
+
+.serviceCardInner {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 24px;
+
+  padding: 20px;
+}
+
+
+/* =========================================================
+   SERVICE CONTENT
+========================================================= */
+
+.serviceContent {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-width: 0;
+
+  padding-left: 0;
+}
+
+
+/* Service card title */
+.serviceContent h3 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: clamp(27px, 7vw, 35px);
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+  font-weight: 600;
+}
+
+
+/* Service card description */
+.serviceContent p {
+  max-width: 100%;
+
+  margin: 14px 0 0;
+
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   SERVICE TAGS
+========================================================= */
+
+.serviceTags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 22px;
+}
+
+
+/* Individual tag */
+.serviceTags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 12px;
+
+  border: 1px solid #e0481c;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #0f172a;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: normal;
+}
+
+
+/* Tag icon */
+.serviceTags span svg {
+  flex-shrink: 0;
+
+  width: 18px;
+  height: 18px;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+========================================================= */
+
+.serviceExploreBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  align-self: flex-start;
+
+  margin-top: 30px;
+
+  min-height: 48px;
+  padding: 11px 24px;
+
+  border-radius: 999px;
+
+  background: #062e53;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Button dot */
+.serviceExploreBtn::after {
+  content: "";
+
+  display: block;
+
+  width: 6px;
+  height: 6px;
+
+  margin-left: 4px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+}
+
+
+/* Button hover */
+.serviceExploreBtn:hover {
+  background: #e0481c;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SERVICE IMAGE
+   ---------------------------------------------------------
+   Mobile image has controlled height so cards don't become
+   unnecessarily tall.
+========================================================= */
+
+.serviceImage {
+  width: 100%;
+  height: 260px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #e7caff 0%,
+    #d8b4fe 100%
+  );
+}
+
+
+/* Service image */
+.serviceImage img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+
+/* Image zoom on card hover */
+.serviceCard:hover .serviceImage img {
+  transform: scale(1.03);
+}
+
+
+/* =========================================================
+   TABLET
+   ---------------------------------------------------------
+   641px and above
+========================================================= */
+
+@media (min-width: 641px) {
+
+  /* Services section spacing */
+  .servicesSection {
+    padding: 85px 24px 110px;
+  }
+
+
+  /* Main container */
+  .servicesContainer {
+    gap: 50px;
+  }
+
+
+  /* Intro text */
+  .servicesIntro p {
+    font-size: 17px;
+  }
+
+
+  /* Navigation */
+  .servicesNavigation {
+    margin-top: 32px;
+  }
+
+
+  .servicesNavigation a {
+    padding: 13px 0;
+    font-size: 14px;
+  }
+
+
+  /* Cards area */
+  .servicesCards {
+    padding-bottom: 50px;
+  }
+
+
+  /* Service card */
+  .serviceCard {
+    margin-bottom: 28px;
+    border-radius: 24px;
+  }
+
+
+  /* Card content */
+  .serviceCardInner {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+
+    gap: 28px;
+
+    padding: 26px;
+  }
+
+
+  /* Content */
+  .serviceContent {
+    padding-left: 4px;
+  }
+
+
+  .serviceContent p {
+    max-width: 95%;
+    font-size: 17px;
+  }
+
+
+  /* Tags */
+  .serviceTags {
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+
+  .serviceTags span {
+    padding: 9px 13px;
+    font-size: 14px;
+  }
+
+
+  /* Explore button */
+  .serviceExploreBtn {
+    margin-top: 34px;
+    padding: 12px 26px;
+    font-size: 17px;
+  }
+
+
+  /* Image */
+  .serviceImage {
+    height: 330px;
+    min-height: 330px;
+
+    border-radius: 18px;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ---------------------------------------------------------
+   1025px and above
+========================================================= */
+
+@media (min-width: 1025px) {
+
+  /* Main section */
+  .servicesSection {
+    padding: 100px 20px 140px;
+  }
+
+
+  /* Two-column desktop layout */
+  .servicesContainer {
+    grid-template-columns: minmax(0, 42%) minmax(0, 54%);
+
+    gap: 4%;
+  }
+
+
+  /* Sticky left introduction */
+  .servicesIntro {
+    position: sticky;
+    top: 60px;
+  }
+
+
+  /* Desktop heading */
+  .servicesIntro h2 {
+    font-size: clamp(40px, 4vw, 56px);
+  }
+
+
+  /* Desktop paragraph */
+  .servicesIntro p {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+
+  /* Navigation */
+  .servicesNavigation {
+    margin-top: 35px;
+  }
+
+
+  .servicesNavigation a {
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+
+  /* Cards */
+  .servicesCards {
+    width: 100%;
+    padding-bottom: 120px;
+  }
+
+
+  /* =======================================================
+     DESKTOP STICKY CARD STACK
+  ======================================================= */
+
+  .serviceCard {
+    position: sticky;
+
+    width: 100%;
+    margin-bottom: 35px;
+
+    border-radius: 28px;
+  }
+
+
+  /* First card */
+  .serviceCard:nth-child(1) {
+    top: 60px;
+    z-index: 1;
+  }
+
+
+  /* Second card */
+  .serviceCard:nth-child(2) {
+    top: 85px;
+    z-index: 2;
+  }
+
+
+  /* Third card */
+  .serviceCard:nth-child(3) {
+    top: 110px;
+    z-index: 3;
+  }
+
+
+  /* Fourth card */
+  .serviceCard:nth-child(4) {
+    top: 135px;
+    z-index: 4;
+  }
+
+
+  /* Fifth card */
+  .serviceCard:nth-child(5) {
+    top: 160px;
+    z-index: 5;
+  }
+
+
+  /* Sixth card */
+  .serviceCard:nth-child(6) {
+    top: 185px;
+    z-index: 6;
+  }
+
+
+  /* =======================================================
+     DESKTOP CARD INNER
+  ======================================================= */
+
+  .serviceCardInner {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 1fr);
+
+    gap: 30px;
+
+    padding: 24px;
+  }
+
+
+  /* Desktop content */
+  .serviceContent {
+    padding-left: 16px;
+  }
+
+
+  .serviceContent h3 {
+    font-size: clamp(30px, 2.5vw, 35px);
+  }
+
+
+  .serviceContent p {
+    max-width: 90%;
+    font-size: 18px;
+  }
+
+
+  /* Desktop tags */
+  .serviceTags {
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+
+  .serviceTags span {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+
+
+  .serviceTags span svg {
+    width: 20px;
+    height: 20px;
+  }
+
+
+  /* Desktop button */
+  .serviceExploreBtn {
+    margin-top: 45px;
+    padding: 12px 28px;
+    font-size: 18px;
+  }
+
+
+  /* Desktop image */
+  .serviceImage {
+    width: 100%;
+    height: 400px;
+    min-height: 400px;
+
+    border-radius: 20px;
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ---------------------------------------------------------
+   1280px and above
+========================================================= */
+
+@media (min-width: 1280px) {
+
+  /* Keep card proportions comfortable on large screens */
+  .serviceCardInner {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+
+    gap: 34px;
+
+    padding: 26px;
+  }
+
+
+  /* Slightly larger image */
+  .serviceImage {
+    height: 420px;
+    min-height: 420px;
+  }
+
+
+  /* Better desktop card spacing */
+  .serviceContent {
+    padding-left: 16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ---------------------------------------------------------
+   640px and below
+========================================================= */
+
+@media (max-width: 640px) {
+
+  /* Prevent accidental horizontal overflow */
+  .servicesSection,
+  .servicesContainer,
+  .servicesCards,
+  .serviceCard,
+  .serviceCardInner {
+    max-width: 100%;
+  }
+
+
+  /* Smaller card radius */
+  .serviceCard {
+    border-radius: 20px;
+  }
+
+
+  /* Card inner spacing */
+  .serviceCardInner {
+    padding: 18px;
+  }
+
+
+  /* Content */
+  .serviceContent h3 {
+    font-size: 27px;
+  }
+
+
+  .serviceContent p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+
+  /* Tags */
+  .serviceTags {
+    gap: 8px;
+  }
+
+
+  .serviceTags span {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+
+
+  /* Button becomes full width */
+  .serviceExploreBtn {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+
+  /* Mobile image */
+  .serviceImage {
+    height: 240px;
+    min-height: 240px;
+
+    border-radius: 15px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ---------------------------------------------------------
+   400px and below
+========================================================= */
+
+@media (max-width: 400px) {
+
+  /* Reduce section spacing */
+  .servicesSection {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  /* Smaller card padding */
+  .serviceCardInner {
+    padding: 16px;
+  }
+
+
+  /* Heading */
+  .serviceContent h3 {
+    font-size: 25px;
+  }
+
+
+  /* Description */
+  .serviceContent p {
+    font-size: 15px;
+  }
+
+
+  /* Tags */
+  .serviceTags span {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+
+  /* Image */
+  .serviceImage {
+    height: 220px;
+    min-height: 220px;
+  }
+}

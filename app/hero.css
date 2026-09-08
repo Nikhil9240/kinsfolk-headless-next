@@ -1,0 +1,245 @@
+/* =========================================================================
+   KINSFOLK.AI — HERO SECTION (layout + copy)
+
+   Import this AFTER home.css in page.tsx so these rules win over the old
+   video-hero rules at equal specificity:
+
+     import "./home.css";
+     import "./hero.css";
+
+   Once you have deleted the old hero block from home.css you can drop the
+   "LEGACY CLEANUP" section at the bottom of this file.
+   ========================================================================= */
+
+.home-hero {
+  --hero-display-font: inherit;   /* set a serif here for the reference look */
+  --hero-ink: #eef1ff;
+  --hero-ink-dim: rgba(219, 227, 255, 0.84);
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 120px 24px 140px;
+  overflow: hidden;
+  background-color: #01040f;
+  color: var(--hero-ink);
+  text-align: center;
+}
+
+/* the animated background sits at z-index 0, everything below lifts above it */
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.hero-content > * {
+  opacity: 0;
+  animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.hero-content > .hero-eyebrow { animation-delay: 0.05s; }
+.hero-content > h1            { animation-delay: 0.15s; }
+.hero-content > p             { animation-delay: 0.28s; }
+.hero-content > .hero-actions { animation-delay: 0.42s; }
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translate3d(0, 18px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* -------------------------------------------------------------------------
+   EYEBROW BADGE
+   ------------------------------------------------------------------------- */
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 26px;
+  padding: 8px 16px 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(190, 205, 255, 0.20);
+  background: rgba(126, 150, 235, 0.12);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+          backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 1px 0 0 rgba(226, 232, 255, 0.14) inset;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 255, 0.9);
+  line-height: 1;
+}
+
+.hero-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #b6c1f7;
+  box-shadow: 0 0 12px 2px rgba(182, 193, 247, 0.8);
+  animation: hero-eyebrow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hero-eyebrow-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.45; }
+}
+
+/* -------------------------------------------------------------------------
+   HEADLINE + SUBCOPY
+   ------------------------------------------------------------------------- */
+
+.home-hero h1 {
+  margin: 0 0 22px;
+  font-family: var(--hero-display-font);
+  font-size: clamp(3.75rem, 6.2vw, 4.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  background: linear-gradient(180deg, #ffffff 0%, #eef2ff 48%, #ccd8ff 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-hero h1 span { display: inline; }
+
+.home-hero p {
+  margin: 0 auto;
+  max-width: 640px;
+  font-size: clamp(1.25rem, 1.35vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--hero-ink-dim);
+  text-wrap: pretty;
+}
+
+/* -------------------------------------------------------------------------
+   ACTIONS
+   ------------------------------------------------------------------------- */
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.hero-primary-btn,
+.hero-secondary-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.hero-primary-btn strong,
+.hero-secondary-btn strong {
+  font-weight: 500;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-primary-btn:hover strong,
+.hero-secondary-btn:hover strong {
+  transform: translateX(4px);
+}
+
+/* primary — light on dark, the highest-contrast element on the page */
+.hero-primary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, #ffffff 0%, #dfe5ff 100%);
+  color: #071033;
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 16px 40px -14px rgba(120, 146, 240, 0.75);
+}
+
+.hero-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 22px 50px -14px rgba(140, 164, 255, 0.9);
+}
+
+/* secondary — glass */
+.hero-secondary-btn {
+  border: 1px solid rgba(190, 205, 255, 0.24);
+  background: rgba(126, 150, 235, 0.10);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+          backdrop-filter: blur(14px) saturate(140%);
+  color: rgba(232, 238, 255, 0.94);
+  box-shadow: 0 1px 0 0 rgba(226, 232, 255, 0.12) inset;
+}
+
+.hero-secondary-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(190, 205, 255, 0.42);
+  background: rgba(140, 164, 245, 0.18);
+}
+
+.hero-primary-btn:focus-visible,
+.hero-secondary-btn:focus-visible {
+  outline: 2px solid #b6c1f7;
+  outline-offset: 3px;
+}
+
+/* -------------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .home-hero { padding: 104px 20px 112px; min-height: 92svh; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.1em; margin-bottom: 20px; }
+  .home-hero h1 { font-size: clamp(2.1rem, 8.6vw, 3rem); }
+  .hero-actions { gap: 12px; margin-top: 32px; }
+  .hero-primary-btn,
+  .hero-secondary-btn { padding: 14px 22px; font-size: 0.9rem; }
+}
+
+@media (max-width: 420px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-primary-btn,
+  .hero-secondary-btn { justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content > * {
+    opacity: 1;
+    animation: none;
+  }
+  .hero-primary-btn,
+  .hero-secondary-btn { transition: none; }
+}
+
+/* =========================================================================
+   LEGACY CLEANUP
+   Safety net while the old video-hero rules are still in home.css.
+   Delete this block once you have removed them.
+   ========================================================================= */
+
+.home-hero .hero-video-wrapper,
+.home-hero .hero-bg-video,
+.home-hero .hero-overlay {
+  display: none !important;
+}

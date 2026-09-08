@@ -1,0 +1,369 @@
+/* =========================================
+   SOLUTIONS SECTION - LIGHT PURPLE GRADIENT THEME
+========================================= */
+
+.solutionsSection {
+  width: 100%;
+  padding: 90px 20px;
+  background: transparent;
+  font-family: "Inter", "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.solutionsContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.solutionsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+
+.solutionsHeading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.solutionsEyebrow {
+  display: inline-block;
+  padding: 6px 18px;
+  border: 1px solid rgba(74, 85, 126, 0.3);
+  border-radius: 30px;
+  color: #4a557e;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.solutionsHeader h2 {
+  margin: 0;
+  color: #1e2540;
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.moreSolutionsBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px 8px 22px;
+  border-radius: 40px;
+  background: #2b355d;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.moreSolutionsIcon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #2b355d;
+}
+
+/* =========================================
+   ACCORDION CONTAINER & CARDS (DESKTOP)
+========================================= */
+
+.solutionsAccordion {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 20px 40px rgba(60, 75, 120, 0.08);
+}
+
+.solutionItem {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 70px;
+  height: 100%;
+  overflow: hidden;
+  border-right: 1px solid rgba(180, 190, 220, 0.4);
+  cursor: pointer;
+  transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s ease;
+}
+
+.solutionItem:last-child {
+  border-right: none;
+}
+
+.solutionItem:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.solutionItem.active {
+  flex: 4.5 1 0;
+  min-width: 380px;
+  background: rgba(255, 255, 255, 0.7);
+  cursor: default;
+}
+
+/* =========================================
+   ICON STYLING (DESKTOP)
+========================================= */
+
+.solutionIcon {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #2b355d;
+  color: #ffffff;
+  z-index: 5;
+  transition: left 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.solutionItem.active .solutionIcon {
+  left: 35px;
+  transform: translateX(0);
+}
+
+/* =========================================
+   COLLAPSED VERTICAL TEXT (DESKTOP)
+========================================= */
+
+.collapsedContent {
+  position: absolute;
+  top: 100px;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.solutionNumberSmall {
+  color: #727eab;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.collapsedContent h3 {
+  margin: 0;
+  color: #2b355d;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   EXPANDED CONTENT (DESKTOP)
+========================================= */
+
+.expandedContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 110px 35px 85px;
+  box-sizing: border-box;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.solutionNumber {
+  color: #727eab;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.expandedContent h3 {
+  margin: 0 0 16px 0;
+  color: #1e2540;
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.expandedContent p {
+  margin: 0 0 24px 0;
+  color: #4a557e;
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 360px;
+}
+
+.solutionTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.solutionTags span {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(74, 85, 126, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  color: #2b355d;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.exploreSolution {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #2b355d;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.exploreSolution:hover {
+  color: #11172a;
+}
+
+/* =========================================
+   TOGGLE BUTTON (DESKTOP)
+========================================= */
+
+.solutionToggle {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(74, 85, 126, 0.3);
+  background: rgba(255, 255, 255, 0.5);
+  color: #2b355d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.solutionItem.active .solutionToggle {
+  left: auto;
+  right: 30px;
+  transform: none;
+  background: #2b355d;
+  color: #ffffff;
+  border-color: #2b355d;
+}
+
+/* =========================================
+   MOBILE & TABLET RESPONSIVE STYLES
+========================================= */
+
+@media (max-width: 1024px) {
+  .solutionsAccordion {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  .solutionItem {
+    width: 100%;
+    min-width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(180, 190, 220, 0.4);
+    cursor: pointer;
+    display: block;
+    padding: 16px 20px;
+    box-sizing: border-box;
+  }
+
+  .solutionItem:last-child {
+    border-bottom: none;
+  }
+
+  .solutionItem.active {
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Reset layout structure for mobile card header */
+  .solutionItem .solutionIcon {
+    position: static;
+    transform: none;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-right: 12px;
+  }
+
+  .collapsedContent {
+    position: static;
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 6px;
+  }
+
+  .collapsedContent h3 {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  .solutionItem.active .collapsedContent {
+    display: none;
+  }
+
+  .expandedContent {
+    padding: 20px 0 10px 0;
+    height: auto;
+    clear: both;
+  }
+
+  .solutionToggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: auto;
+    bottom: auto;
+    transform: none !important;
+    width: 32px;
+    height: 32px;
+  }
+}

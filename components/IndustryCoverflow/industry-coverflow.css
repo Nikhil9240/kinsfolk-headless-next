@@ -1,0 +1,925 @@
+/* =========================================================
+   INDUSTRY COVERFLOW SECTION
+========================================================= */
+
+.industry-coverflow-section {
+  position: relative;
+
+  width: 100%;
+
+  padding: 100px 0 90px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  font-family:
+    "Poppins",
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.industry-coverflow-header {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(900px, calc(100% - 40px));
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+}
+
+
+.industry-eyebrow {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #0ca69b;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 5px;
+}
+
+
+.industry-coverflow-header h2 {
+  margin: 0;
+
+  color: #062d52;
+
+  font-size: clamp(36px, 4vw, 52px);
+
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  letter-spacing: -1.5px;
+}
+
+
+.industry-coverflow-header h2 span {
+  color: #1684df;
+}
+
+
+.industry-coverflow-header p {
+  max-width: 680px;
+
+  margin: 18px auto 0;
+
+  color: #596572;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   COVERFLOW AREA
+========================================================= */
+
+.industry-coverflow {
+  position: relative;
+
+  width: 100%;
+
+  height: 560px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.industry-track {
+  position: relative;
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  perspective: 1400px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.industry-card {
+  position: absolute;
+
+  width: 360px;
+
+  height: 455px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  border:
+    1px solid
+    rgba(6, 45, 82, 0.12);
+
+  box-shadow:
+    0 25px 55px
+    rgba(6, 45, 82, 0.20);
+
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform 0.55s cubic-bezier(
+      0.22,
+      0.61,
+      0.36,
+      1
+    ),
+    opacity 0.45s ease,
+    filter 0.45s ease,
+    box-shadow 0.45s ease;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   CENTER CARD
+========================================================= */
+
+.industry-card.position-0 {
+  z-index: 10;
+
+  transform:
+    translateX(0)
+    translateZ(180px)
+    rotateY(0deg)
+    scale(1.08);
+
+  opacity: 1;
+
+  filter: none;
+
+  cursor: default;
+
+  box-shadow:
+    0 35px 75px
+    rgba(6, 45, 82, 0.27);
+}
+
+
+/* =========================================================
+   LEFT CARD
+========================================================= */
+
+.industry-card.position--1 {
+  z-index: 7;
+
+  transform:
+    translateX(-370px)
+    translateZ(20px)
+    rotateY(25deg)
+    scale(0.90);
+
+  opacity: 0.90;
+
+  filter: saturate(0.85);
+}
+
+
+/* =========================================================
+   FAR LEFT
+========================================================= */
+
+.industry-card.position--2 {
+  z-index: 4;
+
+  transform:
+    translateX(-630px)
+    translateZ(-100px)
+    rotateY(42deg)
+    scale(0.76);
+
+  opacity: 0.45;
+
+  filter:
+    blur(1px)
+    saturate(0.65);
+}
+
+
+/* =========================================================
+   RIGHT CARD
+========================================================= */
+
+.industry-card.position-1 {
+  z-index: 7;
+
+  transform:
+    translateX(370px)
+    translateZ(20px)
+    rotateY(-25deg)
+    scale(0.90);
+
+  opacity: 0.90;
+
+  filter: saturate(0.85);
+}
+
+
+/* =========================================================
+   FAR RIGHT
+========================================================= */
+
+.industry-card.position-2 {
+  z-index: 4;
+
+  transform:
+    translateX(630px)
+    translateZ(-100px)
+    rotateY(-42deg)
+    scale(0.76);
+
+  opacity: 0.45;
+
+  filter:
+    blur(1px)
+    saturate(0.65);
+}
+
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.industry-card-image {
+  position: relative;
+
+  width: 100%;
+
+  height: 245px;
+
+  overflow: hidden;
+}
+
+
+.industry-card-image img {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.6s ease;
+}
+
+
+.industry-card:hover
+.industry-card-image img {
+  transform: scale(1.06);
+}
+
+
+.industry-image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(6, 45, 82, 0.45)
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.industry-card-content {
+  position: relative;
+
+  height: calc(100% - 245px);
+
+  padding: 24px 26px;
+
+  background: #ffffff;
+}
+
+
+.industry-card-number {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #0ca69b;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.industry-card-content h3 {
+  margin: 0 0 10px;
+
+  color: #062d52;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+
+.industry-card-content p {
+  margin: 0;
+
+  color: #59636e;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 4;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD LINK
+========================================================= */
+
+.industry-card-link {
+  position: absolute;
+
+  left: 26px;
+
+  bottom: 20px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #087de0;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+
+.industry-card-link span {
+  font-size: 18px;
+
+  transition:
+    transform 0.2s ease;
+}
+
+
+.industry-card-link:hover span {
+  transform:
+    translateX(5px);
+}
+
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
+.industry-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 30;
+
+  width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(6, 45, 82, 0.15);
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #062d52;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform:
+    translateY(-50%);
+
+  box-shadow:
+    0 10px 25px
+    rgba(6, 45, 82, 0.15);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.industry-arrow:hover {
+  background: #062d52;
+
+  color: #ffffff;
+
+  transform:
+    translateY(-50%)
+    scale(1.06);
+}
+
+
+.industry-arrow-left {
+  left: 5%;
+}
+
+
+.industry-arrow-right {
+  right: 5%;
+}
+
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.industry-dots {
+  position: relative;
+
+  z-index: 20;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 5px;
+}
+
+
+.industry-dot {
+  width: 8px;
+
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #cbd6df;
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.industry-dot.active {
+  width: 27px;
+
+  border-radius: 10px;
+
+  background: #0ca69b;
+}
+
+
+/* =========================================================
+   ACTIVE INFO
+========================================================= */
+
+.industry-active-info {
+  display: none;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (max-width: 1300px) {
+
+  .industry-card {
+    width: 330px;
+
+    height: 440px;
+  }
+
+  .industry-card.position--1 {
+    transform:
+      translateX(-330px)
+      translateZ(20px)
+      rotateY(24deg)
+      scale(0.88);
+  }
+
+  .industry-card.position-1 {
+    transform:
+      translateX(330px)
+      translateZ(20px)
+      rotateY(-24deg)
+      scale(0.88);
+  }
+
+  .industry-card.position--2 {
+    transform:
+      translateX(-550px)
+      translateZ(-100px)
+      rotateY(38deg)
+      scale(0.72);
+  }
+
+  .industry-card.position-2 {
+    transform:
+      translateX(550px)
+      translateZ(-100px)
+      rotateY(-38deg)
+      scale(0.72);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .industry-coverflow-section {
+    padding:
+      80px 0 70px;
+  }
+
+  .industry-coverflow-header {
+    margin-bottom: 35px;
+  }
+
+  .industry-coverflow {
+    height: 520px;
+  }
+
+  .industry-card {
+    width: 310px;
+
+    height: 425px;
+  }
+
+  .industry-card.position--1 {
+    transform:
+      translateX(-275px)
+      translateZ(0)
+      rotateY(22deg)
+      scale(0.82);
+  }
+
+  .industry-card.position-1 {
+    transform:
+      translateX(275px)
+      translateZ(0)
+      rotateY(-22deg)
+      scale(0.82);
+  }
+
+  .industry-card.position--2,
+  .industry-card.position-2 {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .industry-arrow-left {
+    left: 20px;
+  }
+
+  .industry-arrow-right {
+    right: 20px;
+  }
+
+  .industry-card-image {
+    height: 220px;
+  }
+
+  .industry-card-content {
+    height:
+      calc(100% - 220px);
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .industry-coverflow-section {
+    padding:
+      65px 0 55px;
+  }
+
+  .industry-coverflow-header {
+    width:
+      calc(100% - 32px);
+
+    margin-bottom: 20px;
+  }
+
+  .industry-eyebrow {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+  }
+
+  .industry-coverflow-header h2 {
+    font-size: 32px;
+
+    letter-spacing: -0.8px;
+  }
+
+  .industry-coverflow-header p {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+
+  .industry-coverflow {
+    height: 475px;
+  }
+
+
+  .industry-track {
+    perspective: none;
+  }
+
+
+  .industry-card {
+    width:
+      min(300px, calc(100vw - 65px));
+
+    height: 410px;
+
+    border-radius: 16px;
+  }
+
+
+  .industry-card.position-0 {
+    transform:
+      translateX(0)
+      translateZ(0)
+      rotateY(0)
+      scale(1);
+
+    box-shadow:
+      0 20px 45px
+      rgba(6, 45, 82, 0.22);
+  }
+
+
+  .industry-card.position--1 {
+    transform:
+      translateX(-190px)
+      translateZ(0)
+      rotateY(12deg)
+      scale(0.82);
+
+    opacity: 0.35;
+
+    filter: blur(1px);
+  }
+
+
+  .industry-card.position-1 {
+    transform:
+      translateX(190px)
+      translateZ(0)
+      rotateY(-12deg)
+      scale(0.82);
+
+    opacity: 0.35;
+
+    filter: blur(1px);
+  }
+
+
+  .industry-card.position--2,
+  .industry-card.position-2 {
+    opacity: 0;
+
+    pointer-events: none;
+  }
+
+
+  .industry-card-image {
+    height: 205px;
+  }
+
+
+  .industry-card-content {
+    height:
+      calc(100% - 205px);
+
+    padding:
+      20px 22px;
+  }
+
+
+  .industry-card-content h3 {
+    font-size: 20px;
+  }
+
+
+  .industry-card-content p {
+    font-size: 12.5px;
+
+    -webkit-line-clamp: 5;
+  }
+
+
+  .industry-card-link {
+    left: 22px;
+
+    bottom: 17px;
+  }
+
+
+  .industry-arrow {
+    width: 40px;
+
+    height: 40px;
+
+    font-size: 25px;
+  }
+
+
+  .industry-arrow-left {
+    left: 8px;
+  }
+
+
+  .industry-arrow-right {
+    right: 8px;
+  }
+
+
+  .industry-dots {
+    margin-top: 10px;
+  }
+
+
+  .industry-active-info {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 15px;
+  }
+
+
+  .industry-active-info span {
+    color: #0ca69b;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+  }
+
+
+  .industry-active-info strong {
+    color: #062d52;
+
+    font-size: 14px;
+
+    font-weight: 600;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .industry-coverflow {
+    height: 450px;
+  }
+
+  .industry-card {
+    width:
+      calc(100vw - 55px);
+
+    height: 395px;
+  }
+
+  .industry-card-image {
+    height: 190px;
+  }
+
+  .industry-card-content {
+    height:
+      calc(100% - 190px);
+
+    padding:
+      18px 20px;
+  }
+
+  .industry-card-content h3 {
+    font-size: 18px;
+  }
+
+  .industry-card-content p {
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+  .industry-card-link {
+    left: 20px;
+
+    bottom: 15px;
+  }
+
+  .industry-arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 22px;
+  }
+}

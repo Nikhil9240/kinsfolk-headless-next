@@ -1,0 +1,397 @@
+/* ============================================================
+   Kinsfolk hero, 3D core with scroll fly through
+   Scoped CSS module. Colours sampled from the approved design.
+   ============================================================ */
+
+.root {
+  --kf-blue: #1f6fff;
+  --kf-blue-soft: #6f9bff;
+  --kf-ink-0: #01061c;
+  --kf-ink-1: #041033;
+  --kf-ink-2: #0b2c74;
+  --kf-glow: #e3ebfd;
+  --kf-text: #ffffff;
+  --kf-text-2: rgba(206, 221, 255, 0.74);
+  --kf-depth: 55vh;
+  --kf-exit: #ffffff;
+  --kf-stage: 100vh;
+
+  position: relative;
+  color: var(--kf-text);
+  font-family: var(--kf-font, 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  background: var(--kf-ink-0);
+}
+.root *,
+.root *::before,
+.root *::after { box-sizing: border-box; }
+
+.scroll {
+  position: relative;
+  height: calc(var(--kf-stage) + var(--kf-depth));
+}
+@supports (height: 100svh) {
+  .root { --kf-stage: 100svh; }
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: var(--kf-stage);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(64% 64% at 66% -10%, #f4f7ff 0%, #cfdcfa 11%, #9db6ea 24%, #5b7dcd 40%, #274c96 56%, rgba(12, 36, 96, 0) 84%),
+    radial-gradient(96% 88% at 50% 94%, #143d97 0%, rgba(7, 22, 62, 0) 72%),
+    radial-gradient(115% 100% at 60% 44%, #0b2668 0%, rgba(3, 11, 36, 0) 74%),
+    linear-gradient(158deg, #01061c 0%, #051438 48%, #01081e 100%);
+}
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* faint technical grid, keeps the flat areas from looking empty */
+.mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    linear-gradient(rgba(150, 185, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 185, 255, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(64% 58% at 50% 46%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(64% 58% at 50% 46%, #000 0%, transparent 78%);
+}
+
+.bloom {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  /* plain fallback first, the richer falloff wins where color-mix is supported */
+  background: radial-gradient(closest-side, var(--kf-exit) 0%, transparent 76%);
+  background: radial-gradient(closest-side, var(--kf-exit) 0%, color-mix(in srgb, var(--kf-exit) 70%, transparent) 42%, transparent 78%);
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  background: var(--kf-exit);
+}
+
+/* the still version has no fly through, so it needs its own soft join */
+.root.isStatic .stage::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--kf-exit));
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(88% 78% at 52% 52%, rgba(1, 6, 28, 0) 58%, rgba(1, 6, 28, 0.42) 100%);
+}
+
+/* ---------- centre column ---------- */
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 6vw;
+  pointer-events: none;
+  z-index: 3;
+}
+.content > * { pointer-events: auto; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 16px 7px 13px;
+  margin-bottom: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(150, 185, 255, 0.26);
+  background: rgba(9, 24, 60, 0.5);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(224, 234, 255, 0.9);
+  text-decoration: none;
+}
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #63e6ff;
+  box-shadow: 0 0 0 0 rgba(99, 230, 255, 0.6);
+  animation: kfPulse 2.4s ease-out infinite;
+}
+@keyframes kfPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(99, 230, 255, 0.55); }
+  70%  { box-shadow: 0 0 0 9px rgba(99, 230, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(99, 230, 255, 0); }
+}
+
+.root .content h1 {
+  margin: 0 0 20px;
+  font-size: clamp(34px, 4.4vw, 76px);
+  line-height: 1.06;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #fff;
+  text-shadow: 0 2px 44px rgba(3, 12, 40, 0.6);
+  max-width: 1120px;
+}
+.lineTwo {
+  background: linear-gradient(96deg, #ffffff 0%, #cfe0ff 45%, #9dbcff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.root .content p {
+  margin: 0 0 34px;
+  max-width: 480px;
+  font-size: clamp(14px, 1.05vw, 17px);
+  line-height: 1.6;
+  color: var(--kf-text-2);
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.root .actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+.root .actions a span { transition: transform 0.25s ease; }
+.root .actions a:hover span { transform: translateX(4px); }
+
+.ctaPrimary {
+  background: #fff;
+  color: #0a1a3c;
+  box-shadow: 0 12px 40px rgba(150, 185, 255, 0.28);
+}
+.root .ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 50px rgba(150, 185, 255, 0.42);
+}
+.ctaGhost {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  border: 1px solid rgba(180, 205, 255, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.root .ctaGhost:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+/* ---------- floating solution chips ---------- */
+.nodes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.chip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 165, 255, 0.3);
+  background: rgba(8, 21, 52, 0.55);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(228, 237, 255, 0.94);
+  text-decoration: none;
+  white-space: nowrap;
+  pointer-events: auto;
+  will-change: transform, opacity;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.chip::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--kf-blue-soft);
+  box-shadow: 0 0 8px rgba(111, 155, 255, 0.9);
+  flex: 0 0 auto;
+}
+.root .chip:hover {
+  border-color: rgba(160, 195, 255, 0.6);
+  background: rgba(16, 38, 88, 0.72);
+}
+
+/* ---------- mobile chip row ---------- */
+.rail {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  z-index: 3;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  overflow: hidden;
+}
+.railTrack {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: kfMarquee 34s linear infinite;
+}
+.railChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(126, 165, 255, 0.26);
+  background: rgba(8, 21, 52, 0.5);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(228, 237, 255, 0.9);
+  white-space: nowrap;
+}
+.railChip::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--kf-blue-soft);
+  flex: 0 0 auto;
+}
+@keyframes kfMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---------- scroll cue ---------- */
+.cue {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(205, 220, 255, 0.45);
+  pointer-events: none;
+}
+.cueBar {
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(rgba(205, 220, 255, 0), rgba(205, 220, 255, 0.7));
+}
+
+/* ---------- fallback ---------- */
+.root.isStatic .canvas { display: none; }
+.ringsCss {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.ringsCss i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(198, 218, 255, 0.14);
+  display: block;
+}
+
+/* ---------- the section that follows, when passed as children ---------- */
+/* stacked over the sticky stage and pulled up by one viewport, so it lands
+   exactly as the fly through finishes instead of a screen of empty later */
+.after {
+  position: relative;
+  z-index: 2;
+  margin-top: calc(-1 * var(--kf-stage));
+  background: var(--kf-exit);
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.root.isStatic .after {
+  margin-top: 0;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .after { margin-top: 0; opacity: 1; transform: none; pointer-events: auto; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .root .content h1 { font-size: clamp(32px, 6vw, 54px); max-width: 780px; }
+  .chip { font-size: 10.5px; padding: 6px 12px 6px 10px; }
+}
+
+@media (max-width: 900px) {
+  .scroll { height: calc(var(--kf-stage) + calc(var(--kf-depth) * 0.7)); }
+  .nodes { display: none; }
+  .rail { display: block; }
+  .cue { display: none; }
+  .content { padding: 0 24px; justify-content: center; }
+  .root .content h1 { font-size: clamp(30px, 8.6vw, 44px); max-width: 15ch; }
+  .root .content p { font-size: 14.5px; margin-bottom: 28px; max-width: 380px; }
+  .root .actions a { padding: 13px 22px; font-size: 13.5px; }
+}
+
+@media (max-width: 420px) {
+  .actions { flex-direction: column; width: 100%; }
+  .root .actions a { justify-content: center; width: 100%; }
+}

@@ -1,0 +1,95 @@
+.page {
+  color: #061335;
+}
+
+.container {
+  width: min(1200px, calc(100% - 40px));
+  margin: auto;
+}
+
+.hero {
+  padding: 130px 0;
+  color: white;
+  background: linear-gradient(120deg,#061335,#0878a7,#0dc78a);
+}
+
+.hero span,
+.content > .container > span {
+  color: #0dc78a;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  margin: 20px 0;
+  font-size: clamp(48px,6vw,72px);
+  line-height: 1;
+}
+
+.hero strong {
+  color: #0dc78a;
+}
+
+.hero p {
+  max-width: 650px;
+  color: rgba(255,255,255,.75);
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.hero a,
+.cta a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 25px;
+  border-radius: 6px;
+  color: #061335;
+  background: #0dc78a;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.content {
+  padding: 110px 0;
+}
+
+.content h2 {
+  margin: 20px 0 50px;
+  font-size: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+
+.grid div {
+  padding: 30px;
+  border: 1px solid #e2eaf1;
+  border-radius: 15px;
+}
+
+.grid small {
+  color: #0dc78a;
+  font-size: 30px;
+}
+
+.grid p {
+  color: #68758a;
+  line-height: 1.7;
+}
+
+.cta {
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(110deg,#339ae0,#0dc78a);
+}
+
+@media(max-width:700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

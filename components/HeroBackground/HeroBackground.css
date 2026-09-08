@@ -1,0 +1,421 @@
+/* =========================================================
+   KINSFOLK — HERO BACKGROUND
+   Gradient + rotating rings + floating pills
+   Structure: Base (mobile-first-safe) → Glow → Rings → Pills → Breakpoints
+========================================================= */
+
+/* Full-bleed wrapper: breaks the hero out of ANY parent
+   max-width/padding so ring sizing always matches the real
+   viewport, no matter how the section is nested. Wrap your
+   <HeroBackground /> + content in a <section className="hero-section">.
+   REQUIRED: also add `overflow-x: hidden` on <html>/<body> once,
+   globally, so this negative-margin technique never creates a
+   horizontal scrollbar on the page. */
+.hero-section {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    radial-gradient(70% 70% at 70% -5%,
+      rgba(145, 170, 255, 0.72) 0%,
+      rgba(82, 116, 225, 0.48) 32%,
+      rgba(30, 65, 155, 0.20) 62%,
+      transparent 82%),
+    radial-gradient(60% 55% at 35% 78%,
+      rgba(20, 78, 200, 0.48) 0%,
+      rgba(8, 38, 120, 0.28) 48%,
+      transparent 82%),
+    linear-gradient(135deg, #01051b 0%, #021039 38%, #06256d 64%, #02091f 100%);
+}
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: none;
+  pointer-events: none;
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.hb-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(42% 48% at 50% 48%, rgba(30, 80, 190, 0.12), transparent 75%),
+    linear-gradient(180deg, rgba(0, 4, 20, 0.05) 0%, transparent 55%, rgba(0, 4, 20, 0.28) 100%);
+}
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+.hb-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(55px);
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.hb-glow--top {
+  width: 60%;
+  height: 55%;
+  top: -32%;
+  left: 38%;
+  background: radial-gradient(circle,
+      rgba(235, 242, 255, 0.72) 0%,
+      rgba(145, 170, 255, 0.45) 30%,
+      rgba(70, 110, 230, 0.20) 60%,
+      transparent 78%);
+  animation: hb-top-glow 18s ease-in-out infinite alternate;
+}
+
+.hb-glow--center {
+  width: 70%;
+  height: 70%;
+  left: 15%;
+  top: 15%;
+  background: radial-gradient(circle,
+      rgba(30, 83, 205, 0.26) 0%,
+      rgba(17, 55, 150, 0.16) 45%,
+      transparent 75%);
+  animation: hb-center-glow 24s ease-in-out infinite alternate;
+}
+
+.hb-glow--bottom {
+  width: 70%;
+  height: 45%;
+  left: -10%;
+  bottom: -25%;
+  background: radial-gradient(ellipse,
+      rgba(54, 126, 224, 0.45) 0%,
+      rgba(30, 73, 165, 0.20) 48%,
+      transparent 78%);
+  animation: hb-bottom-glow 28s ease-in-out infinite alternate;
+}
+
+@keyframes hb-top-glow {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-3%, 5%, 0) scale(1.08); }
+}
+
+@keyframes hb-center-glow {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(4%, -3%, 0) scale(1.08); }
+}
+
+@keyframes hb-bottom-glow {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(7%, -4%, 0); }
+}
+
+/* =========================================================
+   RINGS
+========================================================= */
+
+.hb-rings {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  /* % is relative to .hero-bg's own box (not the raw viewport),
+     so this can never overflow its parent and get hard-clipped
+     even if .hero-bg itself sits inside a narrower wrapper. */
+  width: min(920px, 72%);
+  height: min(920px, 72%);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hb-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hb-ring--solid {
+  border: 1px solid rgba(190, 210, 255, 0.13);
+  background: transparent;
+}
+
+.hb-ring--arc {
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 45deg,
+      rgba(210, 225, 255, 0.04) 58deg,
+      rgba(225, 237, 255, 0.75) 82deg,
+      rgba(190, 214, 255, 0.22) 105deg,
+      transparent 132deg,
+      transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+}
+
+.hb-ring--1 { inset: 0; }
+.hb-ring--2 { inset: 15%; }
+.hb-ring--3 { inset: 30%; }
+
+/* Only 3 rings are shown, on every breakpoint — the 4th
+   (innermost) ring markup stays in the component for easy
+   re-enabling later, but is permanently hidden here. */
+.hb-ring--4 { display: none; }
+
+.hb-ring--arc.hb-ring--1 { animation: hb-ring-one 42s linear infinite; }
+.hb-ring--arc.hb-ring--2 { animation: hb-ring-two 34s linear infinite; }
+.hb-ring--arc.hb-ring--3 { animation: hb-ring-three 27s linear infinite; }
+
+@keyframes hb-ring-one   { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes hb-ring-two   { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes hb-ring-three { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes hb-ring-four  { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+
+.hb-center-glow {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 280px;
+  height: 280px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 2;
+  background: radial-gradient(circle,
+      rgba(66, 115, 235, 0.20) 0%,
+      rgba(30, 70, 170, 0.10) 45%,
+      transparent 72%);
+  filter: blur(25px);
+}
+
+/* =========================================================
+   FLOATING PILLS
+========================================================= */
+
+.hb-pills {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.hb-pill {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px 9px 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(185, 207, 255, 0.28);
+  background: linear-gradient(180deg, rgba(94, 130, 230, 0.25), rgba(44, 76, 170, 0.18));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(235, 241, 255, 0.96);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  animation:
+    hb-pill-appear 0.8s ease forwards,
+    hb-pill-float 5s ease-in-out infinite;
+}
+
+.hb-pill-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #b8cbff;
+  box-shadow: 0 0 10px rgba(190, 208, 255, 0.95);
+}
+
+/* Desktop positions (≥1101px)
+   4 pills stacked on the LEFT, 4 on the RIGHT.
+   Nothing sits center-top — that space belongs to the page's
+   own eyebrow badge, so this never duplicates it. */
+.hb-pill--automation { left: 10%; top: 20%; animation-delay: 0.15s, 1s; }
+.hb-pill--enterprise { left: 6%; top: 39%; animation-delay: 0.3s, 1.2s; }
+.hb-pill--data        { left: 4%; top: 58%; animation-delay: 0.6s, 1.6s; }
+.hb-pill--predictive   { left: 9%; top: 77%; animation-delay: 0.9s, 2s; }
+
+.hb-pill--agentic  { right: 10%; top: 20%; animation-delay: 0.45s, 1.4s; }
+.hb-pill--analytics { right: 6%; top: 39%; animation-delay: 0.55s, 1.5s; }
+.hb-pill--right      { right: 4%; top: 58%; animation-delay: 0.75s, 1.8s; }
+.hb-pill--integrations { right: 9%; top: 77%; animation-delay: 0.95s, 2.1s; }
+
+@keyframes hb-pill-appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes hb-pill-float {
+  0%, 100% { margin-top: 0; }
+  50%      { margin-top: -7px; }
+}
+
+/* =========================================================
+   RESPONSIVE — LAPTOP / SMALL DESKTOP (901px – 1100px)
+========================================================= */
+
+@media (max-width: 1100px) {
+  .hb-rings {
+    width: min(780px, 82%);
+    height: min(780px, 82%);
+  }
+
+  .hb-pill {
+    font-size: 12px;
+    padding: 8px 13px 8px 11px;
+  }
+
+  .hb-pill--automation  { left: 6%; top: 22%; }
+  .hb-pill--enterprise  { left: 3%; top: 40%; }
+  .hb-pill--data         { left: 2%; top: 57%; }
+  .hb-pill--predictive    { left: 6%; top: 75%; }
+
+  .hb-pill--agentic      { right: 6%; top: 22%; }
+  .hb-pill--analytics     { right: 3%; top: 40%; }
+  .hb-pill--right          { right: 2%; top: 57%; }
+  .hb-pill--integrations    { right: 6%; top: 75%; }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET (641px – 900px)
+   Pills tucked closer to the rings so they never collide
+   with the hero copy at these narrower widths.
+========================================================= */
+
+@media (max-width: 900px) {
+  .hero-bg { min-height: 640px; }
+
+  .hb-rings {
+    width: min(680px, 88%);
+    height: min(680px, 88%);
+    top: 46%;
+  }
+
+  .hb-glow--top { top: -22%; }
+
+  .hb-pill {
+    font-size: 11.5px;
+    padding: 7px 12px 7px 10px;
+    gap: 6px;
+  }
+
+  .hb-pill--automation  { left: 2%; top: 18%; }
+  .hb-pill--enterprise  { left: 1%; top: 37%; }
+  .hb-pill--data         { left: 0%; top: 58%; }
+  .hb-pill--predictive    { left: 4%; top: 80%; }
+
+  .hb-pill--agentic      { right: 2%; top: 18%; }
+  .hb-pill--analytics     { right: 1%; top: 37%; }
+  .hb-pill--right          { right: 0%; top: 58%; }
+  .hb-pill--integrations    { right: 4%; top: 80%; }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE (≤640px)
+   Rings shrink further; the two side pill pairs are hidden
+   so nothing crowds or clips the headline and CTAs. The
+   eyebrow pill stays for context.
+========================================================= */
+
+@media (max-width: 640px) {
+  .hero-bg { min-height: 560px; }
+
+  .hb-rings {
+    width: min(480px, 96%);
+    height: min(480px, 96%);
+    top: 44%;
+  }
+
+  .hb-ring--3 { display: none; }
+
+  .hb-center-glow {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hb-pill {
+    font-size: 10.5px;
+    padding: 6px 10px 6px 9px;
+    gap: 5px;
+  }
+
+  .hb-pill-dot {
+    width: 5px;
+    height: 5px;
+    flex-basis: 5px;
+  }
+
+  /* Corner pills only — keep the frame, drop the rest
+     so copy never overlaps a pill on short viewports. */
+  .hb-pill--automation { left: 4%; top: 24%; }
+  .hb-pill--agentic    { right: 4%; top: 24%; }
+  .hb-pill--enterprise,
+  .hb-pill--data,
+  .hb-pill--predictive,
+  .hb-pill--analytics,
+  .hb-pill--right,
+  .hb-pill--integrations {
+    display: none;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE (≤420px)
+   Drop all satellite pills; keep only the eyebrow so the
+   layout stays calm on the smallest screens.
+========================================================= */
+
+@media (max-width: 420px) {
+  .hb-rings {
+    width: 92%;
+    height: 92%;
+    top: 42%;
+  }
+
+  /* At this size even the two corner pills crowd the headline —
+     drop them all and let the rings + real eyebrow badge carry it. */
+  .hb-pill {
+    display: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-ring--arc,
+  .hb-glow,
+  .hb-pill {
+    animation: none !important;
+  }
+}
