@@ -2,57 +2,15 @@
 
 import { useRef } from "react";
 import "./BlogSection.css";
+import type { BlogPost } from "@/lib/blog";
 
-const blogs = [
-  {
-    id: 1,
-    category: "AI & HR",
-    title: "How AI is Transforming Employee Support in HR",
-    image: "/images/blogs/fifth-blog.webp",
-    slug: "how-ai-is-transforming-employee-support-in-hr",
-  },
-  {
-    id: 2,
-    category: "HR Automation",
-    title: "Elevating Employee Onboarding Through HR Automation",
-    image: "/images/blogs/fourth-blog.webp",
-    slug: "elevating-employee-onboarding-through-hr-automation",
-  },
-  {
-    id: 3,
-    category: "Virtual Agents",
-    title:
-      "The Role of Virtual Agents in Delivering Intelligent, Scalable Support",
-    image: "/images/blogs/one-blog.webp",
-    slug:
-      "the-role-of-virtual-agents-in-delivering-intelligent-scalable-support",
-  },
-  {
-    id: 4,
-    category: "Customer Service",
-    title:
-      "Enhancing Customer Service Speed and Consistency with Real-Time AI",
-    image: "/images/blogs/six-blog.webp",
-    slug:
-      "enhancing-customer-service-speed-and-consistency-with-real-time-ai",
-  },
-  {
-    id: 5,
-    category: "Intelligent Support",
-    title: "Delivering Intelligent Support at Scale",
-    image: "/images/blogs/three-blog.webp",
-    slug: "delivering-intelligent",
-  },
-  {
-    id: 6,
-    category: "Agentic AI",
-    title: "How Agentic AI Is Redefining the Future of ESM and AIOps",
-    image: "/images/blogs/two-blog.webp",
-    slug: "how-agentic-ai-is-redefining",
-  },
-];
+type BlogSectionProps = {
+  blogs: BlogPost[];
+};
 
-export default function BlogSection() {
+export default function BlogSection({
+  blogs,
+}: BlogSectionProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const scrollNext = () => {
@@ -98,7 +56,6 @@ export default function BlogSection() {
 
         </div>
 
-
         {/* =====================================================
             ARROWS
         ===================================================== */}
@@ -127,7 +84,6 @@ export default function BlogSection() {
 
       </div>
 
-
       {/* =====================================================
           BLOG SLIDER
       ===================================================== */}
@@ -155,21 +111,29 @@ export default function BlogSection() {
 
               <div className="blog-image-wrap">
 
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="blog-image"
-                  loading="lazy"
-                />
+                {blog.featuredImage ? (
+                  <img
+                    src={blog.featuredImage.sourceUrl}
+                    alt={
+                      blog.featuredImage.altText ||
+                      blog.title
+                    }
+                    className="blog-image"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="blog-image-placeholder">
+                    <span>Blog</span>
+                  </div>
+                )}
 
                 <div className="blog-image-overlay" />
 
                 <span className="blog-category">
-                  {blog.category}
+                  Insights
                 </span>
 
               </div>
-
 
               {/* =================================================
                   CONTENT

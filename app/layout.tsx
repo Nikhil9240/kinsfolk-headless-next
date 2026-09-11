@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import "@/components/Header/Header.css";
 
 export const metadata: Metadata = {
   title: "Kinsfolk Technology Private Limited",

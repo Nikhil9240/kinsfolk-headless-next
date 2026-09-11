@@ -1,0 +1,2615 @@
+/* ============================================================
+   INDUSTRY DETAIL PAGE
+   ============================================================
+
+   हा CSS फक्त:
+
+   app/industries/[slug]/page.tsx
+
+   साठी आहे.
+
+   Main brand colors:
+   Primary Button = #2B355D
+
+   Responsive:
+   Desktop
+   Tablet
+   Mobile
+   Small Mobile
+============================================================ */
+
+
+/* ============================================================
+   DESIGN VARIABLES
+============================================================ */
+
+.page {
+  --primary: #2B355D;
+  --primary-dark: #202846;
+
+  --blue: #339AE0;
+  --teal: #0DC78A;
+  --cyan: #19B9C4;
+
+  --text: #2B355D;
+  --muted: #65738F;
+
+  --light: #F5F8FC;
+  --border: #DCE5EF;
+
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  color: var(--text);
+}
+
+
+/* ============================================================
+   COMMON CONTAINER
+============================================================ */
+
+.container {
+  width: min(1240px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   COMMON BUTTON
+============================================================ */
+
+.darkButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  min-height: 52px;
+  padding: 0 25px;
+
+  background: #2B355D;
+  color: #ffffff;
+
+  border: 1px solid #2B355D;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.darkButton span {
+  font-size: 20px;
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.darkButton:hover {
+  background: #202846;
+  border-color: #202846;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 28px rgba(43, 53, 93, 0.18);
+}
+
+.darkButton:hover span {
+  transform: translateX(4px);
+}
+
+
+/* ============================================================
+   1. HERO SECTION
+============================================================ */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 620px;
+
+  display: flex;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle at 80% 45%,
+      rgba(51, 154, 224, 0.10),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8fbff 100%
+    );
+
+  border-bottom: 1px solid #edf1f5;
+}
+
+
+.heroContainer {
+  width: min(1240px, calc(100% - 64px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+
+  max-width: 680px;
+}
+
+
+.heroEyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 22px;
+
+  color: #339AE0;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+
+.heroEyebrow::before {
+  content: "";
+
+  width: 28px;
+  height: 2px;
+
+  background: #339AE0;
+}
+
+
+.heroTitle {
+  margin: 0;
+
+  max-width: 680px;
+
+  color: #2B355D;
+
+  font-size: clamp(48px, 5vw, 76px);
+  line-height: 1.03;
+
+  font-weight: 700;
+  letter-spacing: -2.8px;
+}
+
+
+.heroDescription {
+  max-width: 610px;
+
+  margin: 28px 0 34px;
+
+  color: #65738F;
+
+  font-size: 19px;
+  line-height: 1.65;
+
+  font-weight: 400;
+}
+
+
+/* ============================================================
+   HERO VISUAL
+============================================================ */
+
+.heroVisual {
+  position: relative;
+
+  width: min(520px, 100%);
+  aspect-ratio: 1 / 1;
+
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.heroOrb {
+  position: absolute;
+
+  width: 78%;
+  height: 78%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(51, 154, 224, 0.16) 0%,
+      rgba(13, 199, 138, 0.08) 40%,
+      rgba(25, 185, 196, 0.03) 62%,
+      transparent 72%
+    );
+
+  filter: blur(1px);
+}
+
+
+.heroRing {
+  position: absolute;
+
+  width: 76%;
+  height: 42%;
+
+  border: 1px solid rgba(51, 154, 224, 0.30);
+
+  border-radius: 50%;
+
+  transform: rotate(-28deg);
+}
+
+
+.heroRingTwo {
+  position: absolute;
+
+  width: 72%;
+  height: 40%;
+
+  border: 1px solid rgba(13, 199, 138, 0.28);
+
+  border-radius: 50%;
+
+  transform: rotate(35deg);
+}
+
+
+/* ============================================================
+   HERO CORE
+============================================================ */
+
+.heroCore {
+  position: relative;
+  z-index: 3;
+
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #eef5fb
+    );
+
+  border: 1px solid rgba(51, 154, 224, 0.30);
+
+  box-shadow:
+    0 0 0 14px rgba(51, 154, 224, 0.035),
+    0 20px 60px rgba(43, 53, 93, 0.14);
+}
+
+
+.heroCoreDot {
+  position: absolute;
+
+  width: 16px;
+  height: 16px;
+
+  top: 25px;
+  right: 30px;
+
+  border-radius: 50%;
+
+  background: #0DC78A;
+
+  box-shadow:
+    0 0 0 7px rgba(13, 199, 138, 0.12);
+}
+
+
+.heroCoreText {
+  color: #2B355D;
+
+  font-size: 34px;
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+
+/* ============================================================
+   HERO NODES
+============================================================ */
+
+.heroNodeOne,
+.heroNodeTwo,
+.heroNodeThree {
+  position: absolute;
+
+  z-index: 4;
+
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ef;
+
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.10);
+}
+
+
+.heroNodeOne {
+  top: 18%;
+  left: 16%;
+}
+
+
+.heroNodeTwo {
+  right: 11%;
+  top: 37%;
+}
+
+
+.heroNodeThree {
+  left: 24%;
+  bottom: 15%;
+}
+
+
+.heroNodeOne span,
+.heroNodeTwo span,
+.heroNodeThree span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #339AE0;
+}
+
+
+.heroNodeTwo span {
+  background: #0DC78A;
+}
+
+
+.heroNodeThree span {
+  background: #19B9C4;
+}
+
+
+/* ============================================================
+   2. INTRO SECTION
+============================================================ */
+
+.introSection {
+  width: 100%;
+
+  padding: 120px 0;
+
+  background: #ffffff;
+}
+
+
+.introLayout {
+  display: grid;
+
+  grid-template-columns: 0.95fr 1.05fr;
+
+  align-items: center;
+
+  gap: 100px;
+}
+
+
+/* ============================================================
+   INTRO VISUAL
+============================================================ */
+
+.introVisual {
+  position: relative;
+
+  min-height: 470px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.dashboardCard {
+  position: relative;
+  z-index: 2;
+
+  width: min(440px, 100%);
+
+  padding: 24px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ef;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 25px 70px rgba(43, 53, 93, 0.12);
+}
+
+
+/* ============================================================
+   DASHBOARD HEADER
+============================================================ */
+
+.dashboardHeader {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #edf1f5;
+}
+
+
+.dashboardHeader > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+
+.dashboardHeader > div span {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #d5dde8;
+}
+
+
+.dashboardHeader small {
+  color: #7a879d;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+}
+
+
+/* ============================================================
+   DASHBOARD BODY
+============================================================ */
+
+.dashboardBody {
+  padding: 30px 0 24px;
+}
+
+
+.dashboardMainValue {
+  color: #2B355D;
+
+  font-size: 48px;
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: -2px;
+}
+
+
+.dashboardLabel {
+  margin-top: 8px;
+
+  color: #7a879d;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   DASHBOARD GRAPH
+============================================================ */
+
+.dashboardGraph {
+  position: relative;
+
+  height: 110px;
+
+  margin-top: 25px;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 9px;
+
+  padding: 0 5px;
+
+  border-bottom: 1px solid #e7edf3;
+}
+
+
+.dashboardGraph::before,
+.dashboardGraph::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: #f0f3f7;
+}
+
+
+.dashboardGraph::before {
+  top: 32%;
+}
+
+
+.dashboardGraph::after {
+  top: 65%;
+}
+
+
+.dashboardGraph span {
+  position: relative;
+  z-index: 2;
+
+  flex: 1;
+
+  min-width: 0;
+
+  border-radius: 4px 4px 0 0;
+
+  background: linear-gradient(
+    to top,
+    #2B355D,
+    #339AE0
+  );
+}
+
+
+.dashboardGraph span:nth-child(1) {
+  height: 30%;
+}
+
+
+.dashboardGraph span:nth-child(2) {
+  height: 48%;
+}
+
+
+.dashboardGraph span:nth-child(3) {
+  height: 42%;
+}
+
+
+.dashboardGraph span:nth-child(4) {
+  height: 66%;
+}
+
+
+.dashboardGraph span:nth-child(5) {
+  height: 58%;
+}
+
+
+.dashboardGraph span:nth-child(6) {
+  height: 84%;
+}
+
+
+/* ============================================================
+   DASHBOARD STATS
+============================================================ */
+
+.dashboardStats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+
+  padding-top: 18px;
+}
+
+
+.dashboardStats div {
+  padding: 12px;
+
+  background: #f6f9fc;
+
+  border-radius: 7px;
+}
+
+
+.dashboardStats strong {
+  display: block;
+
+  color: #2B355D;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+
+.dashboardStats small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #7b8799;
+
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   FLOATING CARD
+============================================================ */
+
+.floatingCard {
+  position: absolute;
+
+  z-index: 4;
+
+  right: -18px;
+  bottom: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 17px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ef;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 18px 45px rgba(43, 53, 93, 0.14);
+}
+
+
+.floatingIcon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(13, 199, 138, 0.10);
+
+  color: #0DC78A;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+
+.floatingCard strong {
+  display: block;
+
+  color: #2B355D;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+
+.floatingCard small {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #7b8799;
+
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   INTRO CONTENT
+============================================================ */
+
+.introContent {
+  max-width: 650px;
+}
+
+
+.eyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  color: #339AE0;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.eyebrow span {
+  width: 26px;
+  height: 2px;
+
+  display: inline-block;
+
+  background: #339AE0;
+}
+
+
+.introContent h2 {
+  margin: 0 0 25px;
+
+  color: #2B355D;
+
+  font-size: clamp(34px, 3.5vw, 52px);
+  line-height: 1.12;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+}
+
+
+.introContent p {
+  margin: 0 0 17px;
+
+  color: #65738F;
+
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+
+/* ============================================================
+   INTRO HIGHLIGHTS
+============================================================ */
+
+.introHighlights {
+  display: grid;
+
+  gap: 0;
+
+  margin: 32px 0 34px;
+
+  border-top: 1px solid #e3e9ef;
+}
+
+
+.highlightItem {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  min-height: 64px;
+
+  border-bottom: 1px solid #e3e9ef;
+}
+
+
+.highlightNumber {
+  width: 30px;
+
+  color: #339AE0;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+
+.highlightItem strong {
+  color: #2B355D;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   3. SOLUTIONS SECTION
+============================================================ */
+
+.solutionsSection {
+  width: 100%;
+
+  padding: 110px 0 100px;
+
+  background: #F5F8FC;
+}
+
+
+.sectionHeading {
+  max-width: 760px;
+
+  margin-bottom: 60px;
+}
+
+
+.sectionHeading h2 {
+  margin: 0 0 20px;
+
+  color: #2B355D;
+
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.1;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+}
+
+
+.sectionHeading p {
+  max-width: 680px;
+
+  margin: 0;
+
+  color: #65738F;
+
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+
+/* ============================================================
+   4. PARTNER ECOSYSTEM
+============================================================ */
+
+.partnersSection {
+  width: 100%;
+
+  padding: 110px 0;
+
+  background: #ffffff;
+}
+
+
+.partnerGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+
+.partnerCard {
+  min-height: 160px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce5ef;
+
+  border-radius: 8px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.partnerCard:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(51, 154, 224, 0.35);
+
+  box-shadow:
+    0 18px 45px rgba(43, 53, 93, 0.09);
+}
+
+
+.partnerLogo {
+  margin-bottom: 12px;
+
+  color: #2B355D;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  letter-spacing: -0.8px;
+}
+
+
+.partnerCard > span {
+  color: #7a879d;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   5. SERVICES SECTION
+============================================================ */
+
+.servicesSection {
+  width: 100%;
+
+  padding: 110px 0;
+
+  background: #F5F8FC;
+}
+
+
+/* ============================================================
+   6. RESOURCES SECTION
+============================================================ */
+
+.resourcesSection {
+  width: 100%;
+
+  padding: 110px 0;
+
+  background: #ffffff;
+}
+
+
+/* ============================================================
+   7. FINAL CTA
+============================================================ */
+
+.ctaSection {
+  width: 100%;
+
+  padding: 80px 0 100px;
+
+  background: #ffffff;
+}
+
+
+.ctaBox {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 280px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+
+  padding: 55px 65px;
+
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(51, 154, 224, 0.22),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #202846,
+      #2B355D
+    );
+}
+
+
+.ctaBox::before {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  right: 15%;
+  top: -150px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 50%;
+}
+
+
+.ctaBox::after {
+  content: "";
+
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  right: -100px;
+  bottom: -320px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 50%;
+}
+
+
+.ctaBox > div:first-child {
+  position: relative;
+  z-index: 2;
+
+  max-width: 720px;
+}
+
+
+.ctaEyebrow {
+  margin-bottom: 16px;
+
+  color: #65c7ff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+.ctaBox h2 {
+  margin: 0 0 16px;
+
+  color: #ffffff;
+
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.1;
+
+  font-weight: 700;
+
+  letter-spacing: -1.5px;
+}
+
+
+.ctaBox p {
+  max-width: 620px;
+
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.70);
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+.ctaButton {
+  position: relative;
+  z-index: 3;
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  min-height: 54px;
+
+  padding: 0 25px;
+
+  background: #ffffff;
+
+  color: #2B355D;
+
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.ctaButton span {
+  font-size: 19px;
+
+  transition: transform 0.25s ease;
+}
+
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+
+  background: #f2f5fa;
+}
+
+
+.ctaButton:hover span {
+  transform: translateX(4px);
+}
+
+
+/* ============================================================
+   TABLET
+   1100px
+============================================================ */
+
+@media (max-width: 1100px) {
+
+  .container,
+  .heroContainer {
+    width: min(100% - 48px, 960px);
+  }
+
+
+  /* HERO */
+
+  .hero {
+    min-height: 560px;
+  }
+
+
+  .heroContainer {
+    grid-template-columns: 1fr 0.85fr;
+
+    gap: 35px;
+  }
+
+
+  .heroTitle {
+    font-size: clamp(44px, 6vw, 64px);
+  }
+
+
+  .heroDescription {
+    font-size: 17px;
+  }
+
+
+  .heroVisual {
+    width: min(430px, 100%);
+  }
+
+
+  /* INTRO */
+
+  .introSection {
+    padding: 90px 0;
+  }
+
+
+  .introLayout {
+    gap: 55px;
+  }
+
+
+  .introVisual {
+    min-height: 400px;
+  }
+
+
+  .dashboardCard {
+    width: min(390px, 100%);
+  }
+
+
+  .floatingCard {
+    right: -5px;
+  }
+
+
+  /* SECTION */
+
+  .solutionsSection,
+  .partnersSection,
+  .servicesSection,
+  .resourcesSection {
+    padding: 90px 0;
+  }
+
+
+  /* PARTNERS */
+
+  .partnerGrid {
+    gap: 14px;
+  }
+
+
+  .partnerCard {
+    min-height: 145px;
+
+    padding: 24px;
+  }
+
+
+  /* CTA */
+
+  .ctaBox {
+    padding: 50px;
+  }
+
+}
+
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   800px
+============================================================ */
+
+@media (max-width: 800px) {
+
+  .container,
+  .heroContainer {
+    width: calc(100% - 40px);
+  }
+
+
+  /* ==========================================================
+     HERO
+  ========================================================== */
+
+  .hero {
+    min-height: auto;
+
+    padding: 85px 0 75px;
+  }
+
+
+  .heroContainer {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+
+  .heroContent {
+    max-width: 700px;
+  }
+
+
+  .heroTitle {
+    max-width: 700px;
+
+    font-size: clamp(44px, 8vw, 60px);
+  }
+
+
+  .heroDescription {
+    max-width: 650px;
+
+    font-size: 17px;
+  }
+
+
+  .heroVisual {
+    width: min(470px, 100%);
+
+    margin: 0 auto;
+  }
+
+
+  /* ==========================================================
+     INTRO
+  ========================================================== */
+
+  .introSection {
+    padding: 80px 0;
+  }
+
+
+  .introLayout {
+    grid-template-columns: 1fr;
+
+    gap: 70px;
+  }
+
+
+  .introVisual {
+    width: min(520px, 100%);
+
+    min-height: 450px;
+
+    margin: 0 auto;
+  }
+
+
+  .introContent {
+    max-width: 760px;
+  }
+
+
+  .introContent h2 {
+    max-width: 720px;
+  }
+
+
+  /* ==========================================================
+     PARTNERS
+  ========================================================== */
+
+  .partnerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  /* ==========================================================
+     CTA
+  ========================================================== */
+
+  .ctaBox {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding: 45px;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   600px
+============================================================ */
+
+@media (max-width: 600px) {
+
+  /* ==========================================================
+     COMMON
+  ========================================================== */
+
+  .container,
+  .heroContainer {
+    width: calc(100% - 32px);
+  }
+
+
+  /* ==========================================================
+     BUTTON
+  ========================================================== */
+
+  .darkButton {
+    min-height: 49px;
+
+    padding: 0 20px;
+
+    font-size: 13px;
+  }
+
+
+  /* ==========================================================
+     HERO
+  ========================================================== */
+
+  .hero {
+    padding: 65px 0 60px;
+  }
+
+
+  .heroContainer {
+    gap: 45px;
+  }
+
+
+  .heroEyebrow {
+    margin-bottom: 17px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.7px;
+  }
+
+
+  .heroEyebrow::before {
+    width: 22px;
+  }
+
+
+  .heroTitle {
+    font-size: clamp(38px, 11vw, 52px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.8px;
+  }
+
+
+  .heroDescription {
+    margin: 22px 0 28px;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+  }
+
+
+  /* ==========================================================
+     HERO VISUAL
+  ========================================================== */
+
+  .heroVisual {
+    width: 100%;
+    max-width: 390px;
+  }
+
+
+  .heroCore {
+    width: 120px;
+    height: 120px;
+  }
+
+
+  .heroCoreText {
+    font-size: 27px;
+  }
+
+
+  .heroCoreDot {
+    width: 12px;
+    height: 12px;
+
+    top: 20px;
+    right: 23px;
+  }
+
+
+  .heroNodeOne,
+  .heroNodeTwo,
+  .heroNodeThree {
+    width: 44px;
+    height: 44px;
+  }
+
+
+  .heroNodeOne {
+    left: 11%;
+  }
+
+
+  .heroNodeTwo {
+    right: 6%;
+  }
+
+
+  .heroNodeThree {
+    left: 20%;
+  }
+
+
+  /* ==========================================================
+     INTRO
+  ========================================================== */
+
+  .introSection {
+    padding: 70px 0;
+  }
+
+
+  .introLayout {
+    gap: 55px;
+  }
+
+
+  .introVisual {
+    min-height: 330px;
+  }
+
+
+  .dashboardCard {
+    width: calc(100% - 15px);
+
+    padding: 18px;
+
+    border-radius: 11px;
+  }
+
+
+  .dashboardBody {
+    padding: 22px 0 18px;
+  }
+
+
+  .dashboardMainValue {
+    font-size: 38px;
+  }
+
+
+  .dashboardGraph {
+    height: 80px;
+
+    gap: 6px;
+  }
+
+
+  .dashboardStats {
+    gap: 7px;
+  }
+
+
+  .dashboardStats div {
+    padding: 9px;
+  }
+
+
+  .dashboardStats strong {
+    font-size: 14px;
+  }
+
+
+  .dashboardStats small {
+    font-size: 8px;
+  }
+
+
+  .floatingCard {
+    right: 0;
+    bottom: 8px;
+
+    padding: 10px 12px;
+
+    gap: 9px;
+  }
+
+
+  .floatingIcon {
+    width: 29px;
+    height: 29px;
+
+    font-size: 13px;
+  }
+
+
+  .floatingCard strong {
+    font-size: 9px;
+  }
+
+
+  .floatingCard small {
+    font-size: 8px;
+  }
+
+
+  /* ==========================================================
+     INTRO CONTENT
+  ========================================================== */
+
+  .eyebrow {
+    margin-bottom: 15px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.6px;
+  }
+
+
+  .eyebrow span {
+    width: 21px;
+  }
+
+
+  .introContent h2 {
+    margin-bottom: 20px;
+
+    font-size: clamp(30px, 9vw, 42px);
+
+    letter-spacing: -1.2px;
+  }
+
+
+  .introContent p {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  .introHighlights {
+    margin: 25px 0 28px;
+  }
+
+
+  .highlightItem {
+    min-height: 57px;
+
+    gap: 13px;
+  }
+
+
+  .highlightNumber {
+    width: 24px;
+
+    font-size: 9px;
+  }
+
+
+  .highlightItem strong {
+    font-size: 12px;
+  }
+
+
+  /* ==========================================================
+     SECTIONS
+  ========================================================== */
+
+  .solutionsSection,
+  .partnersSection,
+  .servicesSection,
+  .resourcesSection {
+    padding: 70px 0;
+  }
+
+
+  .sectionHeading {
+    margin-bottom: 38px;
+  }
+
+
+  .sectionHeading h2 {
+    margin-bottom: 15px;
+
+    font-size: clamp(30px, 9vw, 42px);
+
+    letter-spacing: -1.2px;
+  }
+
+
+  .sectionHeading p {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  /* ==========================================================
+     PARTNERS
+  ========================================================== */
+
+  .partnerGrid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+
+  .partnerCard {
+    min-height: 125px;
+
+    padding: 23px;
+  }
+
+
+  .partnerLogo {
+    margin-bottom: 8px;
+
+    font-size: 22px;
+  }
+
+
+  .partnerCard > span {
+    font-size: 11px;
+  }
+
+
+  /* ==========================================================
+     CTA
+  ========================================================== */
+
+  .ctaSection {
+    padding: 55px 0 70px;
+  }
+
+
+  .ctaBox {
+    min-height: auto;
+
+    padding: 35px 25px;
+
+    border-radius: 9px;
+
+    gap: 30px;
+  }
+
+
+  .ctaEyebrow {
+    margin-bottom: 13px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.6px;
+  }
+
+
+  .ctaBox h2 {
+    margin-bottom: 14px;
+
+    font-size: clamp(29px, 8vw, 40px);
+
+    letter-spacing: -1px;
+  }
+
+
+  .ctaBox p {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+
+  .ctaButton {
+    width: 100%;
+
+    min-height: 50px;
+
+    padding: 0 18px;
+
+    font-size: 12px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   380px
+============================================================ */
+
+@media (max-width: 380px) {
+
+  .container,
+  .heroContainer {
+    width: calc(100% - 24px);
+  }
+
+
+  /* HERO */
+
+  .hero {
+    padding-top: 55px;
+    padding-bottom: 50px;
+  }
+
+
+  .heroTitle {
+    font-size: 36px;
+
+    letter-spacing: -1.4px;
+  }
+
+
+  .heroDescription {
+    font-size: 14px;
+  }
+
+
+  .heroVisual {
+    max-width: 330px;
+  }
+
+
+  .heroCore {
+    width: 105px;
+    height: 105px;
+  }
+
+
+  .heroCoreText {
+    font-size: 24px;
+  }
+
+
+  /* INTRO */
+
+  .introSection {
+    padding: 60px 0;
+  }
+
+
+  .introVisual {
+    min-height: 285px;
+  }
+
+
+  .dashboardCard {
+    padding: 14px;
+  }
+
+
+  .dashboardMainValue {
+    font-size: 33px;
+  }
+
+
+  .dashboardLabel {
+    font-size: 10px;
+  }
+
+
+  .dashboardGraph {
+    height: 65px;
+  }
+
+
+  .dashboardStats strong {
+    font-size: 12px;
+  }
+
+
+  .dashboardStats small {
+    font-size: 7px;
+  }
+
+
+  .floatingCard {
+    transform: scale(0.88);
+
+    transform-origin: right bottom;
+  }
+
+
+  /* CONTENT */
+
+  .introContent h2 {
+    font-size: 29px;
+  }
+
+
+  .introContent p {
+    font-size: 13px;
+  }
+
+
+  .highlightItem strong {
+    font-size: 11px;
+  }
+
+
+  /* SECTION */
+
+  .solutionsSection,
+  .partnersSection,
+  .servicesSection,
+  .resourcesSection {
+    padding: 60px 0;
+  }
+
+
+  .sectionHeading h2 {
+    font-size: 29px;
+  }
+
+
+  /* CTA */
+
+  .ctaSection {
+    padding: 45px 0 55px;
+  }
+
+
+  .ctaBox {
+    padding: 30px 20px;
+  }
+
+
+  .ctaBox h2 {
+    font-size: 28px;
+  }
+
+}
+
+
+/* ============================================================
+   ACCESSIBILITY
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .darkButton,
+  .darkButton span,
+  .ctaButton,
+  .ctaButton span,
+  .partnerCard {
+    transition: none;
+  }
+
+}
+/* ============================================================
+   INDUSTRY HERO VISUALS
+   ------------------------------------------------------------
+   प्रत्येक industry साठी वेगळा CSS visual.
+   कोणतीही external image वापरलेली नाही.
+============================================================ */
+
+
+/* ============================================================
+   BANKING
+============================================================ */
+
+.bankingVisual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bankCircle {
+  position: relative;
+  z-index: 3;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(51, 154, 224, 0.35);
+  box-shadow:
+    0 0 0 22px rgba(51, 154, 224, 0.04),
+    0 25px 70px rgba(43, 53, 93, 0.14);
+  color: #2B355D;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.bankNode {
+  position: absolute;
+  z-index: 4;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.12);
+}
+
+.bankNode1 {
+  top: 18%;
+  left: 18%;
+}
+
+.bankNode2 {
+  top: 28%;
+  right: 10%;
+}
+
+.bankNode3 {
+  bottom: 16%;
+  right: 20%;
+}
+
+.bankNode4 {
+  bottom: 12%;
+  left: 14%;
+}
+
+.bankLine {
+  position: absolute;
+  z-index: 1;
+  height: 1px;
+  background: rgba(51, 154, 224, 0.35);
+  transform-origin: left center;
+}
+
+.bankLine1 {
+  width: 150px;
+  top: 35%;
+  left: 25%;
+  transform: rotate(25deg);
+}
+
+.bankLine2 {
+  width: 150px;
+  top: 42%;
+  right: 20%;
+  transform: rotate(155deg);
+}
+
+.bankLine3 {
+  width: 160px;
+  bottom: 30%;
+  right: 25%;
+  transform: rotate(205deg);
+}
+
+.bankLine4 {
+  width: 150px;
+  bottom: 28%;
+  left: 22%;
+  transform: rotate(-25deg);
+}
+
+.bankBadge {
+  position: absolute;
+  right: 4%;
+  bottom: 17%;
+  z-index: 5;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(43, 53, 93, 0.12);
+}
+
+.bankBadge strong {
+  display: block;
+  color: #2B355D;
+  font-size: 20px;
+}
+
+.bankBadge small {
+  display: block;
+  margin-top: 4px;
+  color: #7a879d;
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   FINTECH
+============================================================ */
+
+.fintechVisual {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fintechCard {
+  position: relative;
+  z-index: 3;
+  width: 310px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 14px;
+  box-shadow: 0 25px 65px rgba(43, 53, 93, 0.14);
+}
+
+.fintechCard small {
+  display: block;
+  margin-bottom: 12px;
+  color: #7a879d;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.fintechCard strong {
+  color: #2B355D;
+  font-size: 32px;
+}
+
+.fintechGraph {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 100px;
+  margin-top: 28px;
+  border-bottom: 1px solid #e5ebf2;
+}
+
+.fintechGraph i {
+  flex: 1;
+  display: block;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(to top, #2B355D, #339AE0);
+}
+
+.fintechGraph i:nth-child(1) {
+  height: 35%;
+}
+
+.fintechGraph i:nth-child(2) {
+  height: 55%;
+}
+
+.fintechGraph i:nth-child(3) {
+  height: 45%;
+}
+
+.fintechGraph i:nth-child(4) {
+  height: 75%;
+}
+
+.fintechGraph i:nth-child(5) {
+  height: 92%;
+}
+
+.paymentNode,
+.paymentNodeTwo {
+  position: absolute;
+  z-index: 5;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  box-shadow: 0 15px 35px rgba(43, 53, 93, 0.12);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.paymentNode {
+  top: 19%;
+  left: 10%;
+  color: #339AE0;
+}
+
+.paymentNodeTwo {
+  right: 7%;
+  bottom: 18%;
+  color: #0DC78A;
+}
+
+.fintechLine {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(51, 154, 224, 0.2);
+  border-radius: 50%;
+}
+
+
+/* ============================================================
+   MANUFACTURING
+============================================================ */
+
+.manufacturingVisual {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.factoryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  gap: 16px;
+}
+
+.factoryBox {
+  height: 110px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.08);
+}
+
+.factoryBox span {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  background: #339AE0;
+}
+
+.factoryBox strong {
+  color: #2B355D;
+  font-size: 18px;
+}
+
+.factoryCore {
+  position: absolute;
+  z-index: 4;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2B355D;
+  color: #ffffff;
+  box-shadow: 0 20px 45px rgba(43, 53, 93, 0.2);
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.factoryStatus {
+  position: absolute;
+  right: 3%;
+  bottom: 13%;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 7px;
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.1);
+  color: #65738F;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.factoryStatus b {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #0DC78A;
+}
+
+
+/* ============================================================
+   PHARMACEUTICAL
+============================================================ */
+
+.pharmaVisual {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moleculeCore {
+  position: relative;
+  z-index: 3;
+  width: 125px;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(13, 199, 138, 0.35);
+  box-shadow:
+    0 0 0 18px rgba(13, 199, 138, 0.04),
+    0 20px 55px rgba(43, 53, 93, 0.13);
+}
+
+.moleculeCore span {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #0DC78A;
+}
+
+.moleculeNode {
+  position: absolute;
+  z-index: 4;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  box-shadow: 0 10px 25px rgba(43, 53, 93, 0.1);
+}
+
+.molecule1 {
+  top: 18%;
+  left: 25%;
+}
+
+.molecule2 {
+  top: 25%;
+  right: 18%;
+}
+
+.molecule3 {
+  bottom: 19%;
+  right: 22%;
+}
+
+.molecule4 {
+  bottom: 13%;
+  left: 23%;
+}
+
+.molecule5 {
+  top: 47%;
+  left: 8%;
+}
+
+.moleculeBond {
+  position: absolute;
+  height: 1px;
+  background: rgba(13, 199, 138, 0.35);
+}
+
+.bond1 {
+  width: 120px;
+  transform: rotate(35deg);
+}
+
+.bond2 {
+  width: 120px;
+  transform: rotate(-35deg);
+}
+
+.bond3 {
+  width: 130px;
+  transform: rotate(145deg);
+}
+
+.bond4 {
+  width: 120px;
+  transform: rotate(-145deg);
+}
+
+.pharmaBadge {
+  position: absolute;
+  right: 5%;
+  bottom: 18%;
+  padding: 12px 17px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 7px;
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.1);
+  color: #0DC78A;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+
+/* ============================================================
+   TELECOMMUNICATIONS
+============================================================ */
+
+.telecomVisual {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signalCore {
+  position: relative;
+  z-index: 5;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2B355D;
+  box-shadow: 0 20px 50px rgba(43, 53, 93, 0.22);
+}
+
+.signalCore span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #19B9C4;
+}
+
+.signalRing {
+  position: absolute;
+  border: 1px solid rgba(25, 185, 196, 0.3);
+  border-radius: 50%;
+}
+
+.signalRing1 {
+  width: 170px;
+  height: 170px;
+}
+
+.signalRing2 {
+  width: 270px;
+  height: 270px;
+}
+
+.signalRing3 {
+  width: 390px;
+  height: 390px;
+}
+
+.signalTower {
+  position: absolute;
+  right: 13%;
+  bottom: 17%;
+  width: 55px;
+  height: 95px;
+  border-left: 3px solid #2B355D;
+  border-right: 3px solid #2B355D;
+  transform: skew(-8deg);
+}
+
+.signalTower span {
+  position: absolute;
+  left: -22px;
+  width: 70px;
+  height: 1px;
+  background: #19B9C4;
+}
+
+.signalTower span:nth-child(1) {
+  top: 20%;
+}
+
+.signalTower span:nth-child(2) {
+  top: 48%;
+}
+
+.signalTower span:nth-child(3) {
+  top: 76%;
+}
+
+.networkBadge {
+  position: absolute;
+  left: 7%;
+  bottom: 18%;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 7px;
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.1);
+  color: #19B9C4;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+
+/* ============================================================
+   IT-ENABLED SERVICES
+============================================================ */
+
+.itServicesVisual {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itWindow {
+  position: relative;
+  z-index: 3;
+  width: 360px;
+  height: 270px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 12px;
+  box-shadow: 0 25px 65px rgba(43, 53, 93, 0.14);
+  overflow: hidden;
+}
+
+.itWindowHeader {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.itWindowHeader span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d5dde8;
+}
+
+.itWindowBody {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 22px;
+}
+
+.itWindowBody div {
+  height: 75px;
+  border-radius: 7px;
+  background: linear-gradient(
+    135deg,
+    #f4f8fc,
+    #e7f1f9
+  );
+  border: 1px solid #e0e8f0;
+}
+
+.itCloud {
+  position: absolute;
+  right: 4%;
+  top: 17%;
+  z-index: 5;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(51, 154, 224, 0.35);
+  box-shadow: 0 15px 35px rgba(43, 53, 93, 0.12);
+  color: #339AE0;
+  font-weight: 800;
+}
+
+.itBadge {
+  position: absolute;
+  left: 3%;
+  bottom: 16%;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #dce5ef;
+  border-radius: 7px;
+  box-shadow: 0 12px 30px rgba(43, 53, 93, 0.1);
+  color: #2B355D;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}

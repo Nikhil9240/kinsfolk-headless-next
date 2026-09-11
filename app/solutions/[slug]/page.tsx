@@ -3,11 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { solutions } from "@/lib/solutions";
+import { getBlogPosts } from "@/lib/blog";
 import BlogSection from "@/components/BlogSection/BlogSection";
 import Solutions from "@/components/solutions/solution";
 import Services from "@/components/Services/Services";
 
 import styles from "./page.module.css";
+
 
 // Dynamic route parameters for /solutions/[slug]
 type Props = {
@@ -15,6 +17,7 @@ type Props = {
     slug: string;
   }>;
 };
+
 
 // Client logos used by the trusted technology ecosystem slider.
 // This section remains common across all solution pages.
@@ -101,10 +104,12 @@ const partners = [
   },
 ];
 
+
 // Dynamic Hero Visual component.
 // The visual design stays the same for each solution type,
 // while the selected visual changes according to solution.heroVisual.
 function HeroVisual({ visual }: { visual?: string }) {
+
   // Agentic AI
   if (visual === "agentic-ai") {
     return (
@@ -149,6 +154,7 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
+
   // Generative AI
   if (visual === "gen-ai") {
     return (
@@ -181,6 +187,7 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
+
   // AI Service Management
   if (visual === "ai-service-management") {
     return (
@@ -204,6 +211,7 @@ function HeroVisual({ visual }: { visual?: string }) {
       </div>
     );
   }
+
 
   // AIOps
   if (visual === "aiops") {
@@ -233,6 +241,7 @@ function HeroVisual({ visual }: { visual?: string }) {
       </div>
     );
   }
+
 
   // AI Asset Management
   if (visual === "asset-management") {
@@ -265,6 +274,7 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
+
   // Hyper Automation
   if (visual === "hyper-automation") {
     return (
@@ -284,12 +294,21 @@ function HeroVisual({ visual }: { visual?: string }) {
           <strong>AUTOMATE</strong>
         </div>
 
-        <div className={styles.automationCardOne}>Discover</div>
-        <div className={styles.automationCardTwo}>Orchestrate</div>
-        <div className={styles.automationCardThree}>Execute</div>
+        <div className={styles.automationCardOne}>
+          Discover
+        </div>
+
+        <div className={styles.automationCardTwo}>
+          Orchestrate
+        </div>
+
+        <div className={styles.automationCardThree}>
+          Execute
+        </div>
       </div>
     );
   }
+
 
   // Enterprise Data Management
   if (visual === "data-management") {
@@ -311,6 +330,7 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
+
   // AI Security & Cyber Defense
   if (visual === "cyber-defense") {
     return (
@@ -325,12 +345,21 @@ function HeroVisual({ visual }: { visual?: string }) {
           <strong>DEFENSE</strong>
         </div>
 
-        <div className={styles.securityNodeOne}>Detect</div>
-        <div className={styles.securityNodeTwo}>Protect</div>
-        <div className={styles.securityNodeThree}>Respond</div>
+        <div className={styles.securityNodeOne}>
+          Detect
+        </div>
+
+        <div className={styles.securityNodeTwo}>
+          Protect
+        </div>
+
+        <div className={styles.securityNodeThree}>
+          Respond
+        </div>
       </div>
     );
   }
+
 
   // Cloud & Infrastructure
   if (visual === "cloud-infrastructure") {
@@ -348,7 +377,9 @@ function HeroVisual({ visual }: { visual?: string }) {
         </div>
 
         <div className={styles.customCloudCard}>
-          <div className={styles.cardIconBox}>☁️</div>
+          <div className={styles.cardIconBox}>
+            ☁️
+          </div>
 
           <div className={styles.cardTextBox}>
             <span>Scale</span>
@@ -379,6 +410,7 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
+
   // Generic fallback visual
   return (
     <div className={styles.heroVisual}>
@@ -393,31 +425,42 @@ function HeroVisual({ visual }: { visual?: string }) {
   );
 }
 
+
 // Main dynamic solution page.
 export default async function SolutionPage({ params }: Props) {
+
   // Read the dynamic [slug] value from the URL.
   const { slug } = await params;
 
   // Find the matching solution from the central solution data file.
-  const solution = solutions.find((item) => item.slug === slug);
+  const solution = solutions.find(
+    (item) => item.slug === slug
+  );
 
   // Show Next.js 404 page when an invalid solution slug is requested.
   if (!solution) {
     notFound();
   }
 
+  // Fetch latest blog posts from WordPress.
+  const blogs = await getBlogPosts(6);
+
   return (
     <main className={styles.solutionPage}>
+
       {/* ======================================================
           HERO
       ====================================================== */}
+
       <section className={styles.hero}>
         <div className={styles.heroGlowOne} />
         <div className={styles.heroGlowTwo} />
 
         <div className={styles.container}>
           <div className={styles.heroGrid}>
+
             <div className={styles.heroContent}>
+
               <div className={styles.eyebrow}>
                 <span className={styles.eyebrowDot} />
                 {solution.heroEyebrow}
@@ -425,10 +468,16 @@ export default async function SolutionPage({ params }: Props) {
 
               <h1>{solution.title}</h1>
 
-              <p className={styles.heroText}>{solution.heroText}</p>
+              <p className={styles.heroText}>
+                {solution.heroText}
+              </p>
 
               <div className={styles.heroButtons}>
-                <Link href="/contact" className={styles.primaryButton}>
+
+                <Link
+                  href="/contact"
+                  className={styles.primaryButton}
+                >
                   {solution.primaryButtonLabel}
                   <span>→</span>
                 </Link>
@@ -440,20 +489,28 @@ export default async function SolutionPage({ params }: Props) {
                   {solution.secondaryButtonLabel}
                   <span>↓</span>
                 </Link>
+
               </div>
+
             </div>
 
             <HeroVisual visual={solution.heroVisual} />
+
           </div>
         </div>
       </section>
 
+
       {/* ======================================================
           TRUSTED TECHNOLOGY ECOSYSTEM
       ====================================================== */}
+
       <section className={styles.trustedSection}>
+
         <div className={styles.container}>
+
           <div className={styles.trustedHeader}>
+
             <div className={styles.sectionLabel}>
               TRUSTED TECHNOLOGY ECOSYSTEM
             </div>
@@ -461,345 +518,347 @@ export default async function SolutionPage({ params }: Props) {
             <p>
               Trusted by India&apos;s leading banks, insurers and enterprises
             </p>
+
           </div>
+
         </div>
+
 
         <div className={styles.partnerSlider}>
+
           <div className={styles.partnerTrack}>
-            {[...partners, ...partners].map((partner, index) => (
-              <div
-                className={styles.partnerLogo}
-                key={`${partner.name}-${index}`}
-              >
-                <Image
-                  src={partner.image}
-                  alt={partner.name}
-                  width={160}
-                  height={70}
-                />
-              </div>
-            ))}
+
+            {[...partners, ...partners].map(
+              (partner, index) => (
+                <div
+                  className={styles.partnerLogo}
+                  key={`${partner.name}-${index}`}
+                >
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    width={160}
+                    height={70}
+                  />
+                </div>
+              )
+            )}
+
           </div>
+
         </div>
+
       </section>
 
-      {/* ======================================================
-          ONE CONNECTED EXPERIENCE
-          Replaces the previous Solution Overview section.
-      ====================================================== */}
-      <section className={styles.connectedExperience}>
-        <div className={styles.container}>
-          <div className={styles.connectedExperienceGrid}>
-            <div>
-              <span className={styles.esmEyebrow}>
-                ONE CONNECTED EXPERIENCE
-              </span>
 
-              <h2>
-                Unify Service
-                <br />
-                Experiences Across
-                <br />
-                the <span>Enterprise.</span>
-              </h2>
+      {/* ======================================================
+          SOLUTION OVERVIEW
+      ====================================================== */}
+
+      <section className={styles.positioning}>
+
+        <div className={styles.container}>
+
+          <div className={styles.positioningGrid}>
+
+            <div>
+
+              <div className={styles.sectionLabel}>
+                {solution.overview.label}
+              </div>
+
+              <h2>{solution.overview.title}</h2>
+
             </div>
 
-            <div className={styles.connectedExperienceContent}>
-              <p>
-                We empower enterprises with intelligent, AI-driven Enterprise
-                Service Management solutions that enhance service delivery,
-                automate workflows and improve operational efficiency.
+
+            <div className={styles.positioningContent}>
+
+              <p className={styles.leadText}>
+                {solution.overview.lead}
               </p>
 
-              <div className={styles.esmOutcomes}>
-                <div>
-                  <strong>01</strong>
-                  <span>Break down operational silos</span>
-                </div>
+              <p>
+                {solution.overview.body}
+              </p>
 
-                <div>
-                  <strong>02</strong>
-                  <span>Accelerate service delivery</span>
-                </div>
-
-                <div>
-                  <strong>03</strong>
-                  <span>Improve employee experience</span>
-                </div>
-              </div>
             </div>
+
           </div>
+
+
+          {/* Dynamic four proof points */}
+
+          <div className={styles.proofGrid}>
+
+            {solution.proofPoints.map((item) => (
+              <article
+                className={styles.proofCard}
+                key={item.number}
+              >
+                <span>{item.number}</span>
+
+                <p>{item.text}</p>
+              </article>
+            ))}
+
+          </div>
+
         </div>
+
       </section>
 
-      {/* ======================================================
-          CORE CAPABILITIES
-          Replaces the previous Our Expertise + Offerings sections.
-      ====================================================== */}
-      <section
-        id="capabilities"
-        className={styles.coreCapabilities}
-      >
-        <div className={styles.container}>
-          <div className={styles.coreCapabilitiesHeader}>
-            <div>
-              <span className={styles.esmEyebrow}>
-                CORE CAPABILITIES
-              </span>
 
-              <h2>
-                ESM capabilities
-                <br />
-                built for <span>scale.</span>
-              </h2>
+      {/* ======================================================
+          OUR EXPERTISE
+      ====================================================== */}
+
+      <section className={styles.expertiseSection}>
+
+        <div className={styles.container}>
+
+          <div className={styles.sectionTop}>
+
+            <div>
+
+              <div className={styles.sectionLabel}>
+                {solution.expertise.label}
+              </div>
+
+              <h2>{solution.expertise.title}</h2>
+
             </div>
 
             <p>
-              From service management to automation and analytics, build a
-              connected operating model for your enterprise.
+              {solution.expertise.intro}
             </p>
+
           </div>
 
-          <div className={styles.coreCapabilityGrid}>
-            <article className={styles.coreCapabilityCard}>
-              <span className={styles.coreCapabilityNumber}>01</span>
 
-              <div className={styles.coreCapabilityContent}>
-                <h3>IT Service Management</h3>
+          <div className={styles.expertiseGrid}>
 
-                <p>
-                  Build smarter, faster and more efficient enterprise service
-                  operations.
-                </p>
+            {solution.expertise.items.map((item) => (
 
-                <span className={styles.coreCapabilityArrow}>→</span>
-              </div>
-            </article>
+              <article
+                className={styles.expertiseCard}
+                key={`${solution.slug}-${item.number}`}
+              >
 
-            <article className={styles.coreCapabilityCard}>
-              <span className={styles.coreCapabilityNumber}>02</span>
+                <div className={styles.cardTop}>
 
-              <div className={styles.coreCapabilityContent}>
-                <h3>Service Automation</h3>
+                  <div className={styles.expertiseLogo}>
 
-                <p>
-                  Automate repetitive service workflows and improve operational
-                  efficiency.
-                </p>
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      width={120}
+                      height={60}
+                    />
 
-                <span className={styles.coreCapabilityArrow}>→</span>
-              </div>
-            </article>
+                  </div>
 
-            <article className={styles.coreCapabilityCard}>
-              <span className={styles.coreCapabilityNumber}>03</span>
+                  <span className={styles.cardNumber}>
+                    {item.number}
+                  </span>
 
-              <div className={styles.coreCapabilityContent}>
-                <h3>IT Asset Management</h3>
+                </div>
 
-                <p>
-                  Gain complete visibility and control across your enterprise
-                  technology assets.
-                </p>
 
-                <span className={styles.coreCapabilityArrow}>→</span>
-              </div>
-            </article>
+                <div className={styles.cardContent}>
 
-            <article className={styles.coreCapabilityCard}>
-              <span className={styles.coreCapabilityNumber}>04</span>
+                  <h3>{item.name}</h3>
 
-              <div className={styles.coreCapabilityContent}>
-                <h3>Digital Workplace</h3>
+                  <p>
+                    {item.description}
+                  </p>
 
-                <p>
-                  Create seamless digital experiences for employees across the
-                  enterprise.
-                </p>
 
-                <span className={styles.coreCapabilityArrow}>→</span>
-              </div>
-            </article>
+                  <div className={styles.tags}>
 
-            <article className={styles.coreCapabilityCard}>
-              <span className={styles.coreCapabilityNumber}>05</span>
+                    {item.tags.map((tag) => (
+                      <span key={tag}>
+                        {tag}
+                      </span>
+                    ))}
 
-              <div className={styles.coreCapabilityContent}>
-                <h3>Analytics &amp; Reporting</h3>
+                  </div>
 
-                <p>
-                  Turn service data into actionable insights and measurable
-                  outcomes.
-                </p>
+                </div>
 
-                <span className={styles.coreCapabilityArrow}>→</span>
-              </div>
-            </article>
 
-            <article className={styles.coreCapabilityCard}>
-              <span className={styles.coreCapabilityNumber}>06</span>
+                <div className={styles.cardFooter}>
 
-              <div className={styles.coreCapabilityContent}>
-                <h3>Process Optimization</h3>
+                  <Link
+                    href={item.href}
+                    className={styles.expertiseButton}
+                  >
+                    Explore Solution
+                    <span>→</span>
+                  </Link>
 
-                <p>
-                  Simplify processes, remove bottlenecks and continuously
-                  improve service delivery.
-                </p>
+                </div>
 
-                <span className={styles.coreCapabilityArrow}>→</span>
-              </div>
-            </article>
+              </article>
+
+            ))}
+
           </div>
+
         </div>
+
       </section>
+
 
       {/* ======================================================
-          WHY KINSFOLK
+          OFFERINGS
       ====================================================== */}
-      <section className={styles.whyKinsfolk}>
-        <div className={styles.container}>
-          <div className={styles.whyKinsfolkHeader}>
-            <span className={styles.esmEyebrowGreen}>
-              WHY KINSFOLK
-            </span>
 
-            <h2>
-              Built for Outcomes.
-              <br />
-              Designed for <span>Scale.</span>
-            </h2>
+      {solution.offerings.items.length > 0 && (
+
+        <section
+          id="offerings"
+          className={styles.offeringsSection}
+        >
+
+          <div className={styles.container}>
+
+            <div className={styles.sectionTop}>
+
+              <div>
+
+                <div className={styles.sectionLabel}>
+                  {solution.offerings.label}
+                </div>
+
+                <h2>
+                  {solution.offerings.title}
+                </h2>
+
+              </div>
+
+              <p>
+                {solution.offerings.intro}
+              </p>
+
+            </div>
+
+
+            <div className={styles.offeringsGrid}>
+
+              {solution.offerings.items.map((item) => (
+
+                <article
+                  className={styles.offeringCard}
+                  key={`${solution.slug}-${item.number}`}
+                >
+
+                  <span className={styles.offeringNumber}>
+                    {item.number}
+                  </span>
+
+                  <h3>
+                    {item.title}
+                  </h3>
+
+                  <p>
+                    {item.description}
+                  </p>
+
+                  <div className={styles.offeringLine} />
+
+                </article>
+
+              ))}
+
+            </div>
+
           </div>
 
-          <div className={styles.whyKinsfolkGrid}>
-            <article className={styles.whyKinsfolkCard}>
-              <span>01</span>
+        </section>
 
-              <div>
-                <h3>Certified Resources</h3>
+      )}
 
-                <p>
-                  Experienced consultants with hands-on expertise across
-                  enterprise service management platforms.
-                </p>
-              </div>
-            </article>
-
-            <article className={styles.whyKinsfolkCard}>
-              <span>02</span>
-
-              <div>
-                <h3>ROI-Driven Consulting</h3>
-
-                <p>
-                  We focus on measurable business outcomes, operational
-                  efficiency and long-term value.
-                </p>
-              </div>
-            </article>
-
-            <article className={styles.whyKinsfolkCard}>
-              <span>03</span>
-
-              <div>
-                <h3>Scalable Architecture</h3>
-
-                <p>
-                  Solutions designed to scale with your organization,
-                  technology and future business needs.
-                </p>
-              </div>
-            </article>
-
-            <article className={styles.whyKinsfolkCard}>
-              <span>04</span>
-
-              <div>
-                <h3>Seamless Integrations</h3>
-
-                <p>
-                  Connect enterprise applications, data and workflows to
-                  create a unified service ecosystem.
-                </p>
-              </div>
-            </article>
-
-            <article className={styles.whyKinsfolkCard}>
-              <span>05</span>
-
-              <div>
-                <h3>Proven Expertise</h3>
-
-                <p>
-                  Practical experience helping organizations modernize service
-                  delivery and accelerate transformation.
-                </p>
-              </div>
-            </article>
-
-            <article className={styles.whyKinsfolkCard}>
-              <span>06</span>
-
-              <div>
-                <h3>24×7 Support</h3>
-
-                <p>
-                  Reliable support to help keep your enterprise services
-                  stable, secure and performing.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
 
       {/* ======================================================
           SERVICES
       ====================================================== */}
+
       <div className={styles.servicesWrapper}>
         <Services />
       </div>
 
+
       {/* ======================================================
           RELATED SOLUTIONS + BLOG
       ====================================================== */}
+
       <section className={styles.relatedSection}>
+
         <div className={styles.container}>
+
           <div className={styles.solutionsWrapper}>
             <Solutions />
           </div>
+
         </div>
 
+
         <div className={styles.BlogWrapper}>
-          <BlogSection />
+
+          {/* WordPress Blog Posts */}
+
+          <BlogSection blogs={blogs} />
+
         </div>
+
       </section>
+
 
       {/* ======================================================
           FINAL CTA
       ====================================================== */}
+
       <section className={styles.ctaSection}>
+
         <div className={styles.container}>
+
           <div className={styles.ctaBox}>
+
             <div className={styles.ctaGlow} />
 
+
             <div className={styles.ctaContent}>
+
               <div className={styles.sectionLabel}>
                 {solution.cta.label}
               </div>
 
-              <h2>{solution.cta.title}</h2>
+              <h2>
+                {solution.cta.title}
+              </h2>
 
-              <p>{solution.cta.body}</p>
+              <p>
+                {solution.cta.body}
+              </p>
+
             </div>
 
-            <Link href="/contact" className={styles.ctaButton}>
+
+            <Link
+              href="/contact"
+              className={styles.ctaButton}
+            >
               Book a Discovery Call
               <span>→</span>
             </Link>
+
           </div>
+
         </div>
+
       </section>
+
     </main>
   );
 }

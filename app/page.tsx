@@ -11,6 +11,8 @@ import IndustryCoverflow from "../components/IndustryCoverflow/IndustryCoverflow
 import BlogSection from "../components/BlogSection/BlogSection";
 import { SolutionCore } from "@/components/SolutionCore";
 
+import { getBlogPosts } from "@/lib/blog";
+
 async function getSiteData() {
   const query = `
     query {
@@ -43,15 +45,32 @@ async function getSiteData() {
   const result = await response.json();
 
   if (result.errors) {
-    console.error("WordPress GraphQL Error:", result.errors);
-    throw new Error("WordPress GraphQL request failed");
+    console.error(
+      "WordPress GraphQL Error:",
+      result.errors
+    );
+
+    throw new Error(
+      "WordPress GraphQL request failed"
+    );
   }
 
   return result.data.generalSettings;
 }
 
 export default async function Home() {
+  /*
+   * Fetch the existing site data.
+   */
   const site = await getSiteData();
+
+  /*
+   * Fetch latest 6 blog posts from WordPress.
+   *
+   * WordPress is the source of truth for blog content.
+   * BlogSection only displays the received data.
+   */
+  const blogs = await getBlogPosts(6);
 
   return (
     <main className="home-page">
@@ -130,9 +149,10 @@ export default async function Home() {
 
       {/* =========================================
           SECTION 9 — BLOGS
+          Blog data comes from WordPress.
       ========================================= */}
 
-      <BlogSection />
+      <BlogSection blogs={blogs} />
 
     </main>
   );

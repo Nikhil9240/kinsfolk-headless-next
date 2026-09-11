@@ -529,7 +529,7 @@ function createScene(THREE: ThreeModule, els: SceneEls, nodes: HeroNode[], depth
    ------------------------------------------------------------------ */
 export default function SolutionHero({
   nodes = DEFAULT_HERO_NODES,
-  badge = 'BMC Elite Delivery Partner FY27',
+  badge = '',
   badgeHref,
   headingTop = 'Accelerating Enterprise',
   headingAccent = 'AI Innovation',
@@ -623,19 +623,34 @@ export default function SolutionHero({
   );
 
   const Chip = (n: HeroNode, i: number) => {
-    const props = {
-      key: n.label,
-      className: styles.chip,
-      style: { left: `${n.x}%`, top: `${n.y}%`, transform: 'translate(-50%, -50%)' } as React.CSSProperties,
-    };
-    return n.href ? (
-      <a {...props} href={n.href}>
-        {n.label}
-      </a>
-    ) : (
-      <span {...props}>{n.label}</span>
-    );
+  const chipKey = n.label;
+
+  const chipProps = {
+    className: styles.chip,
+    style: {
+      left: `${n.x}%`,
+      top: `${n.y}%`,
+      transform: 'translate(-50%, -50%)',
+    } as React.CSSProperties,
   };
+
+  return n.href ? (
+    <a
+      key={chipKey}
+      {...chipProps}
+      href={n.href}
+    >
+      {n.label}
+    </a>
+  ) : (
+    <span
+      key={chipKey}
+      {...chipProps}
+    >
+      {n.label}
+    </span>
+  );
+};
 
   return (
     <section
