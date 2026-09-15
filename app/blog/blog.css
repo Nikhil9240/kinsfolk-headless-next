@@ -1,0 +1,961 @@
+/* =========================================================
+   BLOG PAGE
+   ---------------------------------------------------------
+   Main blog page styling.
+
+   Brand colors intentionally remain consistent with the
+   existing Kinsfolk design.
+========================================================= */
+
+.blog-page {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  color: #182033;
+}
+
+
+/* =========================================================
+   GLOBAL BLOG CONTAINER
+========================================================= */
+
+.blog-container {
+  width: min(1280px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   BLOG HERO SECTION
+========================================================= */
+
+.blog-hero {
+  position: relative;
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      115deg,
+      #0c1730 0%,
+      #172c55 55%,
+      #315297 100%
+    );
+}
+
+.blog-hero-inner {
+  width: min(1280px, calc(100% - 64px));
+  min-height: 570px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: 60px;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.blog-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+
+.blog-eyebrow {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+}
+
+.blog-hero h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 45px;
+  line-height:1.1;
+  font-weight: 600;
+  
+}
+
+.blog-hero h1 span {
+  color: #ffffff;
+}
+
+.blog-hero p {
+  max-width: 580px;
+  margin: 30px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.blog-hero-visual {
+  position: relative;
+  width: min(520px, 100%);
+  aspect-ratio: 1;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: rotate(-25deg);
+}
+
+.blog-hero-orbit-one {
+  width: 92%;
+  height: 38%;
+}
+
+.blog-hero-orbit-two {
+  width: 78%;
+  height: 32%;
+  transform: rotate(35deg);
+}
+
+.blog-hero-orbit-three {
+  width: 64%;
+  height: 26%;
+  transform: rotate(90deg);
+}
+
+.blog-hero-core {
+  position: relative;
+  z-index: 2;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 0 70px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.blog-hero-core span {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   SECTION COMMON HEADER
+========================================================= */
+
+.blog-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 38px;
+}
+
+.blog-section-eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  color: #315297;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.blog-section-header h2 {
+  margin: 0;
+  color: #182033;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+}
+
+.blog-section-link {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #315297;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+}
+
+.blog-section-link span {
+  font-size: 20px;
+  transition: transform 0.25s ease;
+}
+
+.blog-section-link:hover span {
+  transform: translateX(5px);
+}
+
+
+/* =========================================================
+   LATEST BLOG SECTION
+========================================================= */
+
+.blog-latest-section {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   LATEST BLOG SLIDER
+   ---------------------------------------------------------
+   Horizontal scroll slider.
+
+   No JavaScript is required for the slider itself.
+   Scroll-snap provides a smooth responsive experience.
+========================================================= */
+
+.blog-latest-slider {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.blog-latest-slider::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   FEATURED BLOG CARD
+========================================================= */
+
+.blog-featured-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.blog-featured-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-featured-image {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  background: #e9edf2;
+}
+
+.blog-featured-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-featured-card:hover .blog-featured-image img {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.blog-image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgba(10, 18, 38, 0.62),
+      transparent 60%
+    );
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+.blog-no-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      135deg,
+      #dfe5ed,
+      #f4f6f8
+    );
+}
+
+.blog-no-image span {
+  color: #315297;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   FEATURED CARD NUMBER
+========================================================= */
+
+.blog-featured-number {
+  position: absolute;
+  left: 24px;
+  bottom: 20px;
+  z-index: 2;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   FEATURED CARD CONTENT
+========================================================= */
+
+.blog-featured-content {
+  padding: 24px 0 10px;
+}
+
+.blog-date {
+  display: block;
+  margin-bottom: 12px;
+  color: #7c8492;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.blog-featured-content h3 {
+  min-height: 62px;
+  margin: 0;
+  color: #182033;
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.blog-read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  color: #315297;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.blog-read-link strong {
+  font-size: 18px;
+  transition: transform 0.25s ease;
+}
+
+.blog-featured-card:hover .blog-read-link strong,
+.blog-card:hover .blog-read-link strong,
+.blog-highlight-card:hover .blog-read-link strong {
+  transform: translateX(5px);
+}
+
+
+/* =========================================================
+   FEATURED TWO BLOGS SECTION
+========================================================= */
+
+.blog-highlight-section {
+  padding: 100px 0;
+  background: #f5f7f9;
+}
+
+.blog-highlight-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 28px;
+}
+
+.blog-highlight-card {
+  background: #ffffff;
+}
+
+.blog-highlight-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-highlight-image {
+  position: relative;
+  height: 330px;
+  overflow: hidden;
+}
+
+.blog-highlight-large .blog-highlight-image {
+  height: 430px;
+}
+
+.blog-highlight-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-highlight-card:hover .blog-highlight-image img {
+  transform: scale(1.04);
+}
+
+.blog-highlight-content {
+  padding: 28px 30px 32px;
+}
+
+.blog-highlight-content h3 {
+  margin: 0;
+  color: #182033;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.blog-excerpt {
+  margin-top: 14px;
+  color: #69717e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.blog-excerpt p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   ALL BLOGS SECTION
+========================================================= */
+
+.blog-all-section {
+  padding: 110px 0;
+  background: #ffffff;
+}
+
+.blog-count {
+  color: #7c8492;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+
+/* =========================================================
+   BLOG GRID
+========================================================= */
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 45px 26px;
+}
+
+.blog-card {
+  min-width: 0;
+}
+
+.blog-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-card-image {
+  position: relative;
+  height: 245px;
+  overflow: hidden;
+  background: #e9edf2;
+}
+
+.blog-card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-card-image img {
+  transform: scale(1.04);
+}
+
+.blog-card-content {
+  padding-top: 22px;
+}
+
+.blog-card-content h3 {
+  margin: 0;
+  color: #182033;
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.blog-card .blog-excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.blog-empty {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e1e5ea;
+  color: #7c8492;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   NEWSLETTER CTA
+========================================================= */
+
+.blog-newsletter {
+  padding: 100px 0;
+  background: #315297;
+}
+
+.blog-newsletter-inner {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.blog-newsletter-content {
+  max-width: 700px;
+}
+
+.blog-newsletter .blog-section-eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.blog-newsletter h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(42px, 5vw, 70px);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.blog-newsletter p {
+  max-width: 600px;
+  margin: 25px 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.blog-newsletter-button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px 25px;
+  color: #315297;
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.blog-newsletter-button span {
+  font-size: 19px;
+}
+
+.blog-newsletter-button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   ---------------------------------------------------------
+   901px → 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .blog-container,
+  .blog-hero-inner {
+    width: min(100% - 40px, 1100px);
+  }
+
+  .blog-hero-inner {
+    gap: 30px;
+  }
+
+  .blog-hero {
+    min-height: 520px;
+  }
+
+  .blog-hero-inner {
+    min-height: 520px;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(54px, 7vw, 82px);
+  }
+
+  .blog-hero-visual {
+    width: min(430px, 100%);
+  }
+
+  .blog-featured-card {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ---------------------------------------------------------
+   601px → 900px
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .blog-container,
+  .blog-hero-inner {
+    width: calc(100% - 40px);
+  }
+
+  /* -------------------------------------------------------
+     Hero becomes a single-column layout.
+  ------------------------------------------------------- */
+
+  .blog-hero {
+    min-height: auto;
+  }
+
+  .blog-hero-inner {
+    min-height: auto;
+    padding: 90px 0;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .blog-hero-content {
+    max-width: 700px;
+  }
+
+  .blog-hero-visual {
+    width: 380px;
+    margin: 0 auto;
+  }
+
+  /* -------------------------------------------------------
+     Latest section
+  ------------------------------------------------------- */
+
+  .blog-latest-section,
+  .blog-highlight-section,
+  .blog-all-section {
+    padding: 80px 0;
+  }
+
+  .blog-featured-card {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+
+  /* -------------------------------------------------------
+     Highlight cards
+  ------------------------------------------------------- */
+
+  .blog-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-highlight-large .blog-highlight-image,
+  .blog-highlight-image {
+    height: 380px;
+  }
+
+  /* -------------------------------------------------------
+     Newsletter
+  ------------------------------------------------------- */
+
+  .blog-newsletter {
+    padding: 80px 0;
+  }
+
+  .blog-newsletter-inner {
+    min-height: auto;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 35px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ---------------------------------------------------------
+   max-width: 600px
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .blog-container,
+  .blog-hero-inner {
+    width: calc(100% - 32px);
+  }
+
+  /* -------------------------------------------------------
+     Hero
+  ------------------------------------------------------- */
+
+  .blog-hero-inner {
+    padding: 70px 0 65px;
+    gap: 45px;
+  }
+
+  .blog-eyebrow {
+    margin-bottom: 18px;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .blog-hero h1 {
+    font-size: clamp(50px, 15vw, 70px);
+    letter-spacing: -2.5px;
+  }
+
+  .blog-hero p {
+    margin-top: 25px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .blog-hero-visual {
+    width: min(300px, 100%);
+  }
+
+  .blog-hero-core {
+    width: 130px;
+    height: 130px;
+  }
+
+  .blog-hero-core span {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  /* -------------------------------------------------------
+     Section headers
+  ------------------------------------------------------- */
+
+  .blog-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 28px;
+  }
+
+  .blog-section-header h2 {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+
+  /* -------------------------------------------------------
+     Sections
+  ------------------------------------------------------- */
+
+  .blog-latest-section,
+  .blog-highlight-section,
+  .blog-all-section {
+    padding: 65px 0;
+  }
+
+  /* -------------------------------------------------------
+     Latest slider
+  ------------------------------------------------------- */
+
+  .blog-latest-slider {
+    gap: 16px;
+  }
+
+  .blog-featured-card {
+    flex: 0 0 88%;
+  }
+
+  .blog-featured-image {
+    height: 250px;
+  }
+
+  .blog-featured-content h3 {
+    min-height: auto;
+    font-size: 19px;
+  }
+
+  /* -------------------------------------------------------
+     Highlight section
+  ------------------------------------------------------- */
+
+  .blog-highlight-grid {
+    gap: 20px;
+  }
+
+  .blog-highlight-large .blog-highlight-image,
+  .blog-highlight-image {
+    height: 250px;
+  }
+
+  .blog-highlight-content {
+    padding: 22px 20px 25px;
+  }
+
+  .blog-highlight-content h3 {
+    font-size: 21px;
+  }
+
+  /* -------------------------------------------------------
+     Blog grid
+  ------------------------------------------------------- */
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .blog-card-image {
+    height: 240px;
+  }
+
+  .blog-card-content h3 {
+    font-size: 19px;
+  }
+
+  /* -------------------------------------------------------
+     Newsletter
+  ------------------------------------------------------- */
+
+  .blog-newsletter {
+    padding: 65px 0;
+  }
+
+  .blog-newsletter-inner {
+    gap: 30px;
+  }
+
+  .blog-newsletter h2 {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+
+  .blog-newsletter p {
+    font-size: 15px;
+  }
+
+  .blog-newsletter-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ---------------------------------------------------------
+   max-width: 380px
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .blog-container,
+  .blog-hero-inner {
+    width: calc(100% - 24px);
+  }
+
+  .blog-hero-inner {
+    padding-top: 60px;
+    padding-bottom: 55px;
+  }
+
+  .blog-hero h1 {
+    font-size: 47px;
+  }
+
+  .blog-hero-visual {
+    width: 260px;
+  }
+
+  .blog-featured-card {
+    flex-basis: 92%;
+  }
+
+  .blog-featured-image {
+    height: 220px;
+  }
+
+  .blog-section-header h2 {
+    font-size: 30px;
+  }
+
+  .blog-highlight-large .blog-highlight-image,
+  .blog-highlight-image {
+    height: 220px;
+  }
+
+  .blog-card-image {
+    height: 210px;
+  }
+
+  .blog-newsletter h2 {
+    font-size: 38px;
+  }
+}

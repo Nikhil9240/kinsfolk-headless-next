@@ -1,0 +1,582 @@
+/* =========================================================
+   BLOG DETAIL PAGE
+   ========================================================= */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #111111;
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ---------------------------------------------------------
+   Blog title, date आणि excerpt साठी compact editorial hero.
+========================================================= */
+
+.hero {
+  width: 100%;
+  padding: 125px 24px 65px;
+  background: #f5f6f7;
+}
+
+.heroInner {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   BLOG DATE
+========================================================= */
+
+.date {
+  display: block;
+  margin-bottom: 16px;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #666666;
+}
+
+
+/* =========================================================
+   BLOG TITLE
+   ---------------------------------------------------------
+   Desktop वरही controlled size ठेवला आहे.
+========================================================= */
+
+.title {
+  max-width: 900px;
+  margin: 0;
+
+  font-size: clamp(32px, 4.2vw, 54px);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   BLOG EXCERPT
+========================================================= */
+
+.excerpt {
+  max-width: 700px;
+  margin-top: 22px;
+
+  font-size: 17px;
+  line-height: 1.6;
+
+  color: #555555;
+}
+
+.excerpt p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   FEATURED IMAGE SECTION
+========================================================= */
+
+.featuredImageSection {
+  width: 100%;
+  padding: 0 24px;
+}
+
+.featuredImageWrap {
+  width: min(1160px, 100%);
+  margin: 0 auto;
+
+  overflow: hidden;
+  background: #eeeeee;
+}
+
+.featuredImage {
+  display: block;
+
+  width: 100%;
+  height: 520px;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   BLOG CONTENT SECTION
+========================================================= */
+
+.contentSection {
+  width: 100%;
+  padding: 70px 24px 110px;
+}
+
+.content {
+  width: min(760px, 100%);
+  margin: 0 auto;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  color: #292929;
+}
+
+
+/* =========================================================
+   CONTENT TYPOGRAPHY
+========================================================= */
+
+.content h2 {
+  margin: 52px 0 18px;
+
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+
+  color: #111111;
+}
+
+.content h3 {
+  margin: 40px 0 16px;
+
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+
+  color: #111111;
+}
+
+.content h4 {
+  margin: 30px 0 14px;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+========================================================= */
+
+.content p {
+  margin: 0 0 22px;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+.content a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+.content ul,
+.content ol {
+  margin: 0 0 26px;
+  padding-left: 24px;
+}
+
+.content li {
+  margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   BLOCKQUOTE
+========================================================= */
+
+.content blockquote {
+  margin: 36px 0;
+  padding: 8px 0 8px 22px;
+
+  border-left: 3px solid #111111;
+
+  font-size: 20px;
+  line-height: 1.5;
+  font-style: italic;
+
+  color: #333333;
+}
+
+
+/* =========================================================
+   CONTENT IMAGES
+   ---------------------------------------------------------
+   WordPress article मधील images responsive राहतील.
+========================================================= */
+
+.content img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  margin: 34px 0;
+
+  border-radius: 2px;
+}
+
+
+/* =========================================================
+   IMAGE CAPTION
+========================================================= */
+
+.content figcaption {
+  margin-top: -20px;
+  margin-bottom: 30px;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: #777777;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.content table {
+  width: 100%;
+  margin: 30px 0;
+
+  border-collapse: collapse;
+
+  font-size: 14px;
+}
+
+.content th,
+.content td {
+  padding: 10px 12px;
+  border: 1px solid #dddddd;
+
+  text-align: left;
+}
+
+.content th {
+  font-weight: 600;
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   CODE
+========================================================= */
+
+.content pre {
+  overflow-x: auto;
+
+  margin: 30px 0;
+  padding: 18px;
+
+  background: #111111;
+  color: #ffffff;
+
+  border-radius: 6px;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.content code {
+  font-family: monospace;
+}
+
+
+/* =========================================================
+   HORIZONTAL RULE
+========================================================= */
+
+.content hr {
+  margin: 45px 0;
+
+  border: 0;
+  border-top: 1px solid #dddddd;
+}
+
+
+/* =========================================================
+   TABLET RESPONSIVE
+   ---------------------------------------------------------
+   768px ते 1024px devices.
+========================================================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 110px 22px 55px;
+  }
+
+  .heroInner {
+    width: min(900px, 100%);
+  }
+
+  .title {
+    max-width: 800px;
+    font-size: clamp(30px, 5vw, 46px);
+  }
+
+  .excerpt {
+    max-width: 650px;
+    font-size: 16px;
+  }
+
+  .featuredImageSection {
+    padding: 0 22px;
+  }
+
+  .featuredImage {
+    height: 420px;
+  }
+
+  .contentSection {
+    padding: 60px 22px 90px;
+  }
+
+  .content {
+    width: min(720px, 100%);
+    font-size: 15.5px;
+    line-height: 1.75;
+  }
+
+  .content h2 {
+    margin-top: 45px;
+    font-size: 26px;
+  }
+
+  .content h3 {
+    font-size: 23px;
+  }
+
+  .content h4 {
+    font-size: 19px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ---------------------------------------------------------
+   767px आणि smaller devices.
+========================================================= */
+
+@media (max-width: 767px) {
+  .hero {
+    padding: 95px 18px 45px;
+  }
+
+  .heroInner {
+    width: 100%;
+  }
+
+  /* -------------------------------
+     Mobile date
+  -------------------------------- */
+
+  .date {
+    margin-bottom: 14px;
+
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+
+  /* -------------------------------
+     Mobile title
+  -------------------------------- */
+
+  .title {
+    max-width: 100%;
+
+    font-size: clamp(28px, 8.5vw, 40px);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  /* -------------------------------
+     Mobile excerpt
+  -------------------------------- */
+
+  .excerpt {
+    margin-top: 18px;
+
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* -------------------------------
+     Mobile featured image
+  -------------------------------- */
+
+  .featuredImageSection {
+    padding: 0;
+  }
+
+  .featuredImageWrap {
+    width: 100%;
+  }
+
+  .featuredImage {
+    width: 100%;
+    height: 260px;
+
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  /* -------------------------------
+     Mobile content
+  -------------------------------- */
+
+  .contentSection {
+    padding: 45px 18px 65px;
+  }
+
+  .content {
+    width: 100%;
+
+    font-size: 15px;
+    line-height: 1.72;
+  }
+
+  .content p {
+    margin-bottom: 19px;
+  }
+
+  /* -------------------------------
+     Mobile headings
+  -------------------------------- */
+
+  .content h2 {
+    margin: 38px 0 16px;
+
+    font-size: 25px;
+    line-height: 1.2;
+  }
+
+  .content h3 {
+    margin: 30px 0 14px;
+
+    font-size: 21px;
+  }
+
+  .content h4 {
+    margin: 25px 0 12px;
+
+    font-size: 18px;
+  }
+
+  /* -------------------------------
+     Mobile blockquote
+  -------------------------------- */
+
+  .content blockquote {
+    margin: 28px 0;
+    padding-left: 16px;
+
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  /* -------------------------------
+     Mobile images
+  -------------------------------- */
+
+  .content img {
+    margin: 28px 0;
+  }
+
+  /* -------------------------------
+     Mobile tables
+  -------------------------------- */
+
+  .content table {
+    display: block;
+    overflow-x: auto;
+
+    white-space: nowrap;
+  }
+
+  /* -------------------------------
+     Mobile code blocks
+  -------------------------------- */
+
+  .content pre {
+    margin: 24px 0;
+    padding: 15px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ---------------------------------------------------------
+   480px आणि smaller devices.
+========================================================= */
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 85px 16px 40px;
+  }
+
+  .title {
+    font-size: 29px;
+    line-height: 1.08;
+  }
+
+  .excerpt {
+    font-size: 13.5px;
+  }
+
+  .featuredImage {
+    height: 220px;
+  }
+
+  .contentSection {
+    padding: 40px 16px 55px;
+  }
+
+  .content {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .content h2 {
+    font-size: 23px;
+  }
+
+  .content h3 {
+    font-size: 20px;
+  }
+
+  .content h4 {
+    font-size: 17px;
+  }
+
+  .content blockquote {
+    font-size: 16px;
+  }
+}

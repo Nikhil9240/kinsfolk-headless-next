@@ -8,10 +8,63 @@ type BlogSectionProps = {
   blogs: BlogPost[];
 };
 
+/* =========================================================
+   WORDPRESS IMAGE URL
+   ---------------------------------------------------------
+   WordPress featured image कधी कधी localhost URL देऊ शकतो.
+
+   Example:
+   http://localhost/headless-wp/wp-content/uploads/...
+
+   Frontend दुसऱ्या host वर चालत असेल तर image URL normalize
+   करण्यासाठी हा helper वापरला आहे.
+========================================================= */
+
+function getImageUrl(sourceUrl: string): string {
+  if (!sourceUrl) {
+    return "";
+  }
+
+  try {
+    const url = new URL(sourceUrl);
+
+    /* -------------------------------------------------------
+       Local WordPress URL
+       -------------------------------------------------------
+       Local development मध्ये WordPress:
+       http://localhost/headless-wp/
+
+       असल्यास browser ला WordPress च्या actual origin वरून
+       image load करण्यासाठी path preserve केला जातो.
+    ------------------------------------------------------- */
+
+    if (
+      url.hostname === "localhost" ||
+      url.hostname === "127.0.0.1"
+    ) {
+      return `${url.origin}${url.pathname}${url.search}`;
+    }
+
+    return sourceUrl;
+  } catch {
+    /* -------------------------------------------------------
+       Invalid URL असल्यास original value return करतो.
+    ------------------------------------------------------- */
+
+    return sourceUrl;
+  }
+}
+
 export default function BlogSection({
   blogs,
 }: BlogSectionProps) {
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  /* =========================================================
+     BLOG SLIDER - NEXT
+     ---------------------------------------------------------
+     पुढील blog cards कडे smooth scroll करतो.
+  ========================================================= */
 
   const scrollNext = () => {
     if (!sliderRef.current) return;
@@ -22,6 +75,12 @@ export default function BlogSection({
     });
   };
 
+  /* =========================================================
+     BLOG SLIDER - PREVIOUS
+     ---------------------------------------------------------
+     मागील blog cards कडे smooth scroll करतो.
+  ========================================================= */
+
   const scrollPrev = () => {
     if (!sliderRef.current) return;
 
@@ -31,17 +90,26 @@ export default function BlogSection({
     });
   };
 
-  return (
-    <section className="blog-section">
+  /* =========================================================
+     DEBUG BLOG DATA
+     ---------------------------------------------------------
+     WordPress कडून featuredImage येत आहे का हे browser
+     console मध्ये verify करण्यासाठी.
+  ========================================================= */
 
+  console.log("BLOG DATA:", blogs);
+
+  return (
+    <section
+      className="blog-section"
+      aria-label="Insights & Perspectives"
+    >
       {/* =====================================================
           HEADER
       ===================================================== */}
 
       <div className="blog-header">
-
         <div className="blog-heading-wrap">
-
           <h2 className="blog-title">
             Insights & Perspectives
           </h2>
@@ -51,17 +119,15 @@ export default function BlogSection({
             className="blog-view-all"
           >
             VIEW ALL
-            <span>→</span>
+            <span aria-hidden="true">→</span>
           </a>
-
         </div>
 
         {/* =====================================================
-            ARROWS
+            SLIDER CONTROLS
         ===================================================== */}
 
         <div className="blog-controls">
-
           <button
             type="button"
             className="blog-arrow"
@@ -79,9 +145,7 @@ export default function BlogSection({
           >
             →
           </button>
-
         </div>
-
       </div>
 
       {/* =====================================================
@@ -92,78 +156,120 @@ export default function BlogSection({
         ref={sliderRef}
         className="blog-slider"
       >
+        {/* -----------------------------------------------------
+            EMPTY STATE
+            -----------------------------------------------------
+            WordPress मधून कोणतेही posts आले नाहीत तर blank
+            section ठेवण्याऐवजी message दाखवतो.
+        ----------------------------------------------------- */}
 
-        {blogs.map((blog) => (
+        {blogs.length === 0 ? (
+          <div className="blog-empty">
+            <span>No blog posts available.</span>
+          </div>
+        ) : (
+          blogs.map((blog) => {
+            /* -------------------------------------------------
+               FEATURED IMAGE URL
+               ------------------------------------------------- */
 
-          <article
-            className="blog-card"
-            key={blog.id}
-          >
+            const imageUrl = blog.featuredImage?.sourceUrl
+              ? getImageUrl(
+                  blog.featuredImage.sourceUrl
+                )
+              : "";
 
-            <a
-              href={`/blog/${blog.slug}`}
-              className="blog-card-link"
-            >
+            return (
+              <article
+                className="blog-card"
+                key={blog.id}
+              >
+                <a
+                  href={`/blog/${blog.slug}`}
+                  className="blog-card-link"
+                >
+                  {/* =============================================
+                      FEATURED IMAGE
+                  ============================================= */}
 
-              {/* =================================================
-                  IMAGE
-              ================================================= */}
+                  <div className="blog-image-wrap">
+                    {imageUrl ? (
+                      <img
+                        src={imageUrl}
+                        alt={
+                          blog.featuredImage?.altText ||
+                          blog.title
+                        }
+                        className="blog-image"
+                        loading="lazy"
+                        onError={(event) => {
+                          /* ---------------------------------------
+                             Image load failed असल्यास broken image
+                             icon न दाखवता placeholder दाखवतो.
+                          --------------------------------------- */
 
-              <div className="blog-image-wrap">
+                          event.currentTarget.style.display =
+                            "none";
 
-                {blog.featuredImage ? (
-                  <img
-                    src={blog.featuredImage.sourceUrl}
-                    alt={
-                      blog.featuredImage.altText ||
-                      blog.title
-                    }
-                    className="blog-image"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="blog-image-placeholder">
-                    <span>Blog</span>
+                          const parent =
+                            event.currentTarget.parentElement;
+
+                          if (parent) {
+                            parent.classList.add(
+                              "blog-image-error"
+                            );
+                          }
+                        }}
+                      />
+                    ) : (
+                      /* -------------------------------------------
+                         NO FEATURED IMAGE
+                         ------------------------------------------- */
+
+                      <div className="blog-image-placeholder">
+                        <span>Blog</span>
+                      </div>
+                    )}
+
+                    {/* ---------------------------------------------
+                        IMAGE OVERLAY
+                    --------------------------------------------- */}
+
+                    <div className="blog-image-overlay" />
+
+                    {/* ---------------------------------------------
+                        BLOG CATEGORY
+                    --------------------------------------------- */}
+
+                    <span className="blog-category">
+                      Insights
+                    </span>
                   </div>
-                )}
 
-                <div className="blog-image-overlay" />
+                  {/* =============================================
+                      BLOG CONTENT
+                  ============================================= */}
 
-                <span className="blog-category">
-                  Insights
-                </span>
+                  <div className="blog-content">
+                    <span className="blog-read">
+                      READ ARTICLE
+                    </span>
 
-              </div>
+                    <h3>{blog.title}</h3>
 
-              {/* =================================================
-                  CONTENT
-              ================================================= */}
-
-              <div className="blog-content">
-
-                <span className="blog-read">
-                  READ ARTICLE
-                </span>
-
-                <h3>
-                  {blog.title}
-                </h3>
-
-                <span className="blog-explore">
-                  Explore
-                  <strong>→</strong>
-                </span>
-
-              </div>
-
-            </a>
-
-          </article>
-
-        ))}
-
+                    <span className="blog-explore">
+                      Explore
+                      <strong aria-hidden="true">
+                        →
+                      </strong>
+                    </span>
+                  </div>
+                </a>
+              </article>
+            );
+          })
+        )}
       </div>
-
     </section>
   );
 }

@@ -3,7 +3,15 @@
 import { useState } from "react";
 import "./industry-coverflow.css";
 
-const industries = [
+type Industry = {
+  id: number;
+  title: string;
+  slug: string;
+  image: string;
+  description: string;
+};
+
+const industries: Industry[] = [
   {
     id: 1,
     title: "Banking & Financial",
@@ -18,7 +26,7 @@ const industries = [
     slug: "fintech",
     image: "/images/industry/fintech.webp",
     description:
-      "Fintech demand speed, scalability, and resilience. Kinsfolk supports cloud-first, always-on operations with secure IT platforms.",
+      "Fintech demands speed, scalability, and resilience. Kinsfolk supports cloud-first, always-on operations with secure IT platforms.",
   },
   {
     id: 3,
@@ -88,12 +96,14 @@ export default function IndustryCoverflow() {
   };
 
   const openIndustry = (slug: string) => {
-    window.location.assign(`/industries/${slug}`);
+    window.location.href = `/industries/${slug}`;
   };
 
   return (
-    <section className="industry-coverflow-section">
-      {/* HEADER */}
+    <section
+      className="industry-coverflow-section"
+      aria-label="Industries"
+    >
       <div className="industry-coverflow-header">
         <span className="industry-eyebrow">
           INDUSTRIES
@@ -105,11 +115,11 @@ export default function IndustryCoverflow() {
         </h2>
 
         <p>
-          Where downtime gets reported and every security finding reaches the board.
+          Where downtime gets reported and every security finding reaches the
+          board.
         </p>
       </div>
 
-      {/* COVERFLOW */}
       <div className="industry-coverflow">
         <button
           type="button"
@@ -156,6 +166,7 @@ export default function IndustryCoverflow() {
                   <img
                     src={industry.image}
                     alt={industry.title}
+                    loading="lazy"
                   />
 
                   <div className="industry-image-overlay" />
@@ -178,7 +189,7 @@ export default function IndustryCoverflow() {
                     }}
                   >
                     Explore Industry
-                    <span>→</span>
+                    <span aria-hidden="true">→</span>
                   </a>
                 </div>
               </article>
@@ -196,13 +207,18 @@ export default function IndustryCoverflow() {
         </button>
       </div>
 
-      {/* DOTS */}
-      <div className="industry-dots">
+      <div
+        className="industry-dots"
+        aria-label="Industry navigation"
+      >
         {industries.map((industry, index) => (
           <button
             key={industry.id}
             type="button"
             aria-label={`Go to ${industry.title}`}
+            aria-current={
+              activeIndex === index ? "true" : undefined
+            }
             className={`industry-dot ${
               activeIndex === index ? "active" : ""
             }`}
@@ -211,14 +227,13 @@ export default function IndustryCoverflow() {
         ))}
       </div>
 
-      {/* MOBILE / TABLET TITLE */}
       <div className="industry-active-info">
         <span>
           {String(activeIndex + 1).padStart(2, "0")}
         </span>
 
         <strong>
-          {industries[activeIndex].title}
+          {industries[activeIndex]?.title}
         </strong>
       </div>
     </section>
