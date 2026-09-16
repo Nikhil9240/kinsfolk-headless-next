@@ -3,13 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { solutions } from "@/lib/solutions";
-import { getBlogPosts } from "@/lib/blog";
 import BlogSection from "@/components/BlogSection/BlogSection";
+import { getBlogPosts } from "@/lib/blog";
 import Solutions from "@/components/solutions/solution";
 import Services from "@/components/Services/Services";
+import OurOfferings from "@/components/OurOfferings/OurOfferings";
 
 import styles from "./page.module.css";
-
 
 // Dynamic route parameters for /solutions/[slug]
 type Props = {
@@ -17,7 +17,6 @@ type Props = {
     slug: string;
   }>;
 };
-
 
 // Client logos used by the trusted technology ecosystem slider.
 // This section remains common across all solution pages.
@@ -104,12 +103,10 @@ const partners = [
   },
 ];
 
-
 // Dynamic Hero Visual component.
 // The visual design stays the same for each solution type,
 // while the selected visual changes according to solution.heroVisual.
 function HeroVisual({ visual }: { visual?: string }) {
-
   // Agentic AI
   if (visual === "agentic-ai") {
     return (
@@ -154,7 +151,6 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
-
   // Generative AI
   if (visual === "gen-ai") {
     return (
@@ -187,7 +183,6 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
-
   // AI Service Management
   if (visual === "ai-service-management") {
     return (
@@ -211,7 +206,6 @@ function HeroVisual({ visual }: { visual?: string }) {
       </div>
     );
   }
-
 
   // AIOps
   if (visual === "aiops") {
@@ -241,7 +235,6 @@ function HeroVisual({ visual }: { visual?: string }) {
       </div>
     );
   }
-
 
   // AI Asset Management
   if (visual === "asset-management") {
@@ -274,7 +267,6 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
-
   // Hyper Automation
   if (visual === "hyper-automation") {
     return (
@@ -294,21 +286,12 @@ function HeroVisual({ visual }: { visual?: string }) {
           <strong>AUTOMATE</strong>
         </div>
 
-        <div className={styles.automationCardOne}>
-          Discover
-        </div>
-
-        <div className={styles.automationCardTwo}>
-          Orchestrate
-        </div>
-
-        <div className={styles.automationCardThree}>
-          Execute
-        </div>
+        <div className={styles.automationCardOne}>Discover</div>
+        <div className={styles.automationCardTwo}>Orchestrate</div>
+        <div className={styles.automationCardThree}>Execute</div>
       </div>
     );
   }
-
 
   // Enterprise Data Management
   if (visual === "data-management") {
@@ -330,7 +313,6 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
-
   // AI Security & Cyber Defense
   if (visual === "cyber-defense") {
     return (
@@ -345,21 +327,12 @@ function HeroVisual({ visual }: { visual?: string }) {
           <strong>DEFENSE</strong>
         </div>
 
-        <div className={styles.securityNodeOne}>
-          Detect
-        </div>
-
-        <div className={styles.securityNodeTwo}>
-          Protect
-        </div>
-
-        <div className={styles.securityNodeThree}>
-          Respond
-        </div>
+        <div className={styles.securityNodeOne}>Detect</div>
+        <div className={styles.securityNodeTwo}>Protect</div>
+        <div className={styles.securityNodeThree}>Respond</div>
       </div>
     );
   }
-
 
   // Cloud & Infrastructure
   if (visual === "cloud-infrastructure") {
@@ -377,9 +350,7 @@ function HeroVisual({ visual }: { visual?: string }) {
         </div>
 
         <div className={styles.customCloudCard}>
-          <div className={styles.cardIconBox}>
-            ☁️
-          </div>
+          <div className={styles.cardIconBox}>☁️</div>
 
           <div className={styles.cardTextBox}>
             <span>Scale</span>
@@ -410,7 +381,6 @@ function HeroVisual({ visual }: { visual?: string }) {
     );
   }
 
-
   // Generic fallback visual
   return (
     <div className={styles.heroVisual}>
@@ -425,42 +395,32 @@ function HeroVisual({ visual }: { visual?: string }) {
   );
 }
 
-
 // Main dynamic solution page.
 export default async function SolutionPage({ params }: Props) {
-
   // Read the dynamic [slug] value from the URL.
   const { slug } = await params;
 
   // Find the matching solution from the central solution data file.
-  const solution = solutions.find(
-    (item) => item.slug === slug
-  );
+  const solution = solutions.find((item) => item.slug === slug);
+  const blogs = await getBlogPosts(6);
 
   // Show Next.js 404 page when an invalid solution slug is requested.
   if (!solution) {
     notFound();
   }
 
-  // Fetch latest blog posts from WordPress.
-  const blogs = await getBlogPosts(6);
-
   return (
     <main className={styles.solutionPage}>
-
       {/* ======================================================
           HERO
       ====================================================== */}
-
       <section className={styles.hero}>
         <div className={styles.heroGlowOne} />
         <div className={styles.heroGlowTwo} />
 
         <div className={styles.container}>
           <div className={styles.heroGrid}>
-
             <div className={styles.heroContent}>
-
               <div className={styles.eyebrow}>
                 <span className={styles.eyebrowDot} />
                 {solution.heroEyebrow}
@@ -468,16 +428,10 @@ export default async function SolutionPage({ params }: Props) {
 
               <h1>{solution.title}</h1>
 
-              <p className={styles.heroText}>
-                {solution.heroText}
-              </p>
+              <p className={styles.heroText}>{solution.heroText}</p>
 
               <div className={styles.heroButtons}>
-
-                <Link
-                  href="/contact"
-                  className={styles.primaryButton}
-                >
+                <Link href="/contact" className={styles.primaryButton}>
                   {solution.primaryButtonLabel}
                   <span>→</span>
                 </Link>
@@ -489,28 +443,20 @@ export default async function SolutionPage({ params }: Props) {
                   {solution.secondaryButtonLabel}
                   <span>↓</span>
                 </Link>
-
               </div>
-
             </div>
 
             <HeroVisual visual={solution.heroVisual} />
-
           </div>
         </div>
       </section>
 
-
       {/* ======================================================
           TRUSTED TECHNOLOGY ECOSYSTEM
       ====================================================== */}
-
       <section className={styles.trustedSection}>
-
         <div className={styles.container}>
-
           <div className={styles.trustedHeader}>
-
             <div className={styles.sectionLabel}>
               TRUSTED TECHNOLOGY ECOSYSTEM
             </div>
@@ -518,347 +464,190 @@ export default async function SolutionPage({ params }: Props) {
             <p>
               Trusted by India&apos;s leading banks, insurers and enterprises
             </p>
-
           </div>
-
         </div>
-
 
         <div className={styles.partnerSlider}>
-
           <div className={styles.partnerTrack}>
-
-            {[...partners, ...partners].map(
-              (partner, index) => (
-                <div
-                  className={styles.partnerLogo}
-                  key={`${partner.name}-${index}`}
-                >
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    width={160}
-                    height={70}
-                  />
-                </div>
-              )
-            )}
-
+            {[...partners, ...partners].map((partner, index) => (
+              <div
+                className={styles.partnerLogo}
+                key={`${partner.name}-${index}`}
+              >
+                <Image
+                  src={partner.image}
+                  alt={partner.name}
+                  width={160}
+                  height={70}
+                />
+              </div>
+            ))}
           </div>
-
         </div>
-
       </section>
-
 
       {/* ======================================================
           SOLUTION OVERVIEW
       ====================================================== */}
-
       <section className={styles.positioning}>
-
         <div className={styles.container}>
-
           <div className={styles.positioningGrid}>
-
             <div>
-
               <div className={styles.sectionLabel}>
                 {solution.overview.label}
               </div>
 
               <h2>{solution.overview.title}</h2>
-
             </div>
 
-
             <div className={styles.positioningContent}>
-
               <p className={styles.leadText}>
                 {solution.overview.lead}
               </p>
 
-              <p>
-                {solution.overview.body}
-              </p>
-
+              <p>{solution.overview.body}</p>
             </div>
-
           </div>
 
-
           {/* Dynamic four proof points */}
-
           <div className={styles.proofGrid}>
-
             {solution.proofPoints.map((item) => (
-              <article
-                className={styles.proofCard}
-                key={item.number}
-              >
+              <article className={styles.proofCard} key={item.number}>
                 <span>{item.number}</span>
-
                 <p>{item.text}</p>
               </article>
             ))}
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* ======================================================
           OUR EXPERTISE
       ====================================================== */}
-
       <section className={styles.expertiseSection}>
+          <div className={styles.container}>
+            <div className={styles.sectionTop}>
+              <div>
+                <div className={styles.sectionLabel}>
+                  {solution.expertise.label}
+                </div>
 
-        <div className={styles.container}>
-
-          <div className={styles.sectionTop}>
-
-            <div>
-
-              <div className={styles.sectionLabel}>
-                {solution.expertise.label}
+                <h2>{solution.expertise.title}</h2>
               </div>
 
-              <h2>{solution.expertise.title}</h2>
-
+              <p>{solution.expertise.intro}</p>
             </div>
 
-            <p>
-              {solution.expertise.intro}
-            </p>
+            <div className={styles.expertiseGrid}>
+              {solution.expertise.items.map((item) => (
+                <article
+                  className={styles.expertiseCard}
+                  key={`${solution.slug}-${item.number}`}
+                >
+                  <div className={styles.cardTop}>
+                    <div className={styles.expertiseLogo}>
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        width={120}
+                        height={60}
+                      />
+                    </div>
 
-          </div>
-
-
-          <div className={styles.expertiseGrid}>
-
-            {solution.expertise.items.map((item) => (
-
-              <article
-                className={styles.expertiseCard}
-                key={`${solution.slug}-${item.number}`}
-              >
-
-                <div className={styles.cardTop}>
-
-                  <div className={styles.expertiseLogo}>
-
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      width={120}
-                      height={60}
-                    />
-
+                    <span className={styles.cardNumber}>
+                      {item.number}
+                    </span>
                   </div>
 
-                  <span className={styles.cardNumber}>
-                    {item.number}
-                  </span>
+                  <div className={styles.cardContent}>
+                    <h3>{item.name}</h3>
 
-                </div>
+                    <p>{item.description}</p>
 
-
-                <div className={styles.cardContent}>
-
-                  <h3>{item.name}</h3>
-
-                  <p>
-                    {item.description}
-                  </p>
-
-
-                  <div className={styles.tags}>
-
-                    {item.tags.map((tag) => (
-                      <span key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-
+                    <div className={styles.tags}>
+                      {item.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
                   </div>
 
-                </div>
-
-
-                <div className={styles.cardFooter}>
-
-                  <Link
-                    href={item.href}
-                    className={styles.expertiseButton}
-                  >
-                    Explore Solution
-                    <span>→</span>
-                  </Link>
-
-                </div>
-
-              </article>
-
-            ))}
-
+                  <div className={styles.cardFooter}>
+                    <Link
+                      href={item.href}
+                      className={styles.expertiseButton}
+                    >
+                      Explore Solution
+                      <span>→</span>
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-
-        </div>
-
-      </section>
-
+        </section>
 
       {/* ======================================================
           OFFERINGS
+          ------------------------------------------------------
+          Dynamic offering component.
+          Data comes directly from solution.ts / solutions data.
       ====================================================== */}
-
-      {solution.offerings.items.length > 0 && (
-
-        <section
-          id="offerings"
-          className={styles.offeringsSection}
-        >
-
-          <div className={styles.container}>
-
-            <div className={styles.sectionTop}>
-
-              <div>
-
-                <div className={styles.sectionLabel}>
-                  {solution.offerings.label}
-                </div>
-
-                <h2>
-                  {solution.offerings.title}
-                </h2>
-
-              </div>
-
-              <p>
-                {solution.offerings.intro}
-              </p>
-
-            </div>
-
-
-            <div className={styles.offeringsGrid}>
-
-              {solution.offerings.items.map((item) => (
-
-                <article
-                  className={styles.offeringCard}
-                  key={`${solution.slug}-${item.number}`}
-                >
-
-                  <span className={styles.offeringNumber}>
-                    {item.number}
-                  </span>
-
-                  <h3>
-                    {item.title}
-                  </h3>
-
-                  <p>
-                    {item.description}
-                  </p>
-
-                  <div className={styles.offeringLine} />
-
-                </article>
-
-              ))}
-
-            </div>
-
-          </div>
-
-        </section>
-
+      {Array.isArray(solution.offerings?.items) && solution.offerings.items.length > 0 && (
+        <OurOfferings
+          eyebrow={solution.offerings.label}
+          title={solution.offerings.title}
+          description={solution.offerings.intro}
+          offerings={solution.offerings.items}
+        />
       )}
-
 
       {/* ======================================================
           SERVICES
       ====================================================== */}
-
       <div className={styles.servicesWrapper}>
         <Services />
       </div>
 
-
       {/* ======================================================
           RELATED SOLUTIONS + BLOG
       ====================================================== */}
-
       <section className={styles.relatedSection}>
-
         <div className={styles.container}>
-
           <div className={styles.solutionsWrapper}>
             <Solutions />
           </div>
-
         </div>
-
 
         <div className={styles.BlogWrapper}>
-
-          {/* WordPress Blog Posts */}
-
-          <BlogSection blogs={blogs} />
-
-        </div>
-
+  <BlogSection blogs={blogs} />
+</div>
       </section>
-
 
       {/* ======================================================
           FINAL CTA
       ====================================================== */}
-
       <section className={styles.ctaSection}>
-
         <div className={styles.container}>
-
           <div className={styles.ctaBox}>
-
             <div className={styles.ctaGlow} />
 
-
             <div className={styles.ctaContent}>
-
               <div className={styles.sectionLabel}>
                 {solution.cta.label}
               </div>
 
-              <h2>
-                {solution.cta.title}
-              </h2>
+              <h2>{solution.cta.title}</h2>
 
-              <p>
-                {solution.cta.body}
-              </p>
-
+              <p>{solution.cta.body}</p>
             </div>
 
-
-            <Link
-              href="/contact"
-              className={styles.ctaButton}
-            >
+            <Link href="/contact" className={styles.ctaButton}>
               Book a Discovery Call
               <span>→</span>
             </Link>
-
           </div>
-
         </div>
-
       </section>
-
     </main>
   );
 }

@@ -1,0 +1,1447 @@
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+.servicesPage {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  color: #10243e;
+}
+
+.servicesContainer {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   COMMON
+========================================================= */
+
+.sectionEyebrow,
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #1f527c;
+}
+
+.eyebrowDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff6b2c;
+}
+
+.sectionHeading {
+  max-width: 780px;
+}
+
+.sectionHeading.centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.sectionHeading h2 {
+  margin: 16px 0 20px;
+
+  font-size: clamp(36px, 4.5vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+
+  color: #10243e;
+}
+
+.sectionHeading p {
+  margin: 0;
+
+  max-width: 720px;
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  color: #66788c;
+}
+
+.centered p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primaryButton,
+.secondaryButton,
+.outlineButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  min-height: 54px;
+  padding: 0 26px;
+
+  border-radius: 100px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.primaryButton {
+  background: #174f7d;
+  color: #ffffff;
+
+  box-shadow: 0 15px 35px rgba(23, 79, 125, 0.18);
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(23, 79, 125, 0.25);
+}
+
+.secondaryButton {
+  border: 1px solid #d6e0e8;
+  background: #ffffff;
+  color: #174f7d;
+}
+
+.secondaryButton:hover {
+  transform: translateY(-3px);
+  border-color: #174f7d;
+}
+
+.outlineButton {
+  border: 1px solid #174f7d;
+  color: #174f7d;
+  background: transparent;
+}
+
+.outlineButton:hover {
+  background: #174f7d;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.servicesHero {
+  position: relative;
+
+  min-height: 700px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 120px 0 100px;
+
+  background:
+    radial-gradient(
+      circle at 85% 40%,
+      rgba(40, 137, 194, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f7fbfe 100%
+    );
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.heroContent h1 {
+  max-width: 720px;
+
+  margin: 22px 0 25px;
+
+  font-size: clamp(46px, 6vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+
+  font-weight: 700;
+
+  color: #10243e;
+}
+
+.heroContent p {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size: 19px;
+  line-height: 1.7;
+
+  color: #66788c;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  margin-top: 34px;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.heroVisual {
+  position: relative;
+
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroMainCard {
+  position: relative;
+  z-index: 3;
+
+  width: 310px;
+  min-height: 350px;
+
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #1a527f,
+      #2d759e
+    );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 35px 80px rgba(22, 70, 105, 0.25);
+}
+
+.heroCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.heroCardTop span:first-child {
+  color: #ff7a35;
+}
+
+.heroCardIcon {
+  width: 75px;
+  height: 75px;
+
+  margin-top: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  font-size: 36px;
+}
+
+.heroMainCard h3 {
+  margin: 25px 0 10px;
+
+  font-size: 32px;
+  line-height: 1;
+}
+
+.heroMainCard p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.heroRing {
+  position: absolute;
+
+  border: 1px solid rgba(28, 91, 130, 0.18);
+
+  border-radius: 50%;
+}
+
+.ringOne {
+  width: 470px;
+  height: 470px;
+}
+
+.ringTwo {
+  width: 350px;
+  height: 350px;
+}
+
+.heroMiniCard {
+  position: absolute;
+  z-index: 4;
+
+  min-width: 150px;
+
+  padding: 18px 20px;
+
+  border: 1px solid #dce6ee;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow: 0 20px 50px rgba(16, 36, 62, 0.12);
+}
+
+.heroMiniCard span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #ff6b2c;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.heroMiniCard strong {
+  color: #10243e;
+
+  font-size: 18px;
+}
+
+.heroMiniOne {
+  top: 55px;
+  left: 20px;
+}
+
+.heroMiniTwo {
+  right: 0;
+  bottom: 60px;
+}
+
+.heroOrb {
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.heroOrbOne {
+  width: 22px;
+  height: 22px;
+
+  top: 40px;
+  right: 80px;
+
+  background: #1f668f;
+}
+
+.heroOrbTwo {
+  width: 42px;
+  height: 42px;
+
+  bottom: 35px;
+  left: 70px;
+
+  background: #ff762b;
+}
+
+
+/* =========================================================
+   TRUST
+========================================================= */
+
+.trustSection {
+  padding: 100px 0;
+
+  background: #f8fafc;
+
+  border-top: 1px solid #edf1f4;
+  border-bottom: 1px solid #edf1f4;
+}
+
+.trustLogos {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  gap: 16px;
+
+  margin-top: 55px;
+}
+
+.trustLogo {
+  min-height: 105px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  border: 1px solid #e1e8ee;
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.trustLogo:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 15px 35px rgba(16, 36, 62, 0.08);
+}
+
+.trustLogo img {
+  width: auto;
+  max-width: 120px;
+  height: 45px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.servicesSection {
+  padding: 125px 0;
+}
+
+.serviceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 22px;
+
+  margin-top: 65px;
+}
+
+.serviceCard {
+  position: relative;
+
+  overflow: hidden;
+
+  border: 1px solid #e4e9ee;
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  box-shadow: 0 12px 40px rgba(16, 36, 62, 0.045);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.serviceCard:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 25px 55px rgba(16, 36, 62, 0.11);
+}
+
+.serviceCardTop {
+  position: absolute;
+  z-index: 2;
+
+  top: 20px;
+  left: 20px;
+  right: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.serviceNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #ff6b2c;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.serviceArrow {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #10243e;
+
+  font-size: 20px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.serviceImage {
+  width: 100%;
+  height: 240px;
+
+  overflow: hidden;
+
+  background: #f1f5f8;
+}
+
+.serviceImage img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.serviceCard:hover .serviceImage img {
+  transform: scale(1.04);
+}
+
+.serviceCardBody {
+  padding: 30px;
+}
+
+.serviceCardBody h3 {
+  margin: 0 0 14px;
+
+  font-size: 25px;
+  line-height: 1.2;
+
+  color: #10243e;
+}
+
+.serviceCardBody p {
+  min-height: 82px;
+
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.65;
+
+  color: #697b8e;
+}
+
+.serviceLink,
+.blogLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 24px;
+
+  color: #174f7d;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.serviceLink span,
+.blogLink span {
+  transition: transform 0.2s ease;
+}
+
+.serviceLink:hover span,
+.blogLink:hover span {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+
+.solutionsSection {
+  padding: 0 0 125px;
+}
+
+.solutionsBox {
+  position: relative;
+
+  min-height: 450px;
+
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: center;
+
+  overflow: hidden;
+
+  padding: 70px;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(255, 255, 255, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #123f66,
+      #1c658e
+    );
+
+  color: #ffffff;
+}
+
+.solutionsContent {
+  position: relative;
+  z-index: 2;
+}
+
+.solutionsContent .sectionEyebrow {
+  color: #ff9a68;
+}
+
+.solutionsContent h2 {
+  max-width: 650px;
+
+  margin: 18px 0;
+
+  font-size: clamp(35px, 4vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+
+  color: #ffffff;
+}
+
+.solutionsContent p {
+  max-width: 620px;
+
+  margin: 0 0 30px;
+
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.solutionsContent .primaryButton {
+  background: #ffffff;
+  color: #174f7d;
+
+  box-shadow: none;
+}
+
+.solutionsVisual {
+  position: relative;
+
+  min-height: 350px;
+}
+
+.solutionCircle {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.circleLarge {
+  width: 300px;
+  height: 300px;
+
+  top: 25px;
+  right: 0;
+}
+
+.circleMedium {
+  width: 210px;
+  height: 210px;
+
+  top: 70px;
+  right: 45px;
+}
+
+.circleSmall {
+  width: 125px;
+  height: 125px;
+
+  top: 112px;
+  right: 88px;
+
+  background: #ff6b2c;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   WHY KINSFOLK
+========================================================= */
+
+.whySection {
+  padding: 125px 0;
+
+  background: #f7fafc;
+}
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-top: 60px;
+}
+
+.whyCard {
+  position: relative;
+
+  min-height: 290px;
+
+  padding: 30px;
+
+  border: 1px solid #e1e8ee;
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.whyCard:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 20px 45px rgba(16, 36, 62, 0.08);
+}
+
+.whyTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 50px;
+}
+
+.whyNumber {
+  color: #ff6b2c;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.whyArrow {
+  color: #9aa8b5;
+
+  font-size: 22px;
+}
+
+.whyCard h3 {
+  margin: 0 0 14px;
+
+  font-size: 22px;
+  line-height: 1.25;
+
+  color: #10243e;
+}
+
+.whyCard p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.7;
+
+  color: #6b7c8e;
+}
+
+
+/* =========================================================
+   BLOG
+========================================================= */
+
+.blogSection {
+  padding: 125px 0;
+}
+
+.blogHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.blogHeader h2 {
+  margin: 14px 0 0;
+
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+
+  color: #10243e;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+
+  margin-top: 55px;
+}
+
+.blogCard {
+  overflow: hidden;
+
+  border: 1px solid #e3e8ed;
+  border-radius: 20px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.blogCard:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 20px 45px rgba(16, 36, 62, 0.08);
+}
+
+.blogImage {
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+
+  background: #eef2f5;
+}
+
+.blogImage img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.blogCard:hover .blogImage img {
+  transform: scale(1.04);
+}
+
+.blogBody {
+  padding: 28px;
+}
+
+.blogDate {
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: #ff6b2c;
+}
+
+.blogBody h3 {
+  margin: 14px 0 0;
+
+  font-size: 22px;
+  line-height: 1.3;
+
+  color: #10243e;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.servicesCta {
+  padding: 0 0 125px;
+}
+
+.ctaBox {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 85px 40px;
+
+  border-radius: 30px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 107, 44, 0.16),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f2f8fc,
+      #ffffff
+    );
+
+  border: 1px solid #dce7ee;
+}
+
+.ctaBox .sectionEyebrow {
+  color: #ff6b2c;
+}
+
+.ctaBox h2 {
+  max-width: 800px;
+
+  margin: 16px auto;
+
+  font-size: clamp(38px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+
+  color: #10243e;
+}
+
+.ctaBox p {
+  max-width: 650px;
+
+  margin: 0 auto 30px;
+
+  font-size: 17px;
+  line-height: 1.7;
+
+  color: #697b8e;
+}
+
+.ctaButton {
+  margin-top: 5px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .servicesContainer {
+    width: min(900px, calc(100% - 40px));
+  }
+
+  .servicesHero {
+    padding: 100px 0 80px;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 35px;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(44px, 6vw, 62px);
+  }
+
+  .heroVisual {
+    min-height: 420px;
+  }
+
+  .heroMainCard {
+    width: 270px;
+    min-height: 320px;
+  }
+
+  .heroMiniOne {
+    left: -5px;
+  }
+
+  .heroMiniTwo {
+    right: -5px;
+  }
+
+  .trustLogos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .serviceGrid {
+    gap: 18px;
+  }
+
+  .serviceCardBody {
+    padding: 25px;
+  }
+
+  .whyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .blogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .blogCard:last-child {
+    display: none;
+  }
+
+  .solutionsBox {
+    padding: 55px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+  .servicesContainer {
+    width: min(100% - 36px, 600px);
+  }
+
+  .sectionEyebrow,
+  .eyebrow {
+    font-size: 11px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 35px;
+    line-height: 1.08;
+  }
+
+  .sectionHeading p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+
+  /* HERO */
+
+  .servicesHero {
+    min-height: auto;
+
+    padding: 100px 0 65px;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .heroContent h1 {
+    margin-top: 18px;
+
+    font-size: clamp(39px, 11vw, 54px);
+    line-height: 1;
+  }
+
+  .heroContent p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .heroActions {
+    align-items: stretch;
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .primaryButton,
+  .secondaryButton,
+  .outlineButton {
+    width: 100%;
+
+    min-height: 52px;
+  }
+
+  .heroVisual {
+    min-height: 390px;
+  }
+
+  .heroMainCard {
+    width: 250px;
+    min-height: 300px;
+
+    padding: 24px;
+  }
+
+  .heroCardIcon {
+    margin-top: 50px;
+  }
+
+  .heroMiniCard {
+    min-width: 120px;
+
+    padding: 14px;
+  }
+
+  .heroMiniOne {
+    top: 35px;
+    left: 0;
+  }
+
+  .heroMiniTwo {
+    right: 0;
+    bottom: 35px;
+  }
+
+  .ringOne {
+    width: 350px;
+    height: 350px;
+  }
+
+  .ringTwo {
+    width: 270px;
+    height: 270px;
+  }
+
+
+  /* TRUST */
+
+  .trustSection {
+    padding: 70px 0;
+  }
+
+  .trustLogos {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 35px;
+  }
+
+  .trustLogo {
+    min-height: 85px;
+  }
+
+
+  /* SERVICES */
+
+  .servicesSection {
+    padding: 80px 0;
+  }
+
+  .serviceGrid {
+    grid-template-columns: 1fr;
+
+    margin-top: 40px;
+  }
+
+  .serviceImage {
+    height: 210px;
+  }
+
+  .serviceCardBody h3 {
+    font-size: 22px;
+  }
+
+  .serviceCardBody p {
+    min-height: auto;
+
+    font-size: 15px;
+  }
+
+
+  /* SOLUTIONS */
+
+  .solutionsSection {
+    padding-bottom: 80px;
+  }
+
+  .solutionsBox {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+
+    padding: 45px 28px;
+
+    border-radius: 24px;
+  }
+
+  .solutionsContent h2 {
+    font-size: 35px;
+  }
+
+  .solutionsContent p {
+    font-size: 15px;
+  }
+
+  .solutionsVisual {
+    min-height: 280px;
+
+    margin-top: 20px;
+  }
+
+  .circleLarge {
+    width: 250px;
+    height: 250px;
+
+    right: 50%;
+
+    transform: translateX(50%);
+  }
+
+  .circleMedium {
+    width: 175px;
+    height: 175px;
+
+    right: 50%;
+
+    transform: translateX(50%);
+  }
+
+  .circleSmall {
+    width: 105px;
+    height: 105px;
+
+    right: 50%;
+
+    transform: translateX(50%);
+  }
+
+
+  /* WHY */
+
+  .whySection {
+    padding: 80px 0;
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr;
+
+    margin-top: 40px;
+  }
+
+  .whyCard {
+    min-height: auto;
+
+    padding: 25px;
+  }
+
+  .whyTop {
+    margin-bottom: 35px;
+  }
+
+
+  /* BLOG */
+
+  .blogSection {
+    padding: 80px 0;
+  }
+
+  .blogHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .blogHeader h2 {
+    font-size: 35px;
+  }
+
+  .blogHeader .outlineButton {
+    width: auto;
+  }
+
+  .blogGrid {
+    grid-template-columns: 1fr;
+
+    margin-top: 35px;
+  }
+
+  .blogCard:last-child {
+    display: block;
+  }
+
+  .blogImage {
+    height: 200px;
+  }
+
+
+  /* CTA */
+
+  .servicesCta {
+    padding-bottom: 70px;
+  }
+
+  .ctaBox {
+    padding: 55px 22px;
+
+    border-radius: 24px;
+  }
+
+  .ctaBox h2 {
+    font-size: 37px;
+  }
+
+  .ctaBox p {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .servicesContainer {
+    width: calc(100% - 30px);
+  }
+
+  .servicesHero {
+    padding-top: 90px;
+  }
+
+  .heroContent h1 {
+    font-size: 38px;
+  }
+
+  .heroVisual {
+    min-height: 340px;
+  }
+
+  .heroMainCard {
+    width: 215px;
+    min-height: 270px;
+  }
+
+  .heroMainCard h3 {
+    font-size: 27px;
+  }
+
+  .heroMiniCard {
+    min-width: 100px;
+  }
+
+  .heroMiniCard strong {
+    font-size: 14px;
+  }
+
+  .ringOne {
+    width: 300px;
+    height: 300px;
+  }
+
+  .ringTwo {
+    width: 220px;
+    height: 220px;
+  }
+
+  .trustLogos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trustLogo img {
+    max-width: 90px;
+    height: 38px;
+  }
+
+  .serviceImage {
+    height: 190px;
+  }
+
+  .serviceCardBody {
+    padding: 22px;
+  }
+
+  .serviceCardBody h3 {
+    font-size: 20px;
+  }
+
+  .solutionsBox {
+    padding: 38px 22px;
+  }
+
+  .solutionsContent h2 {
+    font-size: 32px;
+  }
+
+  .whyCard h3 {
+    font-size: 20px;
+  }
+
+  .blogBody {
+    padding: 22px;
+  }
+
+  .blogBody h3 {
+    font-size: 20px;
+  }
+
+  .ctaBox {
+    padding: 45px 20px;
+  }
+
+  .ctaBox h2 {
+    font-size: 32px;
+  }
+}

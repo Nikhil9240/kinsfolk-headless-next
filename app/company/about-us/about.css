@@ -1,0 +1,1252 @@
+/* =========================================================
+   ABOUT US — HERO ONLY
+   File: about.css
+
+   IMAGE PATH:
+   /public/images-about/
+
+   IMPORTANT:
+   This is GLOBAL CSS.
+   page.tsx uses:
+   import "./about.css";
+
+   DO NOT use:
+   styles.aboutPage
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+.aboutPage {
+  width: 100%;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background: #ffffff;
+
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.aboutPage *,
+.aboutPage *::before,
+.aboutPage *::after {
+  box-sizing: border-box;
+}
+
+.aboutPage button {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.aboutHero {
+  position: relative;
+
+  width: 100%;
+  min-height: 760px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  background: #061335;
+}
+
+
+/* =========================================================
+   HERO BACKGROUND IMAGE
+========================================================= */
+
+.aboutHeroBackground {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  opacity: 0;
+
+  transform: scale(1.04);
+
+  transition:
+    opacity 0.8s ease,
+    transform 5s ease;
+}
+
+
+/* Active slide */
+
+.aboutHeroBackground.active {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+
+/* =========================================================
+   HERO OVERLAY
+   ---------------------------------------------------------
+   Color palette intentionally unchanged.
+========================================================= */
+
+.aboutHeroOverlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6, 19, 53, 0.88) 0%,
+      rgba(6, 19, 53, 0.70) 30%,
+      rgba(6, 19, 53, 0.42) 55%,
+      rgba(6, 19, 53, 0.15) 78%,
+      rgba(6, 19, 53, 0.05) 100%
+    );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.aboutHeroContent {
+  position: relative;
+
+  z-index: 3;
+
+  width: min(1180px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  padding: 150px 0 160px;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.aboutEyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 24px;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.aboutEyebrow::before {
+  content: "";
+
+  width: 30px;
+  height: 2px;
+
+  flex-shrink: 0;
+
+  background: #0dc78a;
+}
+
+
+/* =========================================================
+   HERO HEADING
+   ---------------------------------------------------------
+   EXACTLY 2 LINES
+========================================================= */
+
+.aboutHeroContent h1 {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(48px, 6vw, 82px);
+
+  line-height: 1.04;
+
+  letter-spacing: -3.5px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   HERO PARAGRAPH
+========================================================= */
+
+.aboutHeroContent p {
+  max-width: 620px;
+
+  margin: 28px 0 0;
+
+  color: rgba(255, 255, 255, 0.90);
+
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   SLIDER ARROWS
+========================================================= */
+
+.aboutHeroArrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 5;
+
+  width: 52px;
+  height: 52px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  color: #ffffff;
+
+  background: rgba(6, 19, 53, 0.45);
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(8px);
+
+  cursor: pointer;
+
+  font-size: 21px;
+
+  line-height: 1;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.aboutHeroArrow:hover {
+  background: #061f55;
+
+  border-color: #ffffff;
+
+  transform: translateY(-50%) scale(1.06);
+}
+
+.aboutHeroArrow:focus-visible {
+  outline: 3px solid #0dc78a;
+
+  outline-offset: 3px;
+}
+
+
+/* Left */
+
+.aboutHeroArrowLeft {
+  left: 28px;
+}
+
+
+/* Right */
+
+.aboutHeroArrowRight {
+  right: 28px;
+}
+
+
+/* =========================================================
+   SLIDER DOTS
+========================================================= */
+
+.aboutHeroDots {
+  position: absolute;
+
+  left: max(24px, calc((100% - 1180px) / 2));
+
+  bottom: 45px;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.aboutHeroDot {
+  width: 25px;
+  height: 3px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.40);
+
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.aboutHeroDot.active {
+  width: 52px;
+
+  background: #0dc78a;
+}
+
+.aboutHeroDot:focus-visible {
+  outline: 2px solid #ffffff;
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .aboutHero {
+    min-height: 680px;
+  }
+
+  .aboutHeroContent {
+    width: calc(100% - 100px);
+
+    padding: 125px 0 145px;
+  }
+
+  .aboutHeroContent h1 {
+    font-size: clamp(46px, 7vw, 70px);
+
+    letter-spacing: -2.8px;
+  }
+
+  .aboutHeroContent p {
+    max-width: 560px;
+
+    font-size: 17px;
+  }
+
+  .aboutHeroArrowLeft {
+    left: 18px;
+  }
+
+  .aboutHeroArrowRight {
+    right: 18px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / SMALL
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .aboutHero {
+    min-height: 650px;
+
+    align-items: flex-end;
+  }
+
+
+  /* Mobile-friendly overlay */
+
+  .aboutHeroOverlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6, 19, 53, 0.15) 0%,
+        rgba(6, 19, 53, 0.42) 35%,
+        rgba(6, 19, 53, 0.91) 100%
+      );
+  }
+
+
+  .aboutHeroBackground {
+    background-position: center center;
+  }
+
+
+  .aboutHeroContent {
+    width: calc(100% - 80px);
+
+    padding: 80px 0 125px;
+  }
+
+
+  .aboutEyebrow {
+    margin-bottom: 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 2.4px;
+  }
+
+  .aboutEyebrow::before {
+    width: 23px;
+  }
+
+
+  /* Still exactly 2 lines */
+
+  .aboutHeroContent h1 {
+    max-width: 620px;
+
+    font-size: clamp(42px, 8vw, 60px);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+  }
+
+
+  .aboutHeroContent p {
+    max-width: 540px;
+
+    margin-top: 20px;
+
+    font-size: 15px;
+
+    line-height: 1.65;
+  }
+
+
+  /* Arrows */
+
+  .aboutHeroArrow {
+    width: 44px;
+    height: 44px;
+
+    font-size: 18px;
+  }
+
+  .aboutHeroArrowLeft {
+    left: 12px;
+  }
+
+  .aboutHeroArrowRight {
+    right: 12px;
+  }
+
+
+  /* Dots */
+
+  .aboutHeroDots {
+    left: 40px;
+
+    bottom: 38px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .aboutHero {
+    min-height: 620px;
+  }
+
+
+  .aboutHeroContent {
+    width: calc(100% - 40px);
+
+    padding: 70px 0 115px;
+  }
+
+
+  .aboutEyebrow {
+    margin-bottom: 16px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  /*
+    IMPORTANT:
+    Explicit 2-line heading.
+  */
+
+  .aboutHeroContent h1 {
+    font-size: 40px;
+
+    line-height: 1.06;
+
+    letter-spacing: -1.6px;
+  }
+
+
+  .aboutHeroContent p {
+    margin-top: 18px;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+
+  /* Smaller arrows */
+
+  .aboutHeroArrow {
+    width: 38px;
+    height: 38px;
+
+    font-size: 15px;
+  }
+
+  .aboutHeroArrowLeft {
+    left: 7px;
+  }
+
+  .aboutHeroArrowRight {
+    right: 7px;
+  }
+
+
+  /* Dots */
+
+  .aboutHeroDots {
+    left: 20px;
+
+    bottom: 35px;
+
+    gap: 6px;
+  }
+
+  .aboutHeroDot {
+    width: 18px;
+  }
+
+  .aboutHeroDot.active {
+    width: 38px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .aboutHero {
+    min-height: 600px;
+  }
+
+  .aboutHeroContent {
+    width: calc(100% - 32px);
+
+    padding-bottom: 105px;
+  }
+
+  .aboutHeroContent h1 {
+    font-size: 35px;
+
+    letter-spacing: -1.3px;
+  }
+
+  .aboutHeroContent p {
+    font-size: 12px;
+  }
+
+  .aboutHeroArrow {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .aboutHeroBackground {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+
+  .aboutHeroBackground.active {
+    transform: none;
+  }
+
+  .aboutHeroArrow,
+  .aboutHeroDot {
+    transition: none;
+  }
+}
+/* =========================================================
+   RESET & BASE
+========================================================= */
+
+.aboutPage {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+  font-family: "Poppins", 'Plus Jakarta Sans', Arial, sans-serif;
+}
+
+.aboutPage *,
+.aboutPage *::before,
+.aboutPage *::after {
+  box-sizing: border-box;
+}
+
+.aboutPage button {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   1. HERO SECTION (DARK BACKGROUND)
+========================================================= */
+
+.aboutHero {
+  position: relative;
+  width: 100%;
+  min-height: 760px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background: #061335;
+}
+
+.aboutHeroBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.8s ease, transform 5s ease;
+}
+
+.aboutHeroBackground.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.aboutHeroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 19, 53, 0.88) 0%,
+    rgba(6, 19, 53, 0.70) 30%,
+    rgba(6, 19, 53, 0.42) 55%,
+    rgba(6, 19, 53, 0.15) 78%,
+    rgba(6, 19, 53, 0.05) 100%
+  );
+}
+
+.aboutHeroContent {
+  position: relative;
+  z-index: 3;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 150px 0 160px;
+}
+
+.aboutEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.aboutEyebrow::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #0dc78a;
+}
+
+.aboutHeroContent h1 {
+  max-width: 760px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 1.04;
+  letter-spacing: -3.5px;
+  font-weight: 700;
+}
+
+.aboutHeroContent p {
+  max-width: 620px;
+  margin: 28px 0 0;
+  color: rgba(255, 255, 255, 0.90);
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Hero Controls */
+.aboutHeroArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(6, 19, 53, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: 21px;
+  line-height: 1;
+  transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.aboutHeroArrow:hover {
+  background: #061f55;
+  border-color: #ffffff;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.aboutHeroArrowLeft { left: 28px; }
+.aboutHeroArrowRight { right: 28px; }
+
+.aboutHeroDots {
+  position: absolute;
+  left: max(24px, calc((100% - 1180px) / 2));
+  bottom: 45px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aboutHeroDot {
+  width: 25px;
+  height: 3px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.40);
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.aboutHeroDot.active {
+  width: 52px;
+  background: #0dc78a;
+}
+
+
+/* =========================================================
+   2. WORKPLACE INTRODUCTION SECTION (THE WHITE LAYOUT)
+========================================================= */
+
+.about-intro {
+  position: relative;
+  width: 100%;
+  padding: 120px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: min(1320px, calc(100% - 64px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Left Content & Typography --- */
+.about-content {
+  max-width: 580px;
+}
+
+.about-content .about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.about-content .about-eyebrow span {
+  width: 45px;
+  height: 2px;
+  background: linear-gradient(90deg, #34d399 0%, #3b82f6 100%);
+}
+
+.about-content .about-eyebrow p {
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-content h1 {
+  font-size: clamp(42px, 5vw, 68px);
+  line-height: 1.1;
+  font-weight: 800;
+  color: #0b192c;
+  letter-spacing: -1.5px;
+  margin: 0 0 24px 0;
+}
+
+.about-content h1 em {
+  font-style: normal;
+  color: #3b82f6;
+  position: relative;
+  display: inline-block;
+}
+
+.about-content h1 em::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: #a7f3d0; /* Mint swoosh underline */
+  border-radius: 4px;
+  z-index: -1;
+}
+
+.about-description {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #64748b;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.about-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.about-primary-btn {
+  background-color: #0b192c;
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+}
+
+.about-primary-btn:hover {
+  background-color: #1e293b;
+  transform: translateY(-2px);
+}
+
+.about-secondary-link {
+  color: #0b192c;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  position: relative;
+}
+
+.about-secondary-link::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #94a3b8;
+}
+
+/* Stats Footer */
+.about-stats {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-right: 40px;
+}
+
+.about-stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15%;
+  height: 70%;
+  width: 2px;
+  background-color: #e2e8f0;
+}
+
+.about-stat strong {
+  font-size: 36px;
+  font-weight: 800;
+  color: #0b192c;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.about-stat span {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   3. APERTURE CIRCLE COLLAGE (THE RIGHT VISUAL)
+========================================================= */
+
+.about-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 600px;
+}
+
+/* Background Atmospheric Bubbles */
+.about-circle-bg-one {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, rgba(224, 242, 254, 0.8) 0%, rgba(240, 249, 255, 0.2) 65%, transparent 70%);
+  border-radius: 50%;
+  top: -20%;
+  left: -20%;
+  z-index: 0;
+}
+
+.about-circle-bg-two {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(224, 242, 254, 0.5);
+  border-radius: 50%;
+  right: -10%;
+  bottom: -5%;
+  z-index: 0;
+}
+
+/* Background Dot Pattern */
+.about-dots {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.about-dots i {
+  width: 5px;
+  height: 5px;
+  background-color: #cbd5e1;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Master Collage Container */
+.about-image-collage {
+  position: relative;
+  width: 100%;
+  max-width: 560px; /* Adjust scale of entire wheel here */
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffffff;
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+/* The Wedges (8 Slices) */
+.petal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Mathematically creates exactly a 45-degree angle starting from the center */
+  clip-path: polygon(50% 50%, 15% -20%, 85% -20%);
+  transform-origin: center center;
+}
+
+/* Keeps images upright via counter-rotation */
+.petal-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  overflow: hidden;
+}
+
+.petal-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05); /* Avoids clipping on the edges */
+  transition: transform 0.4s ease;
+}
+
+.petal:hover .petal-inner img {
+  transform: scale(1.12);
+}
+
+/* Accurate degree rotations */
+.petal-1 { transform: rotate(0deg); }
+.petal-1 .petal-inner { transform: rotate(0deg); }
+
+.petal-2 { transform: rotate(45deg); }
+.petal-2 .petal-inner { transform: rotate(-45deg); }
+
+.petal-3 { transform: rotate(90deg); }
+.petal-3 .petal-inner { transform: rotate(-90deg); }
+
+.petal-4 { transform: rotate(135deg); }
+.petal-4 .petal-inner { transform: rotate(-135deg); }
+
+.petal-5 { transform: rotate(180deg); }
+.petal-5 .petal-inner { transform: rotate(-180deg); }
+
+.petal-6 { transform: rotate(225deg); }
+.petal-6 .petal-inner { transform: rotate(-225deg); }
+
+.petal-7 { transform: rotate(270deg); }
+.petal-7 .petal-inner { transform: rotate(-270deg); }
+
+.petal-8 { transform: rotate(315deg); }
+.petal-8 .petal-inner { transform: rotate(-315deg); }
+
+/* The thick white dividing lines */
+.gap-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px; /* Thickness of white grid lines */
+  height: 120%;
+  background-color: #ffffff;
+  transform-origin: center center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Angles bisecting the petals */
+.gap-1 { transform: translate(-50%, -50%) rotate(22.5deg); }
+.gap-2 { transform: translate(-50%, -50%) rotate(67.5deg); }
+.gap-3 { transform: translate(-50%, -50%) rotate(112.5deg); }
+.gap-4 { transform: translate(-50%, -50%) rotate(157.5deg); }
+
+/* The Central Image Lens */
+.center-lens {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48%; /* Perfect ratio matching the image */
+  height: 48%;
+  border-radius: 50%;
+  border: 8px solid #ffffff;
+  z-index: 10;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.center-lens img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* "People Ideas Impact" Floating Text */
+.about-floating-text {
+  position: absolute;
+  bottom: -30px;
+  right: -20px;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  color: #7dd3fc;
+  line-height: 0.9;
+  transform: rotate(-10deg);
+  z-index: 6;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   4. RESPONSIVE BREAKPOINTS (ALL SECTIONS)
+========================================================= */
+
+@media (max-width: 1100px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+  .about-content {
+    max-width: 100%;
+  }
+  .about-visual {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Hero Overrides */
+  .aboutHero { min-height: 680px; }
+  .aboutHeroContent { width: calc(100% - 100px); padding: 125px 0 145px; }
+  .aboutHeroContent h1 { font-size: clamp(46px, 7vw, 70px); letter-spacing: -2.8px; }
+  .aboutHeroContent p { max-width: 560px; font-size: 17px; }
+  .aboutHeroArrowLeft { left: 18px; }
+  .aboutHeroArrowRight { right: 18px; }
+}
+
+@media (max-width: 768px) {
+  /* Hero Overrides */
+  .aboutHero { min-height: 650px; align-items: flex-end; }
+  .aboutHeroOverlay {
+    background: linear-gradient(180deg, rgba(6, 19, 53, 0.15) 0%, rgba(6, 19, 53, 0.42) 35%, rgba(6, 19, 53, 0.91) 100%);
+  }
+  .aboutHeroContent { width: calc(100% - 80px); padding: 80px 0 125px; }
+  .aboutHeroContent h1 { max-width: 620px; font-size: clamp(42px, 8vw, 60px); letter-spacing: -2px; }
+  .aboutHeroContent p { max-width: 540px; margin-top: 20px; font-size: 15px; }
+  .aboutHeroArrow { width: 44px; height: 44px; font-size: 18px; }
+  .aboutHeroArrowLeft { left: 12px; }
+  .aboutHeroArrowRight { right: 12px; }
+  .aboutHeroDots { left: 40px; bottom: 38px; }
+
+  /* Workplace Overrides */
+  .about-intro { padding: 60px 0; }
+  .about-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .about-stat:not(:last-child)::after { display: none; }
+  .about-floating-text { bottom: -15px; right: 0; }
+}
+
+@media (max-width: 480px) {
+  /* Hero Overrides */
+  .aboutHero { min-height: 620px; }
+  .aboutHeroContent { width: calc(100% - 40px); padding: 70px 0 115px; }
+  .aboutHeroContent h1 { font-size: 40px; letter-spacing: -1.6px; }
+  .aboutHeroContent p { font-size: 13px; }
+  .aboutHeroArrow { width: 38px; height: 38px; font-size: 15px; }
+  .aboutHeroArrowLeft { left: 7px; }
+  .aboutHeroArrowRight { right: 7px; }
+  .aboutHeroDots { left: 20px; bottom: 35px; gap: 6px; }
+  .aboutHeroDot { width: 18px; }
+  .aboutHeroDot.active { width: 38px; }
+}
+
+@media (max-width: 360px) {
+  .aboutHero { min-height: 600px; }
+  .aboutHeroContent { width: calc(100% - 32px); padding-bottom: 105px; }
+  .aboutHeroContent h1 { font-size: 35px; letter-spacing: -1.3px; }
+  .aboutHeroContent p { font-size: 12px; }
+  .aboutHeroArrow { width: 34px; height: 34px; }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .aboutHeroBackground { transition: opacity 0.2s ease; transform: none; }
+  .aboutHeroBackground.active { transform: none; }
+  .aboutHeroArrow, .aboutHeroDot, .petal-inner img { transition: none; }
+  .petal:hover .petal-inner img { transform: scale(1.05); }
+}

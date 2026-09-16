@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Bot,
   BriefcaseBusiness,
+  Building2,
   CalendarDays,
   Cloud,
   Code2,
@@ -78,31 +79,31 @@ const blogCards = [
   {
     title: "The Future of AI in Enterprise Operations",
     href: "/blog",
-    image: "/images/blog/ai-enterprise.jpg",
+    image: "/images/blogs/fourth-blog.webp",
   },
   {
     title: "Building a Resilient Digital Enterprise",
     href: "/blog",
-    image: "/images/blog/digital-enterprise.jpg",
+    image: "/images/blogs/three-blog.webp",
   },
 ];
 
 const eventCards = [
   {
-    date: "25",
-    month: "SEP",
-    title: "AI & Automation Summit 2026",
+    date: "31",
+    month: "July",
+    title: "BMC Helix Roadshow Mumbai",
     location: "Mumbai, India",
     href: "/events",
-    image: "/images/events/ai-automation.jpg",
+    image: "/images/events/BMC-helix-Roadshow.jpg",
   },
   {
-    date: "10",
+    date: "07",
     month: "OCT",
-    title: "Digital Operations Forum",
-    location: "Bengaluru, India",
+    title: "India CIO Summit 2025",
+    location: "Sahara Star, Mumbai",
     href: "/events",
-    image: "/images/events/digital-operations.jpg",
+    image: "/images/events/ETBFSI-CIO-Digital-Conclave.webp",
   },
 ];
 
@@ -135,12 +136,61 @@ const fallbackSolutionItems: MenuLink[] = Object.keys(solutionIconMap).map(
   })
 );
 
+const fallbackIndustryItems: MenuLink[] = [
+  {
+    title: "Banking & Financial Services",
+    href: "/industries/banking-financial-services",
+    icon: <Building2 size={19} />,
+  },
+  {
+    title: "Financial Technology",
+    href: "/industries/financial-technology",
+    icon: <Building2 size={19} />,
+  },
+  {
+    title: "Pharmaceutical",
+    href: "/industries/pharmaceutical",
+    icon: <Building2 size={19} />,
+  },
+  {
+    title: "IT-Enabled Services",
+    href: "/industries/it-enabled-services",
+    icon: <Building2 size={19} />,
+  },
+  {
+    title: "Telecommunications",
+    href: "/industries/telecommunications",
+    icon: <Building2 size={19} />,
+  },
+  {
+    title: "Manufacturing",
+    href: "/industries/manufacturing",
+    icon: <Building2 size={19} />,
+  },
+];
+
+const industryDescriptions: Record<string, string> = {
+  "Banking & Financial Services":
+    "RBI-aligned operations at scale. Core banking, payments, branch estates and digital channels for India's largest public and private sector banks.",
+  "Financial Technology":
+    "Speed, scale and resilience together across digital financial products, platforms and customer journeys.",
+  Pharmaceutical:
+    "Audit-ready, validated IT operations designed for regulated pharmaceutical environments.",
+  "IT-Enabled Services":
+    "Efficiency, uptime and cost control across high-volume technology-enabled service operations.",
+  Telecommunications:
+    "High availability across distributed estates, networks, platforms and customer-facing digital channels.",
+  Manufacturing:
+    "Smart factory, IT and OT together with resilient operations across connected manufacturing environments.",
+};
+
 const fallbackAboutItems: MenuLink[] = [
   {
     title: "Our Team",
     href: "/about/our-team",
     icon: <BriefcaseBusiness size={19} />,
   },
+
 ];
 
 const fallbackResourceItems: MenuLink[] = [
@@ -256,6 +306,9 @@ export default function HeaderClient({ menuItems = [] }: HeaderClientProps) {
     findMenuItem(safeMenuItems, "About");
 
   const resourcesParent = findMenuItem(safeMenuItems, "Resources");
+  const industriesParent = findMenuItem(safeMenuItems, "Industries");
+
+
 
   const solutionItemsFromCms: MenuLink[] = solutionsParent
     ? getChildren(safeMenuItems, solutionsParent.id).map((item) => ({
@@ -267,6 +320,25 @@ export default function HeaderClient({ menuItems = [] }: HeaderClientProps) {
 
   const solutionItems: MenuLink[] =
     solutionItemsFromCms.length > 0 ? solutionItemsFromCms : fallbackSolutionItems;
+
+  const industryItemsFromCms: MenuLink[] = industriesParent
+    ? getChildren(safeMenuItems, industriesParent.id).map((item) => ({
+        title: item.label,
+        href: toNextRoute(item.url),
+        icon: <Building2 size={19} />,
+      }))
+    : [];
+
+  const industryItems: MenuLink[] =
+    industryItemsFromCms.length > 0
+      ? industryItemsFromCms
+      : fallbackIndustryItems;
+
+  const featuredIndustry = industryItems[0];
+  const featuredIndustryDescription = featuredIndustry
+    ? industryDescriptions[featuredIndustry.title] ??
+      "Explore our industry-focused capabilities, solutions and technology services designed around your business needs."
+    : "";
 
   const aboutItemsAll: MenuLink[] = aboutParent
     ? getChildren(safeMenuItems, aboutParent.id).map((item) => ({
@@ -442,6 +514,94 @@ export default function HeaderClient({ menuItems = [] }: HeaderClientProps) {
                     View all case studies
                     <ArrowRight size={15} />
                   </Link>
+                </section>
+              </div>
+            </div>
+          </div>
+
+          {/* ============ INDUSTRIES ============ */}
+
+          <div
+            className={`header-dropdown ${
+              openMenu === "industries" ? "is-open" : ""
+            }`}
+          >
+            <button
+              type="button"
+              className={`header-link ${
+                pathname.startsWith("/industries") ? "active" : ""
+              }`}
+              onClick={() => toggleMenu("industries")}
+            >
+              Industries
+              <span className="dropdown-arrow">
+                {openMenu === "industries" ? "⌃" : "⌄"}
+              </span>
+            </button>
+
+            <div className="mega-menu solutions-mega industries-mega">
+              <div className="mega-inner">
+                <section className="mega-section industries-list-section">
+                  <div className="mega-heading">
+                    <span>INDUSTRIES WE SERVE</span>
+                    <h3>Industries</h3>
+                  </div>
+
+                  <div
+                    className="solution-list industries-list"
+                    style={{
+                      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                    }}
+                  >
+                    {industryItems.map((item) => (
+                      <Link
+                        href={item.href}
+                        className="solution-item industry-item"
+                        key={item.title}
+                        onClick={closeMenus}
+                      >
+                        <span className="solution-icon">
+                          {item.icon}
+                        </span>
+                        <span className="solution-title">
+                          {item.title}
+                        </span>
+                        <span className="solution-arrow">
+                          <ArrowRight size={15} />
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="mega-section industry-feature-section">
+                  <div className="industry-feature-card">
+                    <span className="industry-feature-eyebrow">
+                      FEATURED INDUSTRY
+                    </span>
+
+                    <div className="industry-feature-icon">
+                      <Building2 size={25} />
+                    </div>
+
+                    <h3>
+                      {featuredIndustry?.title ??
+                        "Banking & Financial Services"}
+                    </h3>
+
+                    <p>
+                      {featuredIndustryDescription}
+                    </p>
+
+                    {featuredIndustry && (
+                      <Link
+                        href={featuredIndustry.href}
+                        onClick={closeMenus}
+                      >
+                        See industry work <ArrowRight size={15} />
+                      </Link>
+                    )}
+                  </div>
                 </section>
               </div>
             </div>
@@ -740,6 +900,44 @@ export default function HeaderClient({ menuItems = [] }: HeaderClientProps) {
             >
               {aboutItems.map((item) => (
                 <Link href={item.href} key={item.title} onClick={closeMenus}>
+                  <span>{item.icon}</span>
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* INDUSTRIES */}
+
+          <div className="mobile-dropdown">
+            <button
+              type="button"
+              className="mobile-dropdown-trigger"
+              onClick={() => toggleMenu("mobile-industries")}
+            >
+              Industries
+              <span
+                className={
+                  openMenu === "mobile-industries"
+                    ? "mobile-arrow rotate"
+                    : "mobile-arrow"
+                }
+              >
+                ⌄
+              </span>
+            </button>
+
+            <div
+              className={`mobile-dropdown-content ${
+                openMenu === "mobile-industries" ? "is-open" : ""
+              }`}
+            >
+              {industryItems.map((item) => (
+                <Link
+                  href={item.href}
+                  key={item.title}
+                  onClick={closeMenus}
+                >
                   <span>{item.icon}</span>
                   {item.title}
                 </Link>

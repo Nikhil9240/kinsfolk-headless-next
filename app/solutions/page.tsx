@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { fetchFromWordPress } from "@/lib/wordpress";
 
+
 const GET_SOLUTIONS = `
   query GetSolutions {
     pages(
@@ -34,6 +35,7 @@ export default async function SolutionsPage() {
             key={solution.slug}
             href={`/solutions/${solution.slug}`}
           >
+            
             <h2>{solution.title}</h2>
             <p>
               {solution.content

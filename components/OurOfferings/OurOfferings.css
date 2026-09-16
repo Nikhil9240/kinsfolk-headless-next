@@ -1,0 +1,963 @@
+/* =========================================================
+   OUR OFFERINGS
+   ========================================================= */
+
+.our-offerings {
+  width: 100%;
+  padding: 110px 0;
+  background: #ffffff;
+  color: #061335;
+  overflow: hidden;
+}
+
+.offerings-container {
+  width: min(1380px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.offerings-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.offerings-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 18px;
+
+  color: #339ae0;
+
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.offerings-eyebrow span {
+  display: block;
+  width: 44px;
+  height: 3px;
+  background: #339ae0;
+}
+
+.offerings-heading h2 {
+  margin: 0;
+
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+  font-weight: 700;
+
+  color: #061335;
+}
+
+.offerings-intro {
+  max-width: 620px;
+  margin: 0 0 5px auto;
+
+  font-size: 20px;
+  line-height: 1.6;
+  color: #526482;
+}
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
+
+.offerings-tabs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  border-bottom: 1px solid #dbe5ef;
+  margin-bottom: 35px;
+}
+
+.offering-tab {
+  position: relative;
+
+  min-height: 130px;
+  padding: 18px 15px 22px;
+
+  border: 0;
+  border-right: 1px solid #dbe5ef;
+
+  background: transparent;
+
+  color: #061335;
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.offering-tab:first-child {
+  border-left: 1px solid #dbe5ef;
+}
+
+.offering-tab:last-child {
+  border-right: 0;
+}
+
+.offering-tab:hover {
+  background: #f4faff;
+}
+
+.offering-tab.active {
+  background: linear-gradient(
+    180deg,
+    #eaf6ff 0%,
+    #dcefff 100%
+  );
+}
+
+.offering-tab.active::after {
+  content: "";
+
+  position: absolute;
+
+  left: 8px;
+  right: 8px;
+  bottom: -1px;
+
+  height: 6px;
+
+  border-radius: 6px 6px 0 0;
+
+  background: #339ae0;
+}
+
+.offering-tab-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offering-tab-icon svg {
+  width: 39px;
+  height: 39px;
+
+  fill: none;
+  stroke: #061335;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition: 0.3s ease;
+}
+
+.offering-tab.active .offering-tab-icon svg {
+  stroke: #339ae0;
+}
+
+.offering-tab-title {
+  max-width: 175px;
+
+  text-align: center;
+
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   CONTENT CARD
+   ========================================================= */
+
+.offering-content {
+  position: relative;
+
+  min-height: 610px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(420px, 0.9fr);
+
+  border: 1px solid #cfe4f7;
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 80% 45%,
+      rgba(51, 154, 224, 0.13),
+      transparent 32%
+    ),
+    linear-gradient(
+      120deg,
+      #ffffff 0%,
+      #f8fbff 100%
+    );
+}
+
+
+/* =========================================================
+   LEFT COPY
+   ========================================================= */
+
+.offering-copy {
+  position: relative;
+  z-index: 5;
+
+  padding: 48px 42px 48px;
+}
+
+.offering-number {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #339ae0;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.offering-copy h3 {
+  margin: 0 0 10px;
+
+  max-width: 760px;
+
+  color: #061335;
+
+  font-size: clamp(36px, 4vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -1.8px;
+}
+
+.offering-description {
+  max-width: 760px;
+
+  margin: 0 0 25px;
+
+  color: #4d607d;
+
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   POINTS
+   ========================================================= */
+
+.offering-points {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  max-width: 800px;
+}
+
+.offering-point {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+
+  gap: 15px;
+  align-items: start;
+}
+
+.point-icon {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e5f4ff;
+}
+
+.point-icon span {
+  color: #339ae0;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.point-text h4 {
+  margin: 2px 0 3px;
+
+  color: #061335;
+
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.point-text p {
+  margin: 0;
+
+  color: #526482;
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.offering-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+
+  margin-top: 28px;
+  padding: 16px 25px;
+
+  border-radius: 9px;
+
+  background: #339ae0;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  box-shadow:
+    0 12px 28px rgba(51, 154, 224, 0.22);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.offering-cta:hover {
+  color: #ffffff;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 32px rgba(51, 154, 224, 0.28);
+}
+
+.offering-cta-arrow {
+  font-size: 23px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   RIGHT VISUAL
+   ========================================================= */
+
+.offering-visual {
+  position: relative;
+
+  min-height: 610px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   GLOW
+   ========================================================= */
+
+.visual-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.visual-glow-one {
+  width: 480px;
+  height: 480px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(51, 154, 224, 0.18) 0%,
+      rgba(51, 154, 224, 0.06) 40%,
+      transparent 70%
+    );
+}
+
+.visual-glow-two {
+  width: 280px;
+  height: 280px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(13, 199, 138, 0.10),
+      transparent 70%
+    );
+}
+
+
+/* =========================================================
+   ORBITS
+   ========================================================= */
+
+.visual-orbit {
+  position: absolute;
+
+  border: 1px solid rgba(51, 154, 224, 0.22);
+
+  border-radius: 50%;
+}
+
+.orbit-one {
+  width: 510px;
+  height: 510px;
+}
+
+.orbit-two {
+  width: 390px;
+  height: 390px;
+
+  border-style: dashed;
+}
+
+.orbit-three {
+  width: 285px;
+  height: 285px;
+}
+
+
+/* =========================================================
+   CENTER
+   ========================================================= */
+
+.visual-center {
+  position: relative;
+  z-index: 4;
+
+  width: 250px;
+  min-height: 285px;
+
+  padding: 28px 24px;
+
+  border: 1px solid rgba(51, 154, 224, 0.28);
+  border-radius: 17px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 25px 55px rgba(6, 19, 53, 0.13);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.center-icon {
+  width: 78px;
+  height: 78px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #339ae0,
+    #2778b1
+  );
+
+  box-shadow:
+    0 12px 30px rgba(51, 154, 224, 0.25);
+}
+
+.center-icon svg {
+  width: 42px;
+  height: 42px;
+
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visual-center strong {
+  max-width: 190px;
+
+  color: #061335;
+
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.visual-center > span {
+  margin-top: 9px;
+
+  color: #71819a;
+
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   FLOATING CARDS
+   ========================================================= */
+
+.visual-card {
+  position: absolute;
+  z-index: 5;
+
+  min-width: 130px;
+
+  padding: 17px 20px;
+
+  border: 1px solid #d7e6f2;
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 15px 35px rgba(6, 19, 53, 0.09);
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.visual-card svg {
+  width: 32px;
+  height: 32px;
+
+  fill: none;
+  stroke: #339ae0;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visual-card span,
+.visual-small-number {
+  color: #339ae0;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.visual-card strong {
+  color: #061335;
+
+  font-size: 16px;
+}
+
+.card-top {
+  top: 70px;
+  left: 17%;
+}
+
+.card-left {
+  left: 4%;
+  bottom: 105px;
+}
+
+.card-right {
+  right: 4%;
+  bottom: 115px;
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.visual-dot {
+  position: absolute;
+
+  width: 13px;
+  height: 13px;
+
+  border-radius: 50%;
+
+  background: #339ae0;
+
+  z-index: 2;
+}
+
+.dot-one {
+  top: 90px;
+  right: 13%;
+}
+
+.dot-two {
+  left: 14%;
+  top: 48%;
+}
+
+.dot-three {
+  right: 16%;
+  bottom: 80px;
+
+  width: 20px;
+  height: 20px;
+
+  background: #0dc78a;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .offerings-container {
+    width: min(100% - 45px, 960px);
+  }
+
+  .offerings-header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .offerings-intro {
+    margin: 0;
+    max-width: 750px;
+  }
+
+  .offerings-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .offering-tab {
+    border-bottom: 1px solid #dbe5ef;
+  }
+
+  .offering-content {
+    grid-template-columns: 1fr;
+  }
+
+  .offering-visual {
+    min-height: 470px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .our-offerings {
+    padding: 75px 0;
+  }
+
+  .offerings-container {
+    width: calc(100% - 30px);
+  }
+
+  .offerings-header {
+    margin-bottom: 32px;
+  }
+
+  .offerings-eyebrow {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+  }
+
+  .offerings-eyebrow span {
+    width: 30px;
+  }
+
+  .offerings-heading h2 {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+
+  .offerings-intro {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+
+  /* -------------------------------------------------------
+     Horizontal tabs
+  ------------------------------------------------------- */
+
+  .offerings-tabs {
+    display: flex;
+
+    overflow-x: auto;
+
+    margin: 0 -15px 25px;
+    padding: 0 15px;
+
+    border-bottom: 1px solid #dbe5ef;
+
+    scrollbar-width: none;
+  }
+
+  .offerings-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .offering-tab {
+    flex: 0 0 145px;
+
+    min-height: 120px;
+
+    padding: 15px 10px;
+
+    border-left: 1px solid #dbe5ef;
+    border-right: 0;
+
+    border-bottom: 0;
+  }
+
+  .offering-tab:first-child {
+    border-left: 1px solid #dbe5ef;
+  }
+
+  .offering-tab-title {
+    font-size: 14px;
+  }
+
+  .offering-tab-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+
+  /* -------------------------------------------------------
+     Content
+  ------------------------------------------------------- */
+
+  .offering-content {
+    min-height: auto;
+
+    border-radius: 12px;
+
+    grid-template-columns: 1fr;
+  }
+
+  .offering-copy {
+    padding: 32px 22px;
+  }
+
+  .offering-number {
+    font-size: 12px;
+  }
+
+  .offering-copy h3 {
+    font-size: 32px;
+    line-height: 1.12;
+    letter-spacing: -1px;
+  }
+
+  .offering-description {
+    font-size: 16px;
+  }
+
+
+  /* -------------------------------------------------------
+     Points
+  ------------------------------------------------------- */
+
+  .offering-points {
+    gap: 20px;
+  }
+
+  .offering-point {
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+  }
+
+  .point-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .point-text h4 {
+    font-size: 15px;
+  }
+
+  .point-text p {
+    font-size: 14px;
+  }
+
+
+  /* -------------------------------------------------------
+     CTA
+  ------------------------------------------------------- */
+
+  .offering-cta {
+    width: 100%;
+
+    justify-content: space-between;
+
+    margin-top: 25px;
+    padding: 15px 18px;
+
+    font-size: 14px;
+  }
+
+
+  /* -------------------------------------------------------
+     Visual
+  ------------------------------------------------------- */
+
+  .offering-visual {
+    min-height: 420px;
+  }
+
+  .orbit-one {
+    width: 350px;
+    height: 350px;
+  }
+
+  .orbit-two {
+    width: 280px;
+    height: 280px;
+  }
+
+  .orbit-three {
+    width: 210px;
+    height: 210px;
+  }
+
+  .visual-center {
+    width: 190px;
+    min-height: 220px;
+    padding: 20px;
+  }
+
+  .center-icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  .center-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+
+  .visual-center strong {
+    font-size: 17px;
+  }
+
+  .visual-card {
+    min-width: 95px;
+    padding: 12px 13px;
+  }
+
+  .visual-card strong {
+    font-size: 13px;
+  }
+
+  .visual-card svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .card-top {
+    top: 30px;
+    left: 5%;
+  }
+
+  .card-left {
+    left: 2%;
+    bottom: 40px;
+  }
+
+  .card-right {
+    right: 2%;
+    bottom: 45px;
+  }
+
+  .dot-one {
+    right: 5%;
+    top: 55px;
+  }
+
+  .dot-two {
+    left: 8%;
+  }
+
+  .dot-three {
+    right: 8%;
+    bottom: 30px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .offerings-heading h2 {
+    font-size: 36px;
+  }
+
+  .offering-copy h3 {
+    font-size: 29px;
+  }
+
+  .offering-visual {
+    min-height: 390px;
+  }
+
+  .visual-center {
+    width: 170px;
+    min-height: 200px;
+  }
+
+  .card-top {
+    left: 1%;
+  }
+
+  .card-left {
+    left: 0;
+  }
+
+  .card-right {
+    right: 0;
+  }
+
+}
